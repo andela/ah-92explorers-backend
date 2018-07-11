@@ -2,6 +2,8 @@
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 [![Reviewed by Hound](https://img.shields.io/github/issues/andela/ah-92explorers-backend.svg?style=flat-square)](https://houndci.com)
 
+[![Coverage Status](https://coveralls.io/repos/github/andela/ah-92explorers-backend/badge.svg?branch=develop)](https://coveralls.io/github/andela/ah-92explorers-backend?branch=develop)
+
 Authors Haven - A Social platform for the creative at heart.
 =======
 
