@@ -22,11 +22,9 @@
     "methods": "^1.1.2",
     "mongoose": "^5.2.2",
     "mongoose-unique-validator": "^2.0.1",
-    "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "request": "^2.87.0",
-    "slug": "^0.9.1",
     "underscore": "^1.9.1"
   }
 }
