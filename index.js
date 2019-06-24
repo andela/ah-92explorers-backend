@@ -1,14 +1,16 @@
-const fs = require("fs"),
-    http = require("http"),
-    path = require("path"),
-    methods = require("methods"),
-    express = require("express"),
-    bodyParser = require("body-parser"),
-    session = require("express-session"),
-    cors = require("cors"),
-    passport = require("passport"),
-    errorhandler = require("errorhandler"),
-    mongoose = require("mongoose");
+import fs from 'fs';
+import http from 'http';
+import path from 'path';
+import methods from 'methods';
+import express from 'express';
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import cors from 'cors';
+import passport from 'passport';
+import errorhandler from 'errorhandler';
+import mongoose from 'mongoose';
+import swaggerUI from 'swagger-ui-express';
+import swagger from './swaggerSetUp/swaggerSetup';
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -24,6 +26,12 @@ app.use(bodyParser.json());
 
 app.use(require("method-override")());
 app.use(express.static(__dirname + "/public"));
+
+app.get('/swagger.json', (req, res, next) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swagger.swaggerSpec);
+});
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
 app.use(
     session({
