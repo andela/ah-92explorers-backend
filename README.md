@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/andela/ah-92explorers-backend.svg?branch=develop)](https://travis-ci.com/andela/ah-92explorers-backend)
+
+
 Authors Haven - A Social platform for the creative at heart.
 =======
 

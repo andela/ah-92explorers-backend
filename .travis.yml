@@ -1,0 +1,11 @@
+language: node_js
+node_js: 
+  - "stable"
+after_success:
+- npm test
+services:
+  - postgresql
+addons:
+  postgresql: "9.6"
+  before_script:
+    - psql -c 'create database ah_test;' -U postgres
