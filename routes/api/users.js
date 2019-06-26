@@ -46,11 +46,11 @@ router.put("/user", function(req, res, next) {
 });
 
 router.post("/users/login", function(req, res, next) {
-    if (!req.body.user.email) {
+    if (!req.body.email) {
         return res.status(422).json({ errors: { email: "can't be blank" } });
     }
 
-    if (!req.body.user.password) {
+    if (!req.body.password) {
         return res.status(422).json({ errors: { password: "can't be blank" } });
     }
     passport.authenticate("local", { session: false }, function(
