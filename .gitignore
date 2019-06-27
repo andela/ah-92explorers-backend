@@ -34,3 +34,7 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+
+# coveralls output
+.nyc_output
