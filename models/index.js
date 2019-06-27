@@ -1,5 +1,3 @@
-'use strict';
-
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
@@ -10,11 +8,11 @@ require('dotenv').config(); // Enabling the use of the env variables
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development'; // We use either NODE_ENV/ 'development'
 const config = configs[env]; // Config variable takes in our new configuration
-const db = {}; 
+const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (config.DATABASE_URL) {
+  sequelize = new Sequelize(process.env[config.DATABASE_URL], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
