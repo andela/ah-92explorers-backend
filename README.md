@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/andela/ah-92explorers-backend.svg?branch=develop)](https://travis-ci.com/andela/ah-92explorers-backend)
+
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 [![Reviewed by Hound](https://img.shields.io/github/issues/andela/ah-92explorers-backend.svg?style=flat-square)](https://houndci.com)
 
