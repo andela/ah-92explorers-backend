@@ -13,6 +13,18 @@ const adminLogin = {
   password: 'Alphamugerwa12$',
 };
 
+const rating = {
+  rating: 3
+};
+
+const ratingFalse = {
+  rating: 'a'
+};
+
+const ratingFalseNumber = {
+  rating: 7
+};
+
 const login = {
   email: 'peter@gmail.com',
   password: 'Password12$'
@@ -179,4 +191,7 @@ export default {
   userLogin,
   invalidUpdate,
   profile,
+  rating,
+  ratingFalse,
+  ratingFalseNumber
 };

@@ -48,7 +48,7 @@ app.use(router);
 
 app.all('*', (_req, res) => {
   res.status(400).json({
-    error: 'not found'
+    error: 'address not found',
   });
 });
 

@@ -4,7 +4,7 @@ import users from './users';
 import socialTest from './socialTest';
 import articles from './articles';
 import search from './search';
-
+import ratings from './ratings';
 
 const router = express.Router();
 
@@ -13,5 +13,6 @@ router.use('/', users);
 router.use('/', socialTest);
 router.use('/', articles);
 router.use('/', search);
+router.use('/', ratings);
 
 export default router;
