@@ -1,4 +1,22 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 module.exports = {
-    secret:
-        process.env.NODE_ENV === "production" ? process.env.SECRET : "secret"
+  development: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    logging: false
+  },
+  test: {
+    use_env_variable: 'DATABASE_TEST',
+    dialect: 'postgres',
+    logging: false,
+  },
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    logging: false
+  }
 };
+

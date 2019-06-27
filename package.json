@@ -37,7 +37,10 @@
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pg": "^7.11.0",
     "request": "^2.87.0",
+    "sequelize": "^5.8.12",
+    "sequelize-cli": "^5.5.0",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
