@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import cors from "cors";
 import swaggerUI from "swagger-ui-express";
-import swagger from "./swaggerSetUp/swaggerSetup";
+import swagger from "./swaggerSetUp/ah-92explorers-api";
 import welcomeRouter from "./routes/welcomeRouter";
 
 // Create global app object
