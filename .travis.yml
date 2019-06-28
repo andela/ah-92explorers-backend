@@ -3,3 +3,5 @@ node_js:
   - "stable"
 services:
   - postgresql
+after_success:
+  - npm test
