@@ -35,7 +35,6 @@ app.use(
 
 require("./models/User");
 
-app.use(require("./routes"));
 app.use("/welcome", welcomeRouter);
 
 /// catch 404 and forward to error handler

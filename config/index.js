@@ -4,19 +4,18 @@ dotenv.config();
 
 module.exports = {
   development: {
-    use_env_variable: 'DATABASE_URL',
+    DATABASE_URL: 'DATABASE_URL',
     dialect: 'postgres',
     logging: false
   },
   test: {
-    use_env_variable: 'DATABASE_TEST',
+    DATABASE_URL: 'DATABASE_TEST',
     dialect: 'postgres',
     logging: false,
   },
   production: {
-    use_env_variable: 'DATABASE_URL',
+    DATABASE_URL: 'DATABASE_URL',
     dialect: 'postgres',
     logging: false
   }
 };
-

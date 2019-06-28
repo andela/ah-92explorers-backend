@@ -38,3 +38,6 @@ node_modules
 
 # coveralls output
 .nyc_output
+
+# package.lock
+package-lock.json
