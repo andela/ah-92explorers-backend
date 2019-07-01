@@ -1,1 +1,1 @@
-import passport from "./node_modules/passport";
+import passport from './node_modules/passport';

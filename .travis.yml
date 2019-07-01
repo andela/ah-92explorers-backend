@@ -5,3 +5,6 @@ services:
   - postgresql
 after_success:
   - npm test
+env:
+  global:
+  - secret=0ad14d593a65a95f7325dbb193a9a77a
