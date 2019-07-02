@@ -22,6 +22,7 @@ export default (sequelize, DataTypes) => {
         isEmail: true
       }
     },
+    provider: { type: DataTypes.STRING },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

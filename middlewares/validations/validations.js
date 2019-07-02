@@ -5,14 +5,17 @@ class Validations {
     const pwdRegex = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
 
     switch (true) {
-      case email === null || email === undefined || password === null || password === undefined
-        || username === null || username === undefined:
+      case email === null
+        || email === undefined
+        || password === null
+        || password === undefined
+        || username === null
+        || username === undefined:
         return res.status(400).json({
           error: 'A valid email, username and password are required'
         });
 
-      case username.length < 3 || username.length > 15
-         || typeof username === 'number':
+      case username.length < 3 || username.length > 15 || typeof username === 'number':
         return res.status(400).json({
           error: [
             'username should not have less than 3 characters',

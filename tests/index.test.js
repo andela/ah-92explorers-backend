@@ -1,7 +1,7 @@
 const userTrue = {
   username: 'love1234',
   email: 'love123@gmail.com',
-  password: 'Alpha123$',
+  password: 'Alpha123$'
 };
 
 const login = {
@@ -60,6 +60,38 @@ const invalidDummy = {
 const invalidDummy1 = {
   email: 'love23@gmail.com',
   password: 'Alpha123$',
+};
+// twitter user
+export const twitterUser = (req, res, next) => {
+  req.user = {
+    id: req.body.id,
+    username: 'NIYONSABACeles3',
+    displayName: 'Celestin Niyonsaba',
+    photos: [
+      {
+        value: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
+      }
+    ],
+    provider: 'twitter'
+  };
+  next();
+};
+// google or facebook user
+export const googleFacebookUser = (req, res, next) => {
+  req.user = {
+    id: req.body.id,
+    displayName: 'Celestin Niyonsaba',
+    name: { familyName: 'Niyonsaba', givenName: 'Celestin' },
+    emails: [{ value: 'niyoceles3@gmail.com' }],
+    photos: [
+      {
+        value:
+          'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2158048164322418&height=50&width=50&ext=1565088705&hash=AeTmfNe52y04p7VS'
+      }
+    ],
+    provider: 'google'
+  };
+  next();
 };
 
 export default {

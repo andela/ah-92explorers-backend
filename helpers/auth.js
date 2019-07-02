@@ -14,10 +14,14 @@ class Auth {
   }
 
   static genToken(username, email) {
-    const token = jwt.sign({
-      email,
-      username,
-    }, process.env.SECRET, { expiresIn: '24h' });
+    const token = jwt.sign(
+      {
+        email,
+        username
+      },
+      process.env.SECRET,
+      { expiresIn: '24h' }
+    );
     return token;
   }
 
