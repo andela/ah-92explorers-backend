@@ -17,5 +17,8 @@ const fakeRoleLevelInteger = {
 };
 
 export default {
-  userTrue, roleLevel, fakeRoleLevel, fakeRoleLevelInteger
+  userTrue,
+  roleLevel,
+  fakeRoleLevel,
+  fakeRoleLevelInteger
 };

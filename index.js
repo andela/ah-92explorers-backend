@@ -2,6 +2,8 @@ import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import session from 'express-session';
+import passport from 'passport';
 import swaggerUI from 'swagger-ui-express';
 import morgan from 'morgan';
 import swagger from './swaggerSetUp/ah-92explorers-api';
@@ -27,11 +29,25 @@ app.get('/swagger.json', (req, res) => {
 });
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
+require('./models/User');
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(router);
 
 app.all('*', (_req, res) => {
   res.status(400).json({
-    error: 'not found',
+    error: 'not found'
   });
 });
 
