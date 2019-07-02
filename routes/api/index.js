@@ -1,8 +1,8 @@
 import express from 'express';
-import welcome from './welcome';
+import admin from './admin';
 
 const router = express.Router();
 
-router.use('/', welcome);
+router.use('/', admin);
 
 export default router;
