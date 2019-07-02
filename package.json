@@ -4,14 +4,17 @@
   "description": "A Social platform for the creative at heart",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node",
-    "test": "NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
-  },
-  "nyc": {
-    "exclude": [
-      "routes/api/"
-    ]
+    "start": "babel-node index.js",
+    "dev": "NODE_ENV=development nodemon ./index.js --exec babel-node",
+    "test": "npm run setup:test && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
+    "setup:test": "NODE_ENV=test npm run migrate:undo && NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
+    "setup:dev": "NODE_ENV=development npm run migrate:undo && NODE_ENV=development npm run migrate && NODE_ENV=development npm run seed",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "seed": "node_modules/.bin/sequelize db:seed:all",
+    "seed:undo": "node_modules/.bin/sequelize db:seed:undo:all",
+    "lint": "eslint . --ext .js",
+    "migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all"
   },
   "author": "Andela Simulations Programme",
   "license": "MIT",
@@ -22,6 +25,7 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.2.0",
@@ -45,7 +49,9 @@
     "sequelize-cli": "^5.5.0",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "uuid": "^3.3.2",
+    "uuidv4": "^4.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -54,8 +60,29 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.18.0",
+    "husky": "^3.0.0",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.1.1"
+  },
+  "nyc": {
+    "per-file": true,
+    "check-coverage": true,
+    "branches": 80,
+    "lines": 80,
+    "functions": 100,
+    "statements": 80,
+    "exclude": [
+      "index.js",
+      "models/*.js",
+      "node_modules/*",
+      "tests/*.js",
+      "middlewares/*",
+      "config/*.js",
+      "swaggerSetUp/*.js",
+      "helpers/*.js",
+      "migrations/*",
+      "seeders/*"
+    ]
   }
 }
