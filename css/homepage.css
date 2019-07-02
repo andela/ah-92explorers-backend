@@ -7,6 +7,11 @@ body
     background: #eeeeee;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .firstNavbar 
 {
     display: flex;
