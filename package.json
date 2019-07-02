@@ -4,7 +4,7 @@
   "description": "A Social platform for the creative at heart",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./index.js",
+    "start": "nodemon ./index.js --exec babel-node",
     "test": "NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
