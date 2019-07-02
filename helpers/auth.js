@@ -20,6 +20,14 @@ class Auth {
     }, process.env.SECRET, { expiresIn: '24h' });
     return token;
   }
+
+  static decodeToken(token) {
+    let payload = '';
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+      payload = decoded;
+    });
+    return payload;
+  }
 }
 
 export default Auth;

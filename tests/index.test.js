@@ -32,6 +32,14 @@ const invalidUsername = {
   password: 'Isaiah@250'
 };
 
+const emailVerification = {
+  firstName: 'isaie',
+  lastName: 'runo',
+  email: 'isaie@gmail.com',
+  username: 'isaiah250',
+  password: 'Explorers@92',
+};
+
 const roleLevel = {
   accessLevel: 1
 };
@@ -54,4 +62,5 @@ export default {
   invalidEmail,
   invalidUsername,
   login,
+  emailVerification
 };
