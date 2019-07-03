@@ -1,0 +1,526 @@
+body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #eeeeee;
+}
+
+.firstNavbar 
+{
+    display: flex;
+    flex-direction: row;
+    background: #ffffff;
+}
+
+.articleBtn
+{
+    height: 18px;
+    width: 18px;
+}
+
+.logo
+{
+    margin-left: 15%;
+    margin-right: 20%;
+}
+
+.navbarBtn
+{
+    margin-top: 2%;
+    background: none;
+    margin-left: 2%;
+    height: 40px;
+    padding: 5px 38px;
+    border: 1px solid #367fa9;
+    outline: #367fa9;
+    cursor: pointer;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+}
+
+.navIcons
+{
+    height: 20px;
+    width: 20px;
+    margin-right: 20px;
+}
+
+.notifications
+{
+    margin-top: 35px;
+}
+
+.manIcon
+{
+    height: 35px;
+    width: 35px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 25px;
+}
+
+.navName
+{
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.nameAndIcon
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown
+{
+    margin-top: 35px;
+    height: 15px;
+    width: 15px;
+    margin-left: 10px;
+}
+
+.secondNavbar
+{
+    background: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid #eeeeee;
+}
+
+ul li
+{
+    display: inline;
+}
+
+ul
+{
+    margin-left: 15%;
+}
+
+li
+{
+    margin-right: 35px;
+}
+
+.headline
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 35px;
+}
+
+.star
+{
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.ftBtns
+{
+    margin-left: 25%;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    text-align: center;
+    height: 25px;
+    padding: 5px;
+    margin-right: 20%;
+}
+
+.btnLike
+{
+    border-right: 1px solid rgba(0,0,0,.09);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btnLike2
+{
+    padding-right: 10px;
+}
+
+.sortBtn
+{
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: none;
+    padding: 10px 28px;
+    margin-left: 15px;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+    outline: none;
+
+}
+
+.sortIcon
+{
+    height: 10px;
+    width: 10px;
+    margin-top: 2px;
+}
+
+.profImg
+{
+    height: 30px;
+    width: 30px;
+}
+
+.profBookmark
+{
+    height: 20px;
+    width: 20px;
+}
+
+.firstRow
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.firstRowFirst
+{
+    background-image: url('/icons/bird.jpeg');
+    background-position: 100%;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    width: 450px;
+}
+
+.secondRowFirst
+{
+    margin-left: 2%;
+}
+
+.subColumn
+{
+    background: #ffffff;
+    width: 270px;
+    padding: 10px;   
+}
+
+.sb1
+{
+    margin-right: 50px;
+}
+
+.sb2
+{
+    margin-bottom: 20px;
+}
+
+.secondRow
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.secRowImg
+{
+    width: 170px;
+    height: 140px;
+}
+
+.secRowDiv
+{
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    background: #ffffff;
+    height: 140px;
+}
+
+.secRowDivSpace
+{
+    margin-top: 20px;
+}
+
+.secRowDisplay2
+{
+    margin-left: 2%;
+}
+
+.secRowDivLong1
+{
+    background-image: url('/icons/bird.jpeg');
+    background-position: 100%;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    width: 630px;
+    height: 140px;
+}
+
+.displayDown
+{
+    margin-top: 19px;
+}
+
+.long
+{
+    width: 630px;
+}
+
+.thirdRow
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 25px;
+}
+
+.lastCards
+{
+    width: 250px;
+    background: #ffffff;
+}
+
+.lastCardImage
+{
+    width: 250px;
+}
+
+.spaceRight
+{
+    margin-right: 35px;
+}
+
+.showMore
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 45%;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: none;
+    padding: 10px 28px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+}
+
+.profName
+{
+    font-size: 10px;
+}
+
+
+.fRT
+{
+    margin-top: 33%;
+    padding-left: 25px;
+}
+
+.fRST
+{
+    padding-left: 25px;
+}
+
+.pDFRF
+{
+    margin-left: 25px;
+    color: #ffffff;
+}
+
+.pBM
+{
+    margin-left: 60%;
+    margin-top: 8%;
+    filter: invert(100%) sepia(0%) saturate(4141%) hue-rotate(292deg) brightness(117%) contrast(100%);
+}
+
+.pIFRF
+{
+    margin-top: 10px;
+}
+
+.pNFRF
+{
+    margin-left: 10px;
+    margin-top: 30px;
+    position: absolute;
+}
+
+.sbCN
+{
+    margin-top: 5px;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.sbCBM
+{
+    margin-left: 60%;
+}
+
+.sRCT
+{
+    margin-left: 25px;
+}
+
+.sRCT
+{
+    padding-top: 10px;
+}
+
+.sRCP
+{
+    margin-left: 25px;
+}
+
+.sbCMLong
+{
+    filter: invert(100%) sepia(0%) saturate(4141%) hue-rotate(292deg) brightness(117%) contrast(100%);
+}
+
+.sRCT1
+{
+    margin-top: 10px;
+}
+
+.cardSpan
+{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.cardHeader
+{
+    margin-left: 10px;
+}
+
+.cardProfile
+{
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 900px)
+{
+    .firstNavbar
+    {
+        width: 100%;
+    }
+
+    .logo
+    {
+        width: 130px;
+        margin-left: 0%;
+        margin-right: 0%;    
+    }
+
+    .disappear
+    {
+        display: none;
+    }
+
+    .firstRow
+    {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 8%;
+    }
+
+    .secondRow
+    {
+        flex-direction: column;
+    }
+
+    .thirdRow
+    {
+        flex-direction: column;
+    }
+
+    .firstRowFirst
+    {
+        width: 85%;
+        margin-bottom: 25px;
+    }
+
+    .subColumn
+    {
+        width: 80%;
+        margin-left: 0%;
+    }
+
+    .secondRowFirst
+    {
+        margin-left: 0;
+    }
+
+    .sb22
+    {
+        margin-top: 20px;
+    }
+
+    .secRowImg
+    {
+        width: 100px;
+    }
+
+    .secRowDiv
+    {
+        width: 90%;
+    }
+
+    .secondRow
+    {
+        margin-left: 8%;
+    }
+    .sRCT223
+    {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .secRowDisplay2
+    {
+        margin-left: 0;
+    }
+
+    .secRowDivLong1
+    {
+        width: 90%;
+        height: 200px;
+    }
+
+    .long
+    {
+        width: 90%;
+    }
+
+    .thirdRow
+    {
+        margin-left: 8%;
+    }
+
+    .lastCards
+    {
+        width: 90%;
+        margin-bottom: 25px;
+    }
+
+    .lastCardImage
+    {
+        width: 100%;
+    }
+
+    .showMore
+    {
+        margin-top: 0;
+        margin-left: 30%
+    }
+}
