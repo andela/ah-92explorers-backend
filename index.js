@@ -27,6 +27,7 @@ app.get('/swagger.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swagger.swaggerSpec);
 });
+
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
 require('./models/users');

@@ -72,6 +72,20 @@ class Validations {
 
     next();
   }
+
+  static async validatePasswordOnReset(req, res, next) {
+    const pwdRegex = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+    if (!pwdRegex.test(req.body.password)) {
+      return res.status(400).json({
+        error: [
+          'a valid password should not be alphanumeric',
+          'a valid password should be 8 characters long',
+          'an example of a valid password is alphamugerwa'
+        ]
+      });
+    }
+    next();
+  }
 }
 
 export default Validations;
