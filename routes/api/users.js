@@ -1,6 +1,7 @@
 import express from 'express';
 import { signup, signin, verifyUser } from '../../controllers';
 import Validations from '../../middlewares/validations/validations';
+import resetPasswordController from '../../controllers/resetPasswordController';
 
 const router = express.Router();
 /**
@@ -76,7 +77,12 @@ router.post('/users', Validations.validateCreateUser, signup);
 *         description: Invalid Email or Password
 */
 router.post('/users/login', Validations.validateSiginUser, signin);
-
 router.get('/users/verify/:token', verifyUser);
+
+// Reset Password
+router.post('/password', resetPasswordController.sendResetLinkEmail);
+router.get('/reset-password/:token', resetPasswordController.getToken);
+router.put('/password', Validations.validatePasswordOnReset, resetPasswordController.resetPassword);
+
 
 export default router;
