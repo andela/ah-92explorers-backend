@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -23,30 +24,30 @@ app.get('/swagger.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swagger.swaggerSpec);
 });
+
+app.get('/reset-password/:token', (req, res) => {
+  console.log({ token: req.params.token });
+  res.send({ token: req.params.token });
+});
+
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
-require('./models/User');
+require('./models/user');
 
 app.use(router);
 
 // / catch 404 and forward to error handler
-app.use((_req, _res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+app.use((req, res) => res.status(404).send({
+  status: 404,
+  error: 'resource is not found',
+}));
 
 // no stacktraces leaked to user
-app.use((err, res) => {
-  if (err) {
-    return res.status(err.status || 500);
-  }
-
-  return res.json({
-    errors: {
-      message: err.message,
-      error: {}
-    }
+app.use((error, req, res) => {
+  res.status(error.status || 500);
+  res.json({
+    status: (404),
+    error: error.message,
   });
 });
 

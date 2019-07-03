@@ -1,21 +1,26 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 module.exports = {
   development: {
-    DATABASE_URL: 'DATABASE_URL',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
-    logging: false
+    logging: false,
   },
   test: {
-    DATABASE_URL: 'DATABASE_TEST',
+    use_env_variable: 'DATABASE_TEST',
     dialect: 'postgres',
     logging: false,
   },
   production: {
-    DATABASE_URL: 'DATABASE_URL',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
-    logging: false
-  }
+    logging: false,
+  },
+  email: {
+    user: process.env.SENDER_EMAIL,
+    pass: process.env.SENDER_PASS,
+  },
+  secret_key_code: process.env.SECRET_KEY_CODE,
 };
