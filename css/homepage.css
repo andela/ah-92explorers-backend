@@ -194,7 +194,7 @@ li
 
 .firstRowFirst
 {
-    background-image: url('/icons/bird.jpeg');
+    background-image: url('../icons/bird.jpeg');
     background-position: 100%;
     background-size: cover!important;
     background-repeat: no-repeat;
@@ -258,7 +258,7 @@ li
 
 .secRowDivLong1
 {
-    background-image: url('/icons/bird.jpeg');
+    background-image: url('../icons/bird.jpeg');
     background-position: 100%;
     background-size: cover!important;
     background-repeat: no-repeat;

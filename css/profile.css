@@ -1,0 +1,99 @@
+.userProfile
+{
+   display: block;
+   width: 70%;
+   background: #fff;
+   box-shadow: rgba(57, 73, 76, 0.4) 0px 1px 5px 1px, rgba(57, 73, 76, 0.25) 0px 1px 1px;
+   margin-left: 15%;
+   padding: 25px;
+   margin-top: 25px;
+}
+.form-control
+{
+   width: 300px;
+   box-shadow: inset 0 1px 3px #EBECF0;
+   border: 1px solid rgb(157, 166, 180);
+   border-radius: 3px;
+   box-sizing: border-box;
+   color: #091E42;
+   font-size: 14px;
+   margin-bottom: 24px;
+   outline-color: #091E42;
+   padding: 0 8px;
+   height: 40px;
+   font-family: 'Bitter', serif;
+   margin-left: 15px;
+   max-width: 100%;
+}
+.upBtn
+{
+   border-radius: 3px;
+   margin-bottom: 24px;
+   width: 20%;
+   color: #fff;
+   font-family: 'Bree Serif', serif;
+   font-size: 15px;
+   cursor: pointer;
+   border: none;
+   padding: 10px;
+   box-shadow: #367fa9 0px 1px 5px 1px, #367fa9 0px 1px 1px;
+   outline-color: #367fa9;
+   background: #367fa9;
+}
+.avatar
+{
+   height: 100px;
+   width: 20%;
+}
+.firstForm
+{
+   display: flex;
+   flex-direction: row;
+}
+.right
+{
+   margin-left: 100px;
+   margin-bottom: 30px;
+}
+.updateBtn
+{
+   text-align: center;
+   border-radius: 3px;
+   margin-bottom: 24px;
+   margin-left: 20px;
+   width: 30%;
+   color: #fff;
+   font-family: 'Bree Serif', serif;
+   font-size: 15px;
+   cursor: pointer;
+   border: none;
+   padding: 11px 28px;
+   outline-color: #041B2D;
+   background: #041B2D
+}
+@media(max-width: 900px)
+{
+   body
+   {
+       margin: 0;
+   }
+   .avatar
+   {
+       width: 200px;
+       height: 150px;
+   }
+   .firstForm
+   {
+       flex-direction: column;
+   }
+   .upBtn
+   {
+       width: 200px;
+       padding: 5px 38px;
+   }
+   .form-control
+   {
+       width: 50%;
+       margin-left: 20px;
+   }
+}
