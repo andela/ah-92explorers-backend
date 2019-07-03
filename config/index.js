@@ -18,4 +18,9 @@ module.exports = {
     dialect: 'postgres',
     logging: false,
   },
+  email: {
+    user: process.env.SENDER_EMAIL,
+    pass: process.env.SENDER_PASS,
+  },
+  secret_key_code: process.env.SECRET,
 };
