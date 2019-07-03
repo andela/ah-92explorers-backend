@@ -1,0 +1,158 @@
+.bodyIcons
+{
+    height: 20px;
+    width: 20px;
+}
+
+.bodyImg
+{
+    height: 466.5px;
+    width: 700px;
+}
+
+.theBody
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%
+}
+
+.colOne
+{
+    margin-top: 25%;
+}
+
+.colTwo
+{
+    margin-left: 10%;
+    width: 700px;
+}
+
+.title
+{
+    font-family: 'Sniglet', cursive;
+}
+
+.tags
+{
+    padding: 5px 18px;
+    background: rgba(0,0,0,.05);
+    border: none;
+    color: rgba(0,0,0,.68);
+    outline: rgba(0,0,0,.05);
+    cursor: pointer;
+}
+
+p
+{
+    color: rgba(3, 3, 3, 0.84);
+}
+
+.artFooter
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 20px;
+}
+
+.socialNet
+{
+    margin-left: 65%;
+}
+
+.profileSection
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.commPic
+{
+    height: 50px;
+    width: 50px;
+}
+
+.commentCard
+{
+    background: #eeeeee;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px !important;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.commentForm
+{
+    background: #eeeeee;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px !important;
+    margin-top: 30px;
+}
+
+.profileName
+{
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.publish
+{
+    margin-top: 30px;
+    height: 40px;
+    padding: 5px 38px;
+    color: #26D07C;
+    border: 1px solid #26D07C;
+    outline: #26D07C;
+    cursor: pointer;
+    background: none;
+}
+
+.shareIcons
+{
+    margin-left: 10px;
+}
+
+.commentFooter
+{
+    margin-left: 85%;
+}
+
+@media(max-width: 900px)
+{
+    .theBody
+    {
+        margin-left: 0px;
+    }
+
+    .bodyImg
+    {
+        width: 85%;
+        height: 300px;
+    }
+
+    .colTwo
+    {
+        margin-left: 20px;
+        width: 85%
+    }
+
+    .socialNet
+    {
+        margin-left: 25%;
+    }
+
+    .commentFooter
+    {
+        margin-left: 70%
+    }
+}
