@@ -25,6 +25,11 @@ app.get('/swagger.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swagger.swaggerSpec);
 });
+
+app.get('/reset-password/:token', (req, res) => {
+  res.send({ token: req.params.token });
+});
+
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
 app.use(router);
