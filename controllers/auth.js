@@ -17,7 +17,7 @@ export const signup = async (req, res) => {
   const transaction = await sequelize.transaction();
   try {
     const newUser = await users.create({
-      username, firstname, lastname, email, password: hashedPassword,
+      username, firstName: firstname, lastName: lastname, email, password: hashedPassword,
     }, {
       transaction,
     });
