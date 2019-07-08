@@ -7,6 +7,39 @@ body
     background: #eeeeee;
 }
 
+.spBtn
+{
+    margin-top: 20px;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: none;
+    padding: 10px 28px;
+    height: 40px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+    margin-right: 10px;
+    background: #eeeeee;
+}
+
+.lgBtn
+{
+    margin-top: 20px;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: none;
+    padding: 10px 28px;
+    height: 40px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -28,7 +61,7 @@ a {
 .logo
 {
     margin-left: 15%;
-    margin-right: 20%;
+    margin-right: 10%;
 }
 
 .navbarBtn
@@ -194,7 +227,7 @@ li
 
 .firstRowFirst
 {
-    background-image: url('/icons/bird.jpeg');
+    background-image: url('../icons/bird.jpeg');
     background-position: 100%;
     background-size: cover!important;
     background-repeat: no-repeat;
@@ -258,7 +291,7 @@ li
 
 .secRowDivLong1
 {
-    background-image: url('/icons/bird.jpeg');
+    background-image: url('../icons/bird.jpeg');
     background-position: 100%;
     background-size: cover!important;
     background-repeat: no-repeat;
@@ -309,11 +342,12 @@ li
     border-radius: 36px;
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
     box-shadow: 0 1px 4px rgba(0,0,0,.04);
-    background: none;
+    background: #DC143C;
     padding: 10px 28px;
     outline: none;
     border: 1px solid rgba(0,0,0,.04);
     cursor: pointer;
+    color: #ffffff;
 }
 
 .profName
@@ -378,6 +412,11 @@ li
 .sRCT
 {
     padding-top: 10px;
+}
+
+.sb224
+{
+    margin-top: 20px;
 }
 
 .sRCP

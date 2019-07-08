@@ -57,6 +57,26 @@ nav
     margin-left: 25%;
 }
 
+textarea
+{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.textArea
+{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 40px;
+    margin-top: 20px;
+    width: 100%;
+}
+
 @media(max-width: 900px)
 {
     nav

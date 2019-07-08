@@ -127,6 +127,32 @@ p
     margin-left: 85%;
 }
 
+.fb
+{
+    filter: invert(33%) sepia(10%) saturate(3382%) hue-rotate(183deg) brightness(93%) contrast(86%);
+}
+
+.gp
+{
+    filter: invert(26%) sepia(37%) saturate(5056%) hue-rotate(347deg) brightness(88%) contrast(80%);
+}
+
+.tw
+{
+    filter: invert(60%) sepia(44%) saturate(4337%) hue-rotate(182deg) brightness(101%) contrast(91%);
+}
+
+.cm
+{
+    filter: invert(91%) sepia(10%) saturate(2196%) hue-rotate(150deg) brightness(92%) contrast(89%);
+}
+
+.bm
+{
+    filter: invert(72%) sepia(12%) saturate(2630%) hue-rotate(90deg) brightness(92%) contrast(82%);
+}
+
+
 @media(max-width: 900px)
 {
     .theBody
