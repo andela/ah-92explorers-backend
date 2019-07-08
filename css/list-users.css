@@ -52,17 +52,6 @@
     margin: auto !important;
 }
 
-.social-links li a {
-    border-radius: 50%;
-    color: rgba(121, 121, 121, .8);
-    display: inline-block;
-    height: 30px;
-    line-height: 27px;
-    border: 2px solid rgba(121, 121, 121, .5);
-    text-align: center;
-    width: 30px;
-}
-
 .list-inline {
     padding-left: 0;
     list-style: none;
@@ -90,4 +79,39 @@ a {
 
 .bio {
     text-align: justify;
+}
+
+/* Social icons */
+.social-links li a {
+   
+    color: #fff;
+    display: inline-block;
+}
+
+.social-links li a i{
+    border-radius: 50%;
+    height: 30px;
+    line-height: 27px;
+    text-align: center;
+    width: 30px;
+}
+
+.fa-facebook {
+    background-color: #3C599F;
+}
+
+.fa-twitter {
+    background-color: #32CCFE;
+}
+
+.fa-twitter {
+    background-color: #32CCFE;
+}
+
+.fa-linkedin {
+    background-color: #0085AE;
+}
+
+.fa-instagram {
+    background-color: #A1755C;
 }

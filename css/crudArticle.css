@@ -130,7 +130,7 @@ p
 
 .commentFooter
 {
-    margin-left: 85%;
+    margin-left: 80%;
 }
 
 .fb
@@ -161,6 +161,10 @@ p
 .rate
 {
     filter: invert(78%) sepia(31%) saturate(3213%) hue-rotate(2deg) brightness(108%) contrast(89%);
+}
+
+.bodyIcons.footerIconsRight.trash {
+    filter: invert(26%) sepia(37%) saturate(5056%) hue-rotate(347deg) brightness(88%) contrast(80%);
 }
 
 .cmBox
