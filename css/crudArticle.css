@@ -59,7 +59,7 @@ p
 
 .socialNet
 {
-    margin-left: 65%;
+    margin-left: 60%;
 }
 
 .profileSection
@@ -150,6 +150,20 @@ p
 .bm
 {
     filter: invert(72%) sepia(12%) saturate(2630%) hue-rotate(90deg) brightness(92%) contrast(82%);
+}
+
+.rate
+{
+    filter: invert(78%) sepia(31%) saturate(3213%) hue-rotate(2deg) brightness(108%) contrast(89%);
+}
+
+.cmBox
+{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
 }
 
 

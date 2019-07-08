@@ -110,10 +110,10 @@ body {
     border-color: #4c70ba; }
 
 .form .btn.btn-google {
-  background: #4285f4;
-  border-color: #4285f4; }
+  background: #db3236;
+  border-color: #db3236; }
   .form .btn.btn-google > span > span {
-    color: #4285f4; }
+    color: #db3236; }
   .form .btn.btn-google:hover, .form .btn.btn-google:active, .form .btn.btn-google:focus {
-    background: #72a4f7;
-    border-color: #72a4f7; }
+    background: #db3236;
+    border-color: #db3236; }
