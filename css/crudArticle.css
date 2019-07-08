@@ -172,6 +172,18 @@ p
     width: 100%;
 }
 
+.ratingSection
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.ratings
+{
+    margin-left: 15px;
+}
+
 
 @media(max-width: 900px)
 {
