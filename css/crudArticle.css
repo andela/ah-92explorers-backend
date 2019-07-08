@@ -184,6 +184,12 @@ p
     margin-left: 15px;
 }
 
+.time
+{
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
 
 @media(max-width: 900px)
 {
