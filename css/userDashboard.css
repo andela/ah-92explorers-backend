@@ -267,31 +267,48 @@ li
     width: 34%;
     float: right;
     margin-bottom: 30px;
-  }
-  
-  .pagination a {
+}
+
+.pagination a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
     border: 1px solid #ddd;
     background: #fff;
-  }
-  
-  .pagination a.active {
+}
+
+.pagination a.active {
     background-color: #367FA9;
     color: white;
     border: 1px solid #367FA9;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
-  
-  .pagination a:first-child {
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-  }
-  
-  .pagination a:last-child {
+}
+
+.pagination a:last-child {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
+}
+
+.pagination.ratings-pages {
+    width: 100%;
+    float: left;
+}
+.pagination.ratings-pages a {
+    color: black;
+    float: left;
+    padding: 2px 16px;
+    text-decoration: none;
+    border: none;
+    background: inherit;
+}
+.pagination.ratings-pages a.active {
+    background-color: #90DFAA;
+    color: #fff;
+}
