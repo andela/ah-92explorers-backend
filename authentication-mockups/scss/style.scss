@@ -1,0 +1,135 @@
+body {
+		background: #eee;
+}
+*{
+	transition: .3s all ease;
+}
+$white: #fff;
+$primary: #283148;
+.form-wrap, .img-wrap {
+	height: 100vh;
+	min-height: 900px;
+}
+.logo {
+	margin-bottom: 30px;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border: 7px solid #000;
+	position: relative;
+	img {
+		max-width: 28px;
+		// display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+.form-wrap {
+	width: 500px;
+	background: $white;
+	padding: 40px;
+	box-shadow: 10px 0 40px -5px rgba(0,0,0,.3);
+	z-index: 2;
+	position: relative;
+	@media screen and (max-width: 576px) {
+		width: 100%;
+	}
+}
+.img-wrap {
+	z-index: 1;
+	position: relative;
+	width: calc(100% - 500px);
+	background-size: cover;
+	background-position: 80%;
+	background-repeat: no-repeat;
+	@media screen and (max-width: 576px) {
+		display: none;
+	}
+}
+
+.form {
+	a {
+		color: lighten($primary, 30%);
+		&:hover {
+			color: $primary;
+			text-decoration: underline;
+		}
+	}
+	.form-control {
+		border: 1px solid #eee;
+		&:hover, &:active, &:focus {
+			box-shadow: none!important;
+			outline: none;
+		}
+		&:active, &:focus {
+			border: 1px solid darken(#eee, 10%);
+		}
+	}
+	.btn, .form-control {
+		height: 55px;
+		&:hover, &:active, &:focus {
+			box-shadow: none!important;
+			outline: none;
+		}
+	}
+	.btn {
+		font-weight: bold;
+	}
+	.btn {
+		&.btn-icon {
+			position: relative;
+			> span {
+				position: absolute;
+				top: 2px;
+				bottom: 2px;
+				left: 2px;
+				width: 55px;
+				border-radius: 4px;
+				background: $white;
+				> span {
+					font-size: 2rem;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					position: absolute;
+				}
+			}
+		}
+		&.btn-primary {
+			background: $primary;
+			border-color: $primary;
+			&:hover, &:active, &:focus {
+				background: lighten($primary, 10%);
+				border-color: lighten($primary, 10%);
+			}
+		}
+		&.btn-facebook {
+			background: #3b5998;
+			border-color: #3b5998;
+			> span {
+				> span {
+					color: #3b5998;
+				}
+			}
+			&:hover, &:active, &:focus {
+				background: lighten(#3b5998, 10%);
+				border-color: lighten(#3b5998, 10%);
+			}
+		}
+		&.btn-google {
+			background: #4285f4;
+			border-color: #4285f4;
+			> span {
+				> span {
+					color: #4285f4;
+				}
+			}
+			&:hover, &:active, &:focus {
+				background: lighten(#4285f4, 10%);
+				border-color: lighten(#4285f4, 10%);
+			}
+		}
+	}
+}
