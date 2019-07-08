@@ -8,13 +8,20 @@ body
     font-family: 'Open Sans', sans-serif;
 }
 
+.logo
+{
+    height: 50px;
+    width: 200px;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(354deg) brightness(105%) contrast(106%);
+}
+
 .navbar
 {
     width: 100%;
     height: 15%;
     background: #367fa9;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
     display: flex;
     flex-direction: row;
     color: #ffffff;
@@ -22,10 +29,10 @@ body
 
 .restOfNav
 {
-    margin-left: 50%;
+    margin-left: 30%;
     display: flex;
     flex-direction: row;
-    margin-top: 0px;
+    margin-top: 15px;
 }
 
 .navName
@@ -41,7 +48,8 @@ ul li
 
 ul
 {
-    margin: 0px;
+    margin-left: 0px;
+    
 }
 
 li
@@ -182,7 +190,6 @@ li
 {
     .navbar
     {
-        display: block;
         width: 100%;
     }
 
@@ -198,14 +205,15 @@ li
 
     .restOfNav
     {
-        margin-left: 10%;
+        margin-left: 0%;
     }
 
-    .navName
+    .logo
     {
-
+        width: 120px;
+        margin-left: 0;
     }
-
+    
     .intro
     {
         flex-direction: column;
