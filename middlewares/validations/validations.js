@@ -5,8 +5,13 @@ class Validations {
     const pwdRegex = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
 
     switch (true) {
+<<<<<<< HEAD
       case email == null || email === undefined || password == null || password === undefined
       || username == null || username === undefined:
+=======
+      case email === null || email === undefined || password === null || password === undefined
+      || username === null || username === undefined:
+>>>>>>> 0baf1fec9d3a6183797cf1a351e76dd7ac062b13
         return res.status(400).json({
           error: 'a valid email, username and password are required'
         });
