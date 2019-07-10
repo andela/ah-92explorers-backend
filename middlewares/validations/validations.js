@@ -6,18 +6,19 @@ class Validations {
 
     switch (true) {
       case email === null || email === undefined || password === null || password === undefined
-      || username === null || username === undefined:
+        || username === null || username === undefined:
         return res.status(400).json({
-          error: 'a valid email, username and password are required'
+          error: 'A valid email, username and password are required'
         });
 
-      case username.length < 3 || username.length > 15 || typeof username === 'number':
+      case username.length < 3 || username.length > 15
+         || typeof username === 'number':
         return res.status(400).json({
           error: [
-            'username should have more than 2 characters',
+            'username should not have less than 3 characters',
             'username should not have more than 15 characters',
             'username should not be numeric',
-            'example of a valid username is alpha123'
+            'A valid username is Explorer250'
           ]
         });
 
