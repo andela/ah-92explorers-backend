@@ -6,6 +6,7 @@ import swaggerUI from 'swagger-ui-express';
 import morgan from 'morgan';
 import swagger from './swaggerSetUp/ah-92explorers-api';
 import router from './routes';
+
 // Create global app object
 const app = express();
 
@@ -26,34 +27,20 @@ app.get('/swagger.json', (req, res) => {
 });
 
 app.get('/reset-password/:token', (req, res) => {
-  console.log({ token: req.params.token });
   res.send({ token: req.params.token });
 });
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swagger.swaggerSpec));
 
-require('./models/user');
-
 app.use(router);
 
-// / catch 404 and forward to error handler
-app.use((req, res) => res.status(404).send({
-  status: 404,
-  error: 'resource is not found',
-}));
-
-// no stacktraces leaked to user
-app.use((error, req, res) => {
-  res.status(error.status || 500);
-  res.json({
-    status: (404),
-    error: error.message,
+app.all('*', (_req, res) => {
+  res.status(400).json({
+    error: 'not found',
   });
 });
 
 // finally, let's start our server...
-const server = app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on port ${server.address().port}`);
-});
+app.listen(process.env.PORT || 3000);
 
 export default app;

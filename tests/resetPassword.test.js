@@ -4,10 +4,11 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import models from '../models/index';
 import app from '../index';
+import Auth from '../helpers/auth';
 
 chai.use(chaiHttp);
 chai.should();
-const User = models.user;
+const User = models.users;
 
 dotenv.config();
 const secretKey = process.env.SECRET_KEY_CODE;
@@ -16,7 +17,7 @@ describe('Reset Password via email', () => {
   const newUser = {
     username: 'hervera',
     email: 'nkuliherve@gmail.com',
-    password: 'secret',
+    password: Auth.hashPassword('secret'),
   };
   const wrongEmail = 'nkuliherveezusss2999@gmail.com';
   before(async () => {

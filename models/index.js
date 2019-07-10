@@ -1,11 +1,14 @@
 import fs from 'fs';
-import path from 'path';
 import Sequelize from 'sequelize';
-import configPath from '../config/index';
+import path from 'path';
+import configs from '../config'; // Importing configuration file
+
+require('dotenv').config(); // Enabling the use of the env variables
+
 
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = configPath[env];
+const env = process.env.NODE_ENV || 'development'; // We use either NODE_ENV/ 'development'
+const config = configs[env]; // Config variable takes in our new configuration
 const db = {};
 
 let sequelize;

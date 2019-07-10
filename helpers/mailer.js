@@ -11,39 +11,39 @@ class Mailer {
     this.senderPass = email.pass;
   }
 
-  addTokenToEmail(token, template) {
-    return async (resolve, reject) => {
-      const mailOptions = emailTemplates[template];
-      mailOptions.from = this.senderEmail;
-      mailOptions.to = this.userEmail;
-      const addToken = mailOptions.html.replace('$token', token);
-      mailOptions.html = addToken;
-      try {
-        const response = await this.sendEmail(mailOptions);
-        resolve(response);
-      } catch (error) {
-        reject(error);
-      }
-    };
+  async addTokenToEmail(token, template) {
+    const mailOptions = emailTemplates[template];
+    mailOptions.from = this.senderEmail;
+    mailOptions.to = this.userEmail;
+    const addToken = mailOptions.html.replace('$token', token);
+    mailOptions.html = addToken;
+    try {
+      const response = await this.sendEmail(mailOptions);
+      return response;
+    } catch (error) {
+      return `${error}`;
+    }
   }
 
-  sendEmail(mailOptions) {
-    return async (resolve, reject) => {
-      const transporter = await nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: this.senderEmail,
-          pass: this.senderPass
-        }
-      });
-      await transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(`Email sent: ${info.response}`);
-        }
-      });
-    };
+  /**
+   * Send email
+   * @param {Object} mailOptions - Email template
+   * @return {Promise} resolve or reject
+   */
+  async sendEmail(mailOptions) {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: this.senderEmail,
+        pass: this.senderPass
+      }
+    });
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return error;
+      }
+      return `Email sent: ${info.response}`;
+    });
   }
 }
 export default Mailer;

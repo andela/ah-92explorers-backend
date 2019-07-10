@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import models from '../models/index';
 import sendEmail from '../helpers/sendEmail';
+import Auth from '../helpers/auth';
+
 
 dotenv.config();
-const User = models.user;
+const User = models.users;
 const secretKey = process.env.SECRET_KEY_CODE;
 const expirationTime = {
   expiresIn: '1day',
@@ -40,10 +41,11 @@ class ResetPasswordController {
       });
   }
 
+
   static async resetPassword(req, res) {
-    const password = bcrypt.hashSync(req.body.password, 10);
+    const password = Auth.hashPassword(req.body.password);
     const { token } = req.body;
-    const decoded = jwt.decode(token, secretKey);
+    const decoded = await jwt.decode(token, secretKey);
     try {
       if (decoded) {
         const checkUpdate = await User.update(

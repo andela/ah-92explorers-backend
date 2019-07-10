@@ -1,11 +1,19 @@
 language: node_js
-node_js:
+
+node_js: 
   - "stable"
+
+cache:
+  - "node_modules"
+
 services:
   - postgresql
+
 before_script:
-  - psql -c 'CREATE DATABASE users_test;' -U postgres
-  - npm i sequelize -g
-  - sequelize db:migrate
+  - psql -c 'create database users_test;' -U postgres
+
+script:
+  - npm test  
+
 after_success:
-- npm run coveralls
+  - npm run coveralls
