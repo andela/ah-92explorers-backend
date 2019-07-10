@@ -1,10 +1,10 @@
 # Logs
 logs
 *.log
+.dist
 .DS_Store
 
 npm-debug.log*
-
 # Runtime data
 pids
 *.pid

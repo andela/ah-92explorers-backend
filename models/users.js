@@ -32,8 +32,5 @@ export default (sequelize, DataTypes) => {
       defaultValue: '0'
     }
   }, {});
-  // users.associate = function(models) {
-  //   // associations can be defined here
-  // };
   return users;
 };
