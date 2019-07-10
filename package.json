@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node",
     "migrate": "node_modules/.bin/sequelize db:migrate",
+    "migrate-undo": "node_modules/.bin/sequelize db:migrate:undo",
     "migrateTest": "node_modules/.bin/sequelize db:migrate --env test",
     "test": "NODE_ENV=test npm run migrate && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"

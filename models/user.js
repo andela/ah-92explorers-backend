@@ -4,6 +4,9 @@ const UserModel = (sequelize, DataTypes) => {
     email: { type: DataTypes.STRING, unique: true },
     password: { type: DataTypes.STRING },
   }, {});
+  User.associate = (models) => {
+    User.hasMany(models.article, { foreignKey: 'author', allowNull: false });
+  };
   return User;
 };
 

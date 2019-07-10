@@ -1,11 +1,9 @@
-import chaiHttp from "chai-http";
-import chai, { expect, should } from "chai";
-import app from "../index";
+import chaiHttp from 'chai-http';
+import chai from 'chai';
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('User Endpoints', () => {
-  
-});
 
+});
