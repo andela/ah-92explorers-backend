@@ -1,5 +1,5 @@
 import express from 'express';
-import { signup, signin } from '../../controllers';
+import { signup, signin, verifyUser } from '../../controllers';
 import Validations from '../../middlewares/validations/validations';
 
 const router = express.Router();
@@ -76,5 +76,7 @@ router.post('/users', Validations.validateCreateUser, signup);
 *         description: Invalid Email or Password
 */
 router.post('/users/login', Validations.validateSiginUser, signin);
+
+router.get('/users/verify/:token', verifyUser);
 
 export default router;
