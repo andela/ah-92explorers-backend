@@ -1,14 +1,16 @@
 import db from '../models';
 import Auth from '../helpers/auth';
 
+const { users, sequelize } = db;
+
 export const signup = async (req, res) => {
   const {
     username, firstname, lastname, email, password,
   } = req.body;
   const hashedPassword = Auth.hashPassword(password);
-  const transaction = await db.sequelize.transaction();
+  const transaction = await sequelize.transaction();
   try {
-    const newUser = await db.users.create({
+    const newUser = await users.create({
       username, firstname, lastname, email, password: hashedPassword,
     }, {
       transaction,
@@ -32,12 +34,12 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
-  const transaction = await db.sequelize.transaction();
+  const transaction = await sequelize.transaction();
   try {
-    const user = await db.users.findOne({ where: { email: req.body.email } }, { transaction });
+    const user = await users.findOne({ where: { email: req.body.email } }, { transaction });
     await transaction.commit();
     if (!user) {
-      return res.status(404).json({ message: 'user doesnot exist' });
+      return res.status(404).json({ message: 'user not found' });
     }
     const passBool = Auth.comparePassword(password, user.password);
     const { username } = user;

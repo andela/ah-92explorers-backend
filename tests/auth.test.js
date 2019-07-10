@@ -62,7 +62,7 @@ describe('User Authentication Routes', () => {
       .send(invalidDummy1)
       .then((res) => {
         expect(res.statusCode).to.be.equal(404);
-        expect(res.body.message).to.be.equal('user doesnot exist');
+        expect(res.body.message).to.be.equal('user not found');
         done();
       })
       .catch(err => done(err));
