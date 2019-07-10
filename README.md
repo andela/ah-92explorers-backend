@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.com/andela/ah-92explorers-backend.svg?branch=develop)](https://travis-ci.com/andela/ah-92explorers-backend)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 [![Reviewed by Hound](https://img.shields.io/github/issues/andela/ah-92explorers-backend.svg?style=flat-square)](https://houndci.com)
-[![Coverage Status](https://coveralls.io/repos/github/andela/ah-92explorers-backend/badge.svg?branch=develop)](https://coveralls.io/github/andela/ah-92explorers-backend?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/andela/ah-92explorers-backend/badge.svg?branch=develop&service=github)](https://coveralls.io/github/andela/ah-92explorers-backend?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5e9d8707863ceaa41939/maintainability)](https://codeclimate.com/github/andela/ah-92explorers-backend/maintainability)
 
 Authors Haven - A Social platform for the creative at heart.
 =======

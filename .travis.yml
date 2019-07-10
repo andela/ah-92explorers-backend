@@ -10,6 +10,7 @@ services:
   - postgresql
 
 before_script:
+  - npm install codeclimate-test-reporter nyc -g
   - psql -c 'create database users_test;' -U postgres
 
 script:
@@ -17,3 +18,4 @@ script:
 
 after_success:
   - npm run coveralls
+  - codeclimate-test-reporter < ./coverage/lcov.info
