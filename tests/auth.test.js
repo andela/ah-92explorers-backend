@@ -6,15 +6,7 @@ import db from '../models';
 
 chai.use(chaiHttp);
 
-const invalidDummy = {
-  email: 'love123@gmail.com',
-  password: 'Alpha13$',
-};
-
-const invalidDummy1 = {
-  email: 'love23@gmail.com',
-  password: 'Alpha123$',
-};
+const token = [];
 
 describe('User Authentication Routes', () => {
   before(() => {
@@ -52,6 +44,7 @@ describe('User Authentication Routes', () => {
         expect(typeof res.body.user.email).to.be.equal('string');
         expect(res.body.user.email).to.be.equal(user.userTrue.email);
         expect(res.body.message).to.be.equal('logged in');
+        token.push(res.body.user.token);
         done();
       })
       .catch(err => done(err));
@@ -59,7 +52,7 @@ describe('User Authentication Routes', () => {
   it('should not login user with invalid email id', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(invalidDummy1)
+      .send(user.invalidDummy1)
       .then((res) => {
         expect(res.statusCode).to.be.equal(404);
         expect(res.body.message).to.be.equal('user not found');
@@ -70,7 +63,7 @@ describe('User Authentication Routes', () => {
   it('should not login user with invalid password', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(invalidDummy)
+      .send(user.invalidDummy)
       .then((res) => {
         expect(res.statusCode).to.be.equal(401);
         expect(res.body.message).to.be.equal('wrong username or password');
@@ -87,5 +80,33 @@ describe('User Authentication Routes', () => {
         done();
       })
       .catch(err => done(err));
+  });
+});
+
+describe('Authenticated User Signout', () => {
+  it('should signout a logged in  user', (done) => {
+    chai.request(app)
+      .post('/api/users/signout')
+      .set('Authorization', `Bearer ${token[0]}`)
+      .end((err, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(body).to.have.property('message');
+        expect(body.message).to.equals('successfully signed out');
+        done();
+      });
+  });
+
+  it('should not signout a user if he/she is already logged out', (done) => {
+    chai.request(app)
+      .post('/api/users/signout')
+      .set('Authorization', `Bearer ${token[0]}`)
+      .end((err, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(401);
+        expect(body).to.have.property('error');
+        expect(body.error).to.equals('please login/signup to access this resource');
+        done();
+      });
   });
 });
