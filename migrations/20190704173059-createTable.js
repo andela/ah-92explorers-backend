@@ -35,6 +35,11 @@
       type: Sequelize.DATE,
       defaultValue: Sequelize.fn('now')
     },
+    isVerified: {
+      allowNull: false,
+      type:Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE,

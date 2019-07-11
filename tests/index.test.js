@@ -1,6 +1,10 @@
-/* eslint-disable max-len */
 const userTrue = {
   username: 'love1234',
+  email: 'love123@gmail.com',
+  password: 'Alpha123$',
+};
+
+const login = {
   email: 'love123@gmail.com',
   password: 'Alpha123$'
 };
@@ -28,6 +32,14 @@ const invalidUsername = {
   password: 'Isaiah@250'
 };
 
+const emailVerification = {
+  firstName: 'isaie',
+  lastName: 'runo',
+  email: 'isaie@gmail.com',
+  username: 'isaiah250',
+  password: 'Explorers@92',
+};
+
 const roleLevel = {
   accessLevel: 1
 };
@@ -41,5 +53,14 @@ const fakeRoleLevelInteger = {
 };
 
 export default {
-  userTrue, roleLevel, fakeRoleLevel, fakeRoleLevelInteger, incompleteUser, invalidPassword, invalidEmail, invalidUsername
+  userTrue,
+  roleLevel,
+  fakeRoleLevel,
+  fakeRoleLevelInteger,
+  incompleteUser,
+  invalidPassword,
+  invalidEmail,
+  invalidUsername,
+  login,
+  emailVerification
 };

@@ -30,7 +30,12 @@ export default (sequelize, DataTypes) => {
     accessLevel: {
       type: DataTypes.INTEGER,
       defaultValue: '0'
-    }
+    },
+    isVerified: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   }, {});
   return users;
 };

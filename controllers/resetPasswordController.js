@@ -1,46 +1,48 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import models from '../models/index';
+import models from '../models';
 import sendEmail from '../helpers/sendEmail';
 import Auth from '../helpers/auth';
 
-
 dotenv.config();
-const User = models.users;
-const secretKey = process.env.SECRET_KEY_CODE;
+
+const { users } = models;
+
+const secretKey = process.env.SECRET;
 const expirationTime = {
   expiresIn: '1day',
 };
 
 class ResetPasswordController {
-  static sendResetLinkEmail(req, res) {
+  static async sendResetLinkEmail(req, res) {
     const user = {
       email: req.body.email,
     };
-    return User.findOne({
-      where: {
-        email: user.email,
-      }
-    })
-      .then(async (foundUser) => {
-        if (foundUser) {
-          const payload = {
-            email: foundUser.email,
-          };
-          const token = jwt.sign(payload, secretKey, expirationTime);
-          req.body.token = token;
-          req.body.template = 'resetPassword';
-          await sendEmail(user.email, token, 'resetPassword');
-          res.status(200).send({ message: 'We have e-mailed a password reset link, Check your email!' });
-        } else {
-          res.status(404).json({ error: 'The email provided does not exist' });
+    try {
+      const checkUser = await users.findOne({
+        where: {
+          email: user.email,
         }
-      })
-      .catch((error) => {
-        res.status(500).json({ error });
       });
+      if (checkUser) {
+        const payload = {
+          email: checkUser.email,
+        };
+        const token = jwt.sign(payload, secretKey, expirationTime);
+        req.body.token = token;
+        req.body.template = 'resetPassword';
+        sendEmail(user.email, token, 'resetPassword');
+        return res.status(200).send({ message: 'We have e-mailed a password reset link, Check your email!' });
+      }
+      return res.status(404).json({ error: 'The email provided does not exist' });
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
   }
 
+  static async getToken(req, res) {
+    return res.send({ token: req.params.token });
+  }
 
   static async resetPassword(req, res) {
     const password = Auth.hashPassword(req.body.password);
@@ -48,7 +50,7 @@ class ResetPasswordController {
     const decoded = await jwt.decode(token, secretKey);
     try {
       if (decoded) {
-        const checkUpdate = await User.update(
+        const checkUpdate = await users.update(
           {
             password,
           },

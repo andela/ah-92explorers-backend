@@ -6,14 +6,14 @@ import uuid from 'uuidv4';
     email: 'johnnie@gmail.com',
     username: 'jhonnie',
     password: 'Password12$',
-    accessLevel: 2
+    accessLevel: 2,
   },
   {
     id: uuid(),
     email: 'peter@gmail.com',
     username: 'peterJ',
     password: 'Password12$',
-    accessLevel: 1
+    accessLevel: 1,
   }
 
 ], {})

@@ -2,16 +2,16 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import models from '../models/index';
+import models from '../models';
 import app from '../index';
 import Auth from '../helpers/auth';
 
 chai.use(chaiHttp);
 chai.should();
-const User = models.users;
+const { users } = models;
 
 dotenv.config();
-const secretKey = process.env.SECRET_KEY_CODE;
+const secretKey = process.env.SECRET;
 
 describe('Reset Password via email', () => {
   const newUser = {
@@ -20,9 +20,10 @@ describe('Reset Password via email', () => {
     password: Auth.hashPassword('secret'),
   };
   const wrongEmail = 'nkuliherveezusss2999@gmail.com';
+  const newUserToken = jwt.sign({ email: newUser.email }, secretKey, { expiresIn: '1d' });
   before(async () => {
     try {
-      await User.destroy({
+      await users.destroy({
         where: {
           email: newUser.email,
         }
@@ -33,7 +34,7 @@ describe('Reset Password via email', () => {
   });
   before(async () => {
     try {
-      return User.create(newUser);
+      return users.create(newUser);
     } catch (error) {
       throw error;
     }
@@ -69,11 +70,24 @@ describe('Reset Password via email', () => {
       });
   });
 
+  it('should get a token after clicking on password reset button', (done) => {
+    chai.request(app)
+      .get(`/api/reset-password/${newUserToken}`)
+      .end((err, res) => {
+        if (err) done(err);
+        res.should.have.status(200);
+        res.should.be.an('object');
+        res.body.should.have.property('token');
+        res.body.should.have.property('token').eql(newUserToken);
+        done();
+      });
+  });
+
   it('should reset password and return a successful message', (done) => {
     chai.request(app)
       .put('/api/password')
       .send({
-        token: jwt.sign({ email: newUser.email }, secretKey, { expiresIn: '1d' }),
+        token: newUserToken,
         password: '!Mysecret@45',
       })
       .end((err, res) => {
@@ -82,6 +96,19 @@ describe('Reset Password via email', () => {
         res.should.be.an('object');
         res.body.should.have.property('message');
         res.body.should.have.property('message').eql('Your password was reset successfully');
+        done();
+      });
+  });
+
+  it('should not reset password when the password is wrong', (done) => {
+    chai.request(app)
+      .put('/api/password')
+      .send({ password: 'ggggg' })
+      .end((err, res) => {
+        if (err) done(err);
+        res.should.have.status(400);
+        res.should.be.an('object');
+        res.body.should.have.property('error');
         done();
       });
   });

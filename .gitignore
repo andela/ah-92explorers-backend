@@ -1,11 +1,11 @@
 # Logs
 logs
 *.log
+.dist
 .DS_Store
 .vscode/
 
 npm-debug.log*
-
 # Runtime data
 pids
 *.pid

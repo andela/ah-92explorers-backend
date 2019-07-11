@@ -2,10 +2,10 @@ const articleMigration = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('articles',
     {
       article_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        primaryKey: true
       },
       title: {
         type: Sequelize.STRING,
@@ -13,18 +13,16 @@ const articleMigration = {
       },
       slug: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true,
+        required: true
       },
       body: {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      taglist: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: true
-      },
       author: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
