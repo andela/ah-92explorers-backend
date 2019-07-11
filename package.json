@@ -9,7 +9,7 @@
     "test": "npm run setup:test && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "setup:test": "NODE_ENV=test npm run migrate:undo && NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
     "setup:dev": "NODE_ENV=development npm run migrate:undo && NODE_ENV=development npm run migrate && NODE_ENV=development npm run seed",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls && nyc --reporter=lcov --reporter=text-lcov npm test",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "seed": "node_modules/.bin/sequelize db:seed:all",
     "seed:undo": "node_modules/.bin/sequelize db:seed:undo:all",
@@ -73,25 +73,5 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.1.1",
     "sinon": "^7.3.2"
-  },
-  "nyc": {
-    "per-file": true,
-    "check-coverage": true,
-    "branches": 80,
-    "lines": 80,
-    "functions": 100,
-    "statements": 80,
-    "exclude": [
-      "index.js",
-      "models/*.js",
-      "node_modules/*",
-      "tests/*.js",
-      "middlewares/*",
-      "config/*.js",
-      "swaggerSetUp/*.js",
-      "helpers/*.js",
-      "migrations/*",
-      "seeders/*"
-    ]
   }
 }
