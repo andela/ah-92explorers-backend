@@ -1,6 +1,7 @@
 import express from 'express';
-import { signup, signin, verifyUser } from '../../controllers';
+import { signup, signin, verifyUser, signoutUser } from '../../controllers';
 import Validations from '../../middlewares/validations/validations';
+import { checkToken } from '../../middlewares';
 
 const router = express.Router();
 /**
@@ -78,5 +79,7 @@ router.post('/users', Validations.validateCreateUser, signup);
 router.post('/users/login', Validations.validateSiginUser, signin);
 
 router.get('/users/verify/:token', verifyUser);
+
+router.post('/users/signout', checkToken, signoutUser);
 
 export default router;

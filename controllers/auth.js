@@ -2,6 +2,7 @@ import sgMail from '@sendgrid/mail';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import db from '../models';
+import client from '../helpers/redis';
 import Auth from '../helpers/auth';
 
 const { users, sequelize } = db;
@@ -107,6 +108,20 @@ export const verifyUser = async (req, res) => {
     return res.status(500).json({
       status: 500,
       error,
+    });
+  }
+};
+
+export const signoutUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    await client.set(token, 'Blacklisted'); // Blacklist the token and store it in redis
+    return res.status(200).json({
+      message: 'successfully signed out'
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: 'failed to signout'
     });
   }
 };
