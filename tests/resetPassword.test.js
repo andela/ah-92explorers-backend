@@ -8,19 +8,19 @@ import Auth from '../helpers/auth';
 
 chai.use(chaiHttp);
 chai.should();
-const { users } = models;
-
 dotenv.config();
-const secretKey = process.env.SECRET;
+
+const { users } = models;
+const { SECRET } = process.env;
 
 describe('Reset Password via email', () => {
   const newUser = {
     username: 'hervera',
     email: 'nkuliherve@gmail.com',
-    password: Auth.hashPassword('secret'),
+    password: Auth.hashPassword('Alpha123$'),
   };
   const wrongEmail = 'nkuliherveezusss2999@gmail.com';
-  const newUserToken = jwt.sign({ email: newUser.email }, secretKey, { expiresIn: '1d' });
+  const newUserToken = jwt.sign({ email: newUser.email }, SECRET, { expiresIn: '1d' });
   before(async () => {
     try {
       await users.destroy({
@@ -34,7 +34,7 @@ describe('Reset Password via email', () => {
   });
   before(async () => {
     try {
-      return users.create(newUser);
+      return await users.create(newUser);
     } catch (error) {
       throw error;
     }
@@ -100,7 +100,7 @@ describe('Reset Password via email', () => {
       });
   });
 
-  it('should not reset password when the password is wrong', (done) => {
+  it('should not reset password if the password is invalid', (done) => {
     chai.request(app)
       .put('/api/password')
       .send({ password: 'ggggg' })

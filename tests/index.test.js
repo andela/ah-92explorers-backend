@@ -52,6 +52,16 @@ const fakeRoleLevelInteger = {
   accessLevel: 5
 };
 
+const invalidDummy = {
+  email: 'love123@gmail.com',
+  password: 'Alpha13$',
+};
+
+const invalidDummy1 = {
+  email: 'love23@gmail.com',
+  password: 'Alpha123$',
+};
+
 export default {
   userTrue,
   roleLevel,
@@ -62,5 +72,7 @@ export default {
   invalidEmail,
   invalidUsername,
   login,
-  emailVerification
+  emailVerification,
+  invalidDummy,
+  invalidDummy1
 };

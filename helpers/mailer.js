@@ -3,14 +3,29 @@ import { email } from '../config/index';
 import Templates from './emailTemplates';
 
 const { emailTemplates } = Templates;
-
+/**
+ * Class module to send email
+ * @exports
+ * @class
+ */
 class Mailer {
+  /**
+   * Initialize user and pass
+   * @constructor
+   * @param {string} _userEmail - User email
+   */
   constructor(_userEmail) {
     this.userEmail = _userEmail;
     this.senderEmail = email.user;
     this.senderPass = email.pass;
   }
 
+  /**
+ * Adds a token.
+ * @param {string} token token
+ * @param {string} template email.
+ * @returns {object} response.
+ */
   async addTokenToEmail(token, template) {
     const mailOptions = emailTemplates[template];
     mailOptions.from = this.senderEmail;
@@ -28,7 +43,7 @@ class Mailer {
   /**
    * Send email
    * @param {Object} mailOptions - Email template
-   * @return {Promise} resolve or reject
+   * @returns {object} response.
    */
   async sendEmail(mailOptions) {
     const transporter = nodemailer.createTransport({

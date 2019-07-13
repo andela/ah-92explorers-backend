@@ -8,12 +8,23 @@ dotenv.config();
 
 const { users } = models;
 
-const secretKey = process.env.SECRET;
+const { SECRET } = process.env;
 const expirationTime = {
   expiresIn: '1day',
 };
 
+/**
+ * @user controller
+ * @exports
+ * @class
+ */
 class ResetPasswordController {
+  /**
+   * Send password reset email.
+   * @param {object} req request
+   * @param {object} res response.
+   * @returns {object} response.
+   */
   static async sendResetLinkEmail(req, res) {
     const user = {
       email: req.body.email,
@@ -28,7 +39,7 @@ class ResetPasswordController {
         const payload = {
           email: checkUser.email,
         };
-        const token = jwt.sign(payload, secretKey, expirationTime);
+        const token = jwt.sign(payload, SECRET, expirationTime);
         req.body.token = token;
         req.body.template = 'resetPassword';
         sendEmail(user.email, token, 'resetPassword');
@@ -40,15 +51,27 @@ class ResetPasswordController {
     }
   }
 
-  static async getToken(req, res) {
+  /**
+   * get the reset password token.
+   * @param {object} req request.
+   * @param {object} res response.
+   * @returns {object} response.
+   */
+  static getToken(req, res) {
     return res.send({ token: req.params.token });
   }
 
+  /**
+   * Resets password.
+   * @param {object} req request.
+   * @param {object} res response.
+   * @returns {object} response.
+   */
   static async resetPassword(req, res) {
     const password = Auth.hashPassword(req.body.password);
     const { token } = req.body;
-    const decoded = await jwt.decode(token, secretKey);
     try {
+      const decoded = await jwt.decode(token, SECRET);
       if (decoded) {
         const checkUpdate = await users.update(
           {

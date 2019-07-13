@@ -17,9 +17,17 @@ const articleMigration = {
         unique: true,
         required: true
       },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       body: {
         type: Sequelize.TEXT,
         allowNull: false
+      },
+      taglist: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: true
       },
       author: {
         type: Sequelize.UUID,

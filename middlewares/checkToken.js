@@ -1,33 +1,38 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import client from '../helpers/redis';
 
 dotenv.config();
 
-export const checkToken = (req, res, next) => {
-  let token = req.headers.authorization || req.headers['x-access-token'];
-  if (token === undefined) {
-    return res.json({
-      message: 'token undefined',
-    });
-  }
-
-  if (token.startsWith('Bearer ')) {
-    token = token.slice(7, token.length);
-  }
-
-  if (token) {
-    jwt.verify(token, process.env.SECRET, (error, decoded) => {
-      if (error) {
-        return res.status(401).json({
-          message: error.message,
+export const checkToken = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]; // Fetch the token and check if it exists in the redis db
+    const tokenFound = await client.getAsync(token);
+    switch (true) {
+      case token === undefined:
+        return res.json({
+          error: 'unauthorised to use this resource, please signup/login',
         });
-      }
-      req.decoded = decoded;
-      next();
-    });
-  } else {
+
+      case tokenFound === 'Blacklisted':
+        return res.status(401).json({
+          error: 'please login/signup to access this resource'
+        });
+
+      case tokenFound === null:
+        jwt.verify(token, process.env.SECRET, (error, decoded) => {
+          if (error) {
+            return res.status(401).json({
+              error: 'unauthorised to use this resource, please signup/login',
+            });
+          }
+          req.decoded = decoded;
+          next();
+        });
+    }
+  } catch (error) {
     return res.status(401).json({
-      error: 'missing authorization token',
+      error: 'unauthorised to use this resource, please signup/login'
     });
   }
 };

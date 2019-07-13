@@ -9,7 +9,7 @@ const swaggerDefinition = {
   },
   host: 'ah-92explorers-api.herokuapp.com',
   schemes: ['https'],
-  basePath: '/welcome',
+  basePath: '/',
   securityDefinitions: {
     bearerAuth: {
       type: 'apiKey',
@@ -22,7 +22,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ['../routes/api/*.js'],
+  apis: ['./routes/api/*.js'],
 };
 
 exports.swaggerSpec = swaggerDoc(options);

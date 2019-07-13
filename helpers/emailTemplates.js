@@ -3,6 +3,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 const clientUrl = (process.env.NODE_ENV === 'production') ? 'https://ah-92explorers-api.herokuapp.com' : 'http://127.0.0.1:3000';
 
+/**
+ * An object module that holds mails' templates
+ * @exports email/templates
+ */
 const emailTemplates = {
   resetPassword: {
     from: '',
@@ -18,6 +22,5 @@ const emailTemplates = {
     </div>`
   },
 };
-
 
 export default { emailTemplates };

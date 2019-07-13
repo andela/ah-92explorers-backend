@@ -1,3 +1,5 @@
+import SequelizeSlugify from 'sequelize-slugify';
+
 const articleModel = (Sequelize, DataTypes) => {
   const articles = Sequelize.define('articles', {
     article_id: {
@@ -12,7 +14,9 @@ const articleModel = (Sequelize, DataTypes) => {
       unique: true,
       required: true,
     },
+    description: { type: DataTypes.STRING },
     body: { type: DataTypes.TEXT },
+    taglist: { type: DataTypes.ARRAY(DataTypes.STRING) },
     author: {
       type: DataTypes.INTEGER, references: { model: 'user', key: 'id' }
     },
@@ -21,6 +25,12 @@ const articleModel = (Sequelize, DataTypes) => {
   articles.associate = (models) => {
     articles.belongsTo(models.users, { as: 'authorfkey', foreignKey: 'author', onDelete: 'CASCADE' });
   };
+  SequelizeSlugify.slugifyModel(articles, {
+    source: ['title'],
+    slugOptions: { lower: true },
+    overwrite: true,
+    column: 'slug'
+  });
   return articles;
 };
 
