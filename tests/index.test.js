@@ -55,6 +55,36 @@ const emailVerification = {
   password: 'Explorers@92',
 };
 
+const profile = {
+  firstName: 'isaiah',
+  lastName: 'runr',
+  bio: 'A software developer and author',
+  image: 'https://lh6.googleusercontent.com/-sZOpms2mUso/AAAAAAAAAAI/AAAAAAAAAgY/qI2F0nXUaU8/photo.jpg',
+  phone: '+078899000000',
+  facebook: 'facebook.com/isaiahRn',
+  twitter: 'twitter.com/isaiahRn',
+  linkedIn: 'linkedin.com/isaiahRn',
+  instagram: 'instagram.com/isaiahRn',
+  location: 'gisozi',
+};
+
+const userSignup = {
+  username: 'isaiah250',
+  email: 'isaiah@mail.com',
+  password: 'Explorer@22'
+};
+
+const userLogin = {
+  email: 'isaiah@mail.com',
+  password: 'Explorer@22'
+};
+
+const invalidUpdate = {
+  firstName: 'isaiah50',
+  lastName: 'run23',
+  phone: '0930209309'
+};
+
 const roleLevel = {
   accessLevel: 1
 };
@@ -145,4 +175,8 @@ export default {
   userAdmin,
   adminLogin,
   comment,
+  userSignup,
+  userLogin,
+  invalidUpdate,
+  profile,
 };

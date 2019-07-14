@@ -31,7 +31,7 @@ describe('Validate user inputs on signup', () => {
         expect(status).to.equal(400);
         expect(body).to.have.property('error');
         expect(body.error[0]).to.equals('a valid password should not be alphanumeric');
-        expect(body.error[1]).to.equals('a valid password should be 8 characters long');
+        expect(body.error[1]).to.equals('a valid password should have atleast a digit, a special character and an uppercase letter');
         done();
       });
   });

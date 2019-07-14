@@ -12,7 +12,10 @@ describe('Testing if an admin can login', () => {
   it('should login an admin', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(user.adminLogin)
+      .send({
+        email: 'ackram@gmail.com',
+        password: 'Alphamugerwa12$'
+      })
       .end((err, res) => {
         const { status, body } = res;
         expect(status).to.equal(200);

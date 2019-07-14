@@ -6,8 +6,8 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    firstName: { type: DataTypes.STRING },
-    lastName: { type: DataTypes.STRING },
+    firstName: { type: DataTypes.STRING, allowNull: true },
+    lastName: { type: DataTypes.STRING, allowNull: true },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,6 +27,38 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       required: true
+    },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    facebook: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    linkedIn: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    instagram: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     accessLevel: {
       type: DataTypes.INTEGER,

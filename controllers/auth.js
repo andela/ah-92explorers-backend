@@ -12,10 +12,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const signup = async (req, res) => {
   const {
-    username, firstname, lastname, email, password,
+    username, firstname, lastname, email, password
   } = req.body;
   const hashedPassword = Auth.hashPassword(password);
-  const transaction = await sequelize.transaction();
+  const transaction = await sequelize.transaction({ autocommit: false });
   try {
     const newUser = await users.create({
       username,

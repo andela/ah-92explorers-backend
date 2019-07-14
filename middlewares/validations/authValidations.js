@@ -34,8 +34,10 @@ class authValidations {
         return res.status(400).json({
           error: [
             'a valid password should not be alphanumeric',
+            'a valid password should have atleast a digit, a special character and an uppercase letter',
+            'a valid password should not be alphanumeric',
             'a valid password should be 8 characters long',
-            'an example of a valid password is alphamugerwa'
+            'an example of a valid password is Explorer@47'
           ]
         });
     }
@@ -59,14 +61,42 @@ class authValidations {
         return res.status(400).json({
           error: [
             'a valid password should not be alphanumeric',
+            'a valid password should have atleast a digit, a special character and an uppercase letter',
+            'a valid password should not be alphanumeric',
             'a valid password should be 8 characters long',
-            'an example of a valid password is alphamugerwa'
+            'an example of a valid password is Explorer@47'
           ]
         });
 
       case emailRegex.test(email) === false:
         return res.status(400).json({
           error: 'please enter a valid email address e.g martinez@yahoo.com'
+        });
+    }
+
+    next();
+  }
+
+  static async validateProfile(req, res, next) {
+    const {
+      firstName, lastName, phone
+    } = req.body;
+    const nameRegex = /^[a-zA-Z]*$/;
+    const phoneRegex = /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{9})$/gm;
+
+    switch (true) {
+      case nameRegex.test(firstName) === false:
+        return res.status(400).json({
+          error: 'Firstname should be alphabetic only'
+        });
+
+      case nameRegex.test(lastName) === false:
+        return res.status(400).json({
+          error: 'Lastname should be alphabetic only'
+        });
+      case phoneRegex.test(phone) === false:
+        return res.status(400).json({
+          error: 'Provide a valid phone number, i.e:+2507213315000'
         });
     }
 

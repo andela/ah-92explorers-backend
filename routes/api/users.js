@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 
 import express from 'express';
 import passport from '../../middlewares/passport';
@@ -5,6 +6,8 @@ import {
   signup, signin, verifyUser, signoutUser,
 } from '../../controllers';
 import Validations from '../../middlewares/validations/authValidations';
+import Profile from '../../controllers/profile';
+import uploadImage from '../../middlewares/imageUpload';
 import { checkToken } from '../../middlewares';
 import socialAuth from '../../controllers/socialAuth';
 import resetPasswordController from '../../controllers/resetPassword';
@@ -219,5 +222,106 @@ router.get('/reset-password/:token', resetPasswordController.getToken);
 router.put('/password', Validations.validatePasswordOnReset, resetPasswordController.resetPassword);
 
 router.post('/users/signout', checkToken, signoutUser);
+
+/**
+* @swagger
+* /api/profiles/:username:
+*   get:
+*      tags:
+*      - users
+*      name: Signin
+*      summary: "Users with profiles"
+*      description: "Returns all users and their corresponding profiles"
+*      operationId: "getUsers"
+*      produces:
+*      - "application/json"
+*      parameters: []
+*      responses:
+*        200:
+*          description: "User profile retrieved!"
+*          schema:
+*            $ref: "#/definitions/ApiResponse"
+*        404:
+*          description: "User does not exists!"
+*/
+router.get('/profiles/:username', checkToken, Profile.getProfile);
+
+/**
+* @swagger
+* /api/profiles/:username:
+*   put:
+*     tags:
+*     - "profiles"
+*     summary: "Update User Profile"
+*     description: "Returns the Updated User Details"
+*     operationId: "updateProfile"
+*     produces:
+*     - "application/json"
+*     parameters:
+*     - in: "formData"
+*       name: firstname
+*       required: false
+*       type: string
+*       description: "first name"
+*     - in: "formData"
+*       name: lastname
+*       required: false
+*       type: string
+*       description: "last name"
+*     - in: "formData"
+*       name: bio
+*       required: false
+*       type: text
+*       description: "bio"
+*     - in: "formData"
+*       name: image
+*       required: false
+*       type: string
+*       description: "Image URL"
+*     - in: "formData"
+*       name: location
+*       required: false
+*       type: string
+*       description: "Location"
+*     - in: "formData"
+*       name: facebook
+*       required: false
+*       type: string
+*       description: "Facebook URL"
+*     - in: "formData"
+*       name: twitter
+*       required: false
+*       type: string
+*       description: "Twitter URL"
+*     - in: "formData"
+*       name: linkedIn
+*       required: false
+*       type: string
+*       description: "linkedIn URL"
+*     - in: "formData"
+*       name: instagram
+*       required: false
+*       type: string
+*       description: "Instagram URL"
+*     - in: "formData"
+*       name: phone
+*       required: false
+*       type: integer
+*       description: 'Phone Number'
+*       minLength: 11
+*       maxLength: 14
+*     responses:
+*       200:
+*         description: "User profile updated!"
+*         schema:
+*           $ref: "#/definitions/ApiResponse"
+*       400:
+*         description: "Invalid token supplied: format Bearer <token>"
+*       401:
+*         description: "Invalid Token Provided"
+*       404:
+*         description: "User does not exists!"
+*/
+router.patch('/profiles', checkToken, uploadImage, Validations.validateProfile, Profile.updateProfile);
 
 export default router;
