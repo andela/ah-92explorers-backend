@@ -63,6 +63,10 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('use
     type: Sequelize.INTEGER,
     defaultValue: '0'
   },
+  timestamps: {
+    allowNull: true,
+    type: Sequelize.DATE
+  },
   createdAt: {
     allowNull: false,
     type: Sequelize.DATE,

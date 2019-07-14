@@ -8,9 +8,12 @@ import {
 import Validations from '../../middlewares/validations/authValidations';
 import Profile from '../../controllers/profile';
 import uploadImage from '../../middlewares/imageUpload';
+import Follower from '../../controllers/followers';
 import { checkToken } from '../../middlewares';
 import socialAuth from '../../controllers/socialAuth';
 import resetPasswordController from '../../controllers/resetPassword';
+
+// const follower = new Follower();
 
 const router = express.Router();
 /**
@@ -275,5 +278,8 @@ router.get('/profiles/:username', checkToken, Profile.getProfile);
 *         description: "User does not exists!"
 */
 router.patch('/profiles', checkToken, uploadImage, Validations.validateProfile, Profile.updateProfile);
+router.post('/:username/follow', checkToken, Follower.follow);
+router.get('/followers', checkToken, Follower.followers);
+router.get('/following', checkToken, Follower.following);
 
 export default router;

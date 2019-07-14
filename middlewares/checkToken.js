@@ -9,7 +9,7 @@ export const checkToken = async (req, res, next) => {
     const tokenFound = await client.getAsync(token);
     switch (true) {
       case token === undefined:
-        return res.status(401).json({
+        return res.json({
           error: 'unauthorised to use this resource, please signup/login',
         });
       case tokenFound === 'Blacklisted':
