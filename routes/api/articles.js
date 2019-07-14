@@ -1,7 +1,7 @@
 import express from 'express';
 import article from '../../controllers/article';
 import { createComment } from '../../controllers/comment';
-import { checkArticleOwner } from '../../middlewares/checkArticleOwner';
+import { checkArticleOwner } from '../../middlewares/checkResourceOwner';
 import validate from '../../middlewares/validations/articleValidations';
 import uploadImage from '../../middlewares/imageUpload';
 import { checkToken } from '../../middlewares';

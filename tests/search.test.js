@@ -37,11 +37,11 @@ describe('Search Functionality', () => {
         done();
       });
   });
-  it('should return 204 on empty search results', (done) => {
+  it('should return 404 on empty search results', (done) => {
     chai.request(app)
       .get('/api/articles?keyword=ow')
       .end((err, res) => {
-        expect(res.statusCode).to.be.equal(204);
+        expect(res.statusCode).to.be.equal(404);
         done();
       });
   });

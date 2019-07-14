@@ -32,17 +32,20 @@ export const createComment = async (req, res) => {
         const {
           author, createdAt, updatedAt,
         } = showComment;
+        const articleRef = {
+          slug: article.slug
+        };
         return res.status(201).json({
           message: 'commented',
           comment: {
             body: showComment.body,
             author,
+            article: articleRef,
             createdAt,
             updatedAt,
           },
         });
       }
-      return;
     }
     return res.status(404).json({ error: 'article or user not found' });
   } catch (ex) {
