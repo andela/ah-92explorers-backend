@@ -1,5 +1,6 @@
 import express from 'express';
 import article from '../../controllers/article';
+import bookmark from '../../controllers/bookmark';
 import { createComment } from '../../controllers/comment';
 import { checkArticleOwner } from '../../middlewares/checkResourceOwner';
 import validate from '../../middlewares/validations/articleValidations';
@@ -229,5 +230,76 @@ router.post('/articles/:slug/comments', checkToken, createComment);
 *          description: Article is not found.
 */
 router.post('/articles/:slug/share/:channel', article.shareArticle);
+
+/**
+* @swagger
+*  /articles/{slug}/bookmark:
+*   post:
+*      tags:
+*        - Articles
+*      summary: Bookmark an article
+*      description:
+*        Authentication required, returns a bookmarked article. No additional
+*        parameters required
+*      produces:
+*        - application/json
+*      parameters:
+*        - in: path
+*          name: slug
+*          schema:
+*            type: string
+*          required: true
+*          description: The artice will be bookmarked
+*      responses:
+*        200:
+*          description: Successful operation
+*        404:
+*          description: Article not found
+*/
+router.post('/articles/:slug/bookmark', checkToken, bookmark.bookmark);
+/**
+* @swagger
+*  /bookmark:
+*    get:
+*      tags:
+*        - Articles
+*      summary: View all the bookmarked articles
+*      description:
+*        Authentication required, returns the bookmarked articles of the authenticated
+*        user. No additional parameters required
+*      produces:
+*        - application/json
+*      responses:
+*        200:
+*          description: Successful operation
+*        401:
+*          description: Unauthorized access
+*/
+router.get('/bookmark', checkToken, bookmark.getBookmarks);
+/**
+* @swagger
+* /articles/{slug}/bookmark:
+*    delete:
+*      tags:
+*        - Articles
+*      summary: Unbookmark an article
+*      description:
+*        Authentication required, returns an unbookmarked article. No additional
+*        parameters required
+*      produces:
+*        - application/json
+*      parameters:
+*        - in: path
+*          name: slug
+*          description: The article will be unbookmarked
+*          required: true
+*          type: string
+*      responses:
+*        200:
+*          description: successful operation
+*        404:
+*          description: Article not found
+*/
+router.delete('/articles/:slug/bookmark', checkToken, bookmark.unBookmark);
 
 export default router;

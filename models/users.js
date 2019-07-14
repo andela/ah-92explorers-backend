@@ -46,6 +46,7 @@ export default (sequelize, DataTypes) => {
     users.hasMany(models.articles, { foreignKey: 'authorId', allowNull: false });
     users.hasMany(models.comments, { foreignKey: 'authorId', allowNull: false });
     users.hasMany(models.Follow, { as: 'User', foreignKey: 'followed' });
+    users.hasMany(models.bookmark, { foreignKey: 'userId', allowNull: false });
   };
   return users;
 };
