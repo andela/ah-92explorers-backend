@@ -16,7 +16,7 @@ const { SECRET } = process.env;
 describe('Reset Password via email', () => {
   const newUser = {
     username: 'hervera',
-    email: 'nkuliherve@gmail.com',
+    email: 'hervera@gmail.com',
     password: Auth.hashPassword('secret'),
   };
   const wrongEmail = 'nkuliherveezusss2999@gmail.com';
@@ -59,7 +59,7 @@ describe('Reset Password via email', () => {
     chai.request(app)
       .post('/api/password')
       .set('Content-Type', 'application/json')
-      .send({ email: 'nkuliherve@gmail.com' })
+      .send({ email: 'hervera@gmail.com' })
       .end((err, res) => {
         if (err) done(err);
         res.should.have.status(200);

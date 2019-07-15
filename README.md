@@ -292,7 +292,7 @@ Authentication optional, will return multiple articles, ordered by most recent 
 
 Can also take `limit` and `offset` query parameters like List Articles
 
-Authentication required, will return multiple articles created by followed users, ordered by most recent first.
+No authentication required, will return multiple articles created by followed users, ordered by most recent first.
 
 ### Get Article
 

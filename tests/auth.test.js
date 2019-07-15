@@ -65,8 +65,8 @@ describe('User Authentication Routes', () => {
       .post('/api/users/login')
       .send(user.invalidDummy)
       .then((res) => {
-        expect(res.statusCode).to.be.equal(401);
-        expect(res.body.message).to.be.equal('wrong username or password');
+        expect(res.statusCode).to.be.equal(404);
+        expect(res.body.message).to.be.equal('user not found');
         done();
       })
       .catch(err => done(err));
