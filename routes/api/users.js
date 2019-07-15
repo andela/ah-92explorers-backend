@@ -2,7 +2,7 @@
 import express from 'express';
 import passport from '../../middlewares/passport';
 import {
-  signup, signin, verifyUser, signoutUser
+  signup, signin, verifyUser, signoutUser,
 } from '../../controllers';
 import Validations from '../../middlewares/validations/authValidations';
 import { checkToken } from '../../middlewares';
@@ -26,7 +26,7 @@ const router = express.Router();
 *         properties:
 *           username:
 *             type: string
-*             example: abel
+*             example: abel12345
 *           firstName:
 *             type: string
 *             example: jojo
@@ -39,7 +39,7 @@ const router = express.Router();
 *           password:
 *             type: string
 *             format: password
-*             example: stealth
+*             example: Alpha123$
 *         required:
 *           - username
 *           - firstName
@@ -53,36 +53,35 @@ const router = express.Router();
 router.post('/users', Validations.validateCreateUser, signup);
 
 /**
- * @swagger
- * /api/users/login:
- *   post:
- *     tags:
- *       - Auth
- *     name: Signin
- *     summary: Signs in in a User/Admin
- *     consumes:
- *       - application/json
- *     parameters:
- *       - name: body
- *         in: body
- *         properties:
- *           email:
- *             type: string
- *             example: abtex@gmail.com
- *           password:
- *             type: string
- *             format: password
- *             example: stealth
- *         required:
- *           - email
- *           - password
- *     responses:
- *       200:
- *         description: User Has Successfully Logged In
- *       401:
- *         description: Invalid Email or Password
- */
-// social login router
+* @swagger
+* /api/users/login:
+*   post:
+*     tags:
+*       - Auth
+*     name: Signin
+*     summary: Signs in in a User/Admin
+*     consumes:
+*       - application/json
+*     parameters:
+*       - name: body
+*         in: body
+*         properties:
+*           email:
+*             type: string
+*             example: abtexi@gmail.com
+*           password:
+*             type: string
+*             format: password
+*             example: Alpha123$
+*         required:
+*           - email
+*           - password
+*     responses:
+*       200:
+*         description: User Has Successfully Logged In
+*       401:
+*         description: Invalid Email or Password
+*/
 router.post('/users/login', Validations.validateSiginUser, signin);
 // facebook router
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));

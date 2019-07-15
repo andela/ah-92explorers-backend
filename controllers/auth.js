@@ -18,7 +18,11 @@ export const signup = async (req, res) => {
   const transaction = await sequelize.transaction();
   try {
     const newUser = await users.create({
-      username, firstName: firstname, lastName: lastname, email, password: hashedPassword,
+      username,
+      firstName: firstname,
+      lastName: lastname,
+      email,
+      password: hashedPassword,
     }, {
       transaction,
     });
@@ -50,7 +54,7 @@ export const signup = async (req, res) => {
     }
   } catch (ex) {
     await transaction.rollback();
-    return res.status(409).json({ message: `${ex.errors[0].path.toLowerCase()} already exists` });
+    return res.status(409).json({ error: `${ex.errors[0].path.toLowerCase()} already exists` });
   }
 };
 
@@ -61,7 +65,7 @@ export const signin = async (req, res) => {
     const user = await users.findOne({ where: { email: req.body.email } }, { transaction });
     await transaction.commit();
     if (!user) {
-      return res.status(404).json({ message: 'user not found' });
+      return res.status(404).json({ error: 'user not found' });
     }
     const passBool = Auth.comparePassword(password, user.password);
     const { username } = user;
@@ -69,29 +73,29 @@ export const signin = async (req, res) => {
       return res.status(200).json({
         message: 'logged in',
         user: {
+          id: user.id,
           token: Auth.genToken(username, email),
           username,
           email: user.email,
         },
       });
     }
-    return res.status(401).json({ message: 'wrong username or password' });
+    return res.status(401).json({ error: 'wrong username or password' });
   } catch (ex) {
     await transaction.rollback();
-    return res.json({ message: ex });
+    return res.status(500).json({ error: 'something went wrong' });
   }
 };
 
 export const verifyUser = async (req, res) => {
   const { token } = req.params;
-
   const decodedToken = jwt.verify(token, process.env.SECRET);
   try {
     const user = await users.findOne(decodedToken.id);
     if (!user) {
       return res.status(404).json({
         status: res.statusCode,
-        message: 'user not registered',
+        error: 'user not registered',
       });
     }
     const updatedUser = await users.update(
@@ -107,7 +111,7 @@ export const verifyUser = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      error,
+      error: 'something went wrong',
     });
   }
 };

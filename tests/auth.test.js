@@ -39,7 +39,7 @@ describe('User Authentication Routes', () => {
       .then((res) => {
         expect(res.statusCode).to.be.equal(200);
         expect(typeof res.body.user.token).to.be.equal('string');
-        expect(Object.keys(res.body.user).length).to.be.equal(3);
+        expect(Object.keys(res.body.user).length).to.be.equal(4);
         expect(res.body.user.username).to.be.equal(user.userTrue.username);
         expect(typeof res.body.user.email).to.be.equal('string');
         expect(res.body.user.email).to.be.equal(user.userTrue.email);
@@ -55,7 +55,7 @@ describe('User Authentication Routes', () => {
       .send(user.invalidDummy1)
       .then((res) => {
         expect(res.statusCode).to.be.equal(404);
-        expect(res.body.message).to.be.equal('user not found');
+        expect(res.body.error).to.be.equal('user not found');
         done();
       })
       .catch(err => done(err));
@@ -63,10 +63,13 @@ describe('User Authentication Routes', () => {
   it('should not login user with invalid password', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(user.invalidDummy)
+      .send({
+        email: user.userTrue.email,
+        password: 'Alpha123$111'
+      })
       .then((res) => {
-        expect(res.statusCode).to.be.equal(404);
-        expect(res.body.message).to.be.equal('user not found');
+        expect(res.statusCode).to.be.equal(401);
+        expect(res.body.error).to.be.equal('wrong username or password');
         done();
       })
       .catch(err => done(err));

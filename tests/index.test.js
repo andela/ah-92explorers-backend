@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 const userTrue = {
   email: 'peter@gmail.com',
   username: 'peter',
@@ -119,6 +122,11 @@ export const googleFacebookUser = (req, res, next) => {
   next();
 };
 
+const comment = {
+  body: 'My dragon is finally flying'
+};
+
+
 export default {
   userTrue,
   roleLevel,
@@ -136,4 +144,5 @@ export default {
   article2,
   userAdmin,
   adminLogin,
+  comment,
 };

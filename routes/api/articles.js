@@ -1,6 +1,7 @@
 import express from 'express';
 import article from '../../controllers/article';
-import { checkArticleOwner } from '../../middlewares/checkResourceOwner';
+import { createComment } from '../../controllers/comment';
+import { checkArticleOwner } from '../../middlewares/checkArticleOwner';
 import validate from '../../middlewares/validations/articleValidations';
 import uploadImage from '../../middlewares/imageUpload';
 import { checkToken } from '../../middlewares';
@@ -160,5 +161,38 @@ router.put('/articles/:slug', checkToken, checkArticleOwner, uploadImage, valida
 *         description: Article deleted successfully
 */
 router.delete('/articles/:slug', checkToken, checkArticleOwner, article.deleteArticle);
+/**
+* @swagger
+* /api/articles/{:slug}/comments:
+*   post:
+*     security:
+*       - bearerAuth: []
+*     tags:
+*       - Article
+*     name: Comment
+*     summary: Enables user to comment on an article
+*     consumes:
+*       - application/json
+*     parameters:
+*       - name: ":slug"
+*         in: path
+*         description: article slug
+*         required: true
+*         type: string
+*       - name: body
+*         in: body
+*         properties:
+*           body:
+*             type: string
+*             example: I finally learnt how to train my dragon. Thanks
+*         required:
+*           - body
+*     responses:
+*       201:
+*         description: commented
+*       400:
+*         description: commenting failed
+*/
+router.post('/articles/:slug/comments', checkToken, createComment);
 
 export default router;
