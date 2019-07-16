@@ -14,7 +14,7 @@ class Users {
         lastname,
         email,
         username,
-        password: Auth.hashPassword(password), // Generating a hashed psaaword
+        password: Auth.hashPassword(password) // Generating a hashed psaaword
       });
       return res.status(201).json({
         message: 'user successfully created',
@@ -57,7 +57,7 @@ class Users {
     try {
       const checkUser = await users.findOne({
         where: {
-          id: userId,
+          id: userId
         }
       });
       if (accessLevel > 2 || accessLevel < 0) {
@@ -65,14 +65,17 @@ class Users {
           error: 'accessLevel should be lower than 2 and greater than 0'
         });
       }
-      const updated = await users.update({
-        accessLevel
-      }, {
-        where: {
-          id: checkUser.id
+      const updated = await users.update(
+        {
+          accessLevel
         },
-        returning: true
-      });
+        {
+          where: {
+            id: checkUser.id
+          },
+          returning: true
+        }
+      );
 
       return res.status(200).json({
         message: 'successfully updated user accessLevel',
@@ -99,7 +102,7 @@ class Users {
     try {
       const checkUser = await users.findOne({
         where: {
-          id: userId,
+          id: userId
         }
       });
 
@@ -116,7 +119,7 @@ class Users {
       });
 
       return res.status(204).json({
-        message: 'successfully deleted user',
+        message: 'successfully deleted user'
       });
     } catch (error) {
       return res.status(500).json({

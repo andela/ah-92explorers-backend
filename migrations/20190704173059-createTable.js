@@ -21,6 +21,7 @@
         isEmail: true
       }
     },
+    provider: { type: Sequelize.STRING },
     password: {
       type: Sequelize.STRING,
       allowNull: false,

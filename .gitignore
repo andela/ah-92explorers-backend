@@ -39,3 +39,4 @@ node_modules
 
 # nyc output
 .nyc_output
+.env.sample

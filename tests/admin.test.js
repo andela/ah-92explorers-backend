@@ -10,7 +10,8 @@ const id = [];
 
 describe('Testing creation of users', () => {
   it('should create users', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .post('/api/admin/users')
       .send(user.userTrue)
       .end((err, res) => {
@@ -26,7 +27,8 @@ describe('Testing creation of users', () => {
   });
 
   it('should not create user with an email/username that already exist', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .post('/api/admin/users')
       .send(user.userTrue)
       .end((err, res) => {
@@ -41,7 +43,8 @@ describe('Testing creation of users', () => {
 
 describe('Testing if app returns all users', () => {
   it('should return all users on request', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .get('/api/admin/users')
       .end((err, res) => {
         const { status, body } = res;
@@ -62,7 +65,8 @@ describe('Testing if app returns all users', () => {
 
 describe('Testing admin feature to update user accessLevel', () => {
   it('should update a user accessLevel', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .patch(`/api/admin/users/${id[0]}`)
       .send(user.roleLevel)
       .end((err, res) => {
@@ -79,7 +83,8 @@ describe('Testing admin feature to update user accessLevel', () => {
   });
 
   it('should not update user accessLevel given a wrong userId/accessLevel', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .patch(`/api/admin/users/${id[0]}`)
       .send(user.fakeRoleLevel)
       .end((err, res) => {
@@ -92,7 +97,8 @@ describe('Testing admin feature to update user accessLevel', () => {
   });
 
   it('should not update user accessLevel given a wrong an accessLevel greater than tw0/less than 0', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .patch(`/api/admin/users/${id[0]}`)
       .send(user.fakeRoleLevelInteger)
       .end((err, res) => {
@@ -107,7 +113,8 @@ describe('Testing admin feature to update user accessLevel', () => {
 
 describe('Testing admin feature to delete a user', () => {
   it('should delete a user given right id', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .delete(`/api/admin/users/${id[0]}`)
       .end((err, res) => {
         const { status } = res;
@@ -117,7 +124,8 @@ describe('Testing admin feature to delete a user', () => {
   });
 
   it('should not delete a user with a wrong userId', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .delete('/api/admin/users/1')
       .end((err, res) => {
         const { status, body } = res;
