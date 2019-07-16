@@ -3,6 +3,8 @@ import bluebird from 'bluebird';
 
 
 bluebird.promisifyAll(redis);
-const client = redis.createClient();
+const client = redis.createClient({
+  url: process.env.REDIS_URL
+});
 
 export default client;

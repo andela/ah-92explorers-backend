@@ -4,7 +4,7 @@
   "description": "A Social platform for the creative at heart",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "babel-node index.js && redis-server",
     "dev": "NODE_ENV=development nodemon ./index.js --exec babel-node",
     "test": "npm run setup:test && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "setup:test": "NODE_ENV=test npm run migrate:undo && NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
