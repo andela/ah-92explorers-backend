@@ -43,6 +43,21 @@ describe('Testing if user can rate and see a rating of articles', () => {
         done();
       });
   });
+  
+  it('should not allow a user rate the same article more than once', (done) => {
+    chai.request(app)
+      .post('/api/article/the-basics-of-javaa/rate')
+      .set('Authorization', `Bearer ${data[0]}`)
+      .send(dummyData.rating)
+      .end((error, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(body).to.have.property('message');
+        expect(body).to.have.property('rating');
+        expect(body.message).to.have.equals('you already rated this article');
+        done();
+      });
+  });
 
   it('should not allow a user rate the same article more than once', (done) => {
     chai.request(app)
@@ -82,7 +97,11 @@ describe('Testing if user can rate and see a rating of articles', () => {
         const { status, body } = res;
         expect(status).to.equal(400);
         expect(body).to.have.property('error');
+<<<<<<< HEAD
         expect(body.error).to.have.equals('rating should be 1-5');
+=======
+        expect(body.error).to.have.equals('rating should be between 1-6');
+>>>>>>> ft(fetch-article-rating): fetch ratings of an article
         done();
       });
   });

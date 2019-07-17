@@ -37,4 +37,4 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('rat
   }
 });
 
-export const down = queryInterface => queryInterface.dropTable('ratings');
+export const down = (queryInterface, Sequelize) => queryInterface.dropTable('ratings');
