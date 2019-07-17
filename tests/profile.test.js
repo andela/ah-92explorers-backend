@@ -12,35 +12,10 @@ let tokenGen;
 let userName;
 
 describe('User Profile', () => {
-  before(() => {
-    db.users.destroy({
-      where: {
-        email: user.userSignup.email
-      }
-    });
-  });
-
-  it('creating new user', (done) => {
-    chai.request(app)
-      .post('/api/users')
-      .send(user.userSignup)
-      .end((req, res) => {
-        const { status, body } = res;
-        expect(status).to.equal(201);
-        expect(res.body).to.be.an('object');
-        expect(body).to.have.property('message');
-        expect(body).to.have.property('user');
-        expect(body.user).to.have.property('username');
-        expect(body.user).to.have.property('email');
-        expect(body.user).to.have.property('token');
-        userName = body.user.username;
-        done();
-      });
-  });
   it('should be able to sign in', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(user.userLogin)
+      .send(user.adminLogin)
       .end((req, res) => {
         const { status, body } = res;
         expect(status).to.equal(200);
@@ -56,9 +31,9 @@ describe('User Profile', () => {
       });
   });
 
-  it('should be able user to see its profile after signup', (done) => {
+  it('should enable user to see his/her profile after signup', (done) => {
     chai.request(app)
-      .get(`/api/profiles/${userName}`)
+      .get('/api/profiles/akramTinny')
       .set('Authorization', `Bearer ${tokenGen}`)
       .end((req, res) => {
         const { status, body } = res;
@@ -68,7 +43,7 @@ describe('User Profile', () => {
         expect(body).to.have.property('profile');
         expect(body.profile).to.have.property('firstName');
         expect(body.profile).to.have.property('lastName');
-        expect(body.profile).to.have.property('bio');
+        expect(body.profile).to.have.property('username');
         expect(body.profile).to.have.property('phone');
         expect(body.profile).to.have.property('facebook');
         expect(body.profile).to.have.property('twitter');
@@ -108,7 +83,6 @@ describe('User Profile', () => {
         expect(body.profile).to.have.property('firstName');
         expect(body.profile).to.have.property('lastName');
         expect(body.profile).to.have.property('bio');
-        expect(body.profile).to.have.property('image');
         expect(body.profile).to.have.property('phone');
         expect(body.profile).to.have.property('facebook');
         expect(body.profile).to.have.property('twitter');

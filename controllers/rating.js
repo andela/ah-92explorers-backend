@@ -1,7 +1,6 @@
 import models from '../models';
 
 const { articles, ratings, users } = models;
-
 class Rating {
   /**
    * @param {object} req Request sent to the route
@@ -80,6 +79,7 @@ class Rating {
       const rating = await ratings.findAll({
         where: { articleSlug },
         attributes: ['rating'],
+        include: [{ model: users, attributes: ['username', 'image'] }],
         offset: ((parseInt(page, 10) - 1) * limit),
         limit
       });
