@@ -36,7 +36,7 @@ describe('Comment on Article', () => {
     chai
       .request(app)
       .post(`/api/articles/${slugArticle}/comments`)
-      .set('Authorization', invalidToken)
+      .set('Authorization', `Bearer ${invalidToken}`)
       .send(user.comment)
       .end((err, res) => {
         expect(res.statusCode).to.be.eq(401);
@@ -49,10 +49,10 @@ describe('Comment on Article', () => {
     chai
       .request(app)
       .post('/api/articles/you-me/comments')
-      .set('Authorization', authToken)
+      .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
+        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(404);
         expect(res.body.error).to.be.equal('article or user not found');
         done();
@@ -62,10 +62,10 @@ describe('Comment on Article', () => {
     chai
       .request(app)
       .post('/api/articles/kldkf-dfknfkd/comments')
-      .set('Authorization', authToken)
+      .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
+        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(404);
         done();
       });
@@ -74,10 +74,10 @@ describe('Comment on Article', () => {
     chai
       .request(app)
       .post(`/api/articles/${slugArticle}/comments`)
-      .set('Authorization', authToken)
+      .set('Authorization', `Bearer ${authToken}`)
       .send(user.login)
       .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
+        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(400);
         done();
       });
@@ -86,14 +86,14 @@ describe('Comment on Article', () => {
     chai
       .request(app)
       .post(`/api/articles/${slugArticle}/comments`)
-      .set('Authorization', authToken)
+      .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
+        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(201);
-        expect(typeof res.body.comment.body).to.be.equal('string');
+        // expect(typeof res.body.comment.body).to.be.equal('string');
         expect(res.body.comment.body).to.be.equal('My dragon is finally flying');
-        expect(typeof res.body.comment.author).to.be.equal('object');
+        // expect(typeof res.body.comment.author).to.be.equal('object');
         expect(res.body.comment.author).to.have.property('username');
         expect(res.body.comment).to.have.property('createdAt');
         expect(res.body.comment).to.have.property('updatedAt');

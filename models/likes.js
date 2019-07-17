@@ -1,14 +1,16 @@
 export default (sequelize, DataTypes) => {
-  const ratings = sequelize.define('ratings', {
+  const likes = sequelize.define('likes', {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
       onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
-      references: {
-        model: 'users',
-        key: 'id'
-      }
+      onDelete: 'CASCADE'
     },
     articleSlug: {
       type: DataTypes.STRING,
@@ -20,9 +22,9 @@ export default (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       allowNull: false
     },
-    rating: {
+    typeState: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     createdAt: {
       allowNull: false,
@@ -33,10 +35,9 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   });
-  ratings.removeAttribute('id');
-  ratings.associate = (models) => {
-    ratings.belongsTo(models.articles, { foreignKey: 'articleSlug' });
-    ratings.belongsTo(models.users, { foreignKey: 'userId' });
+  likes.associate = (models) => {
+    likes.belongsTo(models.articles, { foreignKey: 'articleSlug' });
+    likes.belongsTo(models.users, { foreignKey: 'userId' });
   };
-  return ratings;
+  return likes;
 };

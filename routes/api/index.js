@@ -5,6 +5,7 @@ import socialTest from './socialTest';
 import articles from './articles';
 import search from './search';
 import ratings from './ratings';
+import likes from './likes';
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.use('/', socialTest);
 router.use('/', articles);
 router.use('/', search);
 router.use('/', ratings);
+router.use('/', likes);
 
 export default router;
