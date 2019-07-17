@@ -82,5 +82,15 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.1.1",
     "sinon": "^7.3.2"
+  },
+  "nyc": {
+    "exclude": [
+      "test/*",
+      "models/*",
+      "migrations/*",
+      "seeders/*",
+      "config/*",
+      "index.js"
+    ]
   }
 }

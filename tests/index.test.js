@@ -4,6 +4,12 @@ const userTrue = {
   password: 'Alpha123$'
 };
 
+const adminLogin = {
+  email: 'ackram@gmail.com',
+  username: 'jhonnie',
+  password: 'Alphamugerwa12$',
+};
+
 const login = {
   email: 'love123@gmail.com',
   password: 'Alpha123$'
@@ -106,5 +112,6 @@ export default {
   login,
   emailVerification,
   invalidDummy,
-  invalidDummy1
+  invalidDummy1,
+  adminLogin
 };
