@@ -30,7 +30,7 @@ export const createComment = async (req, res) => {
           }],
         });
         const {
-          author, createdAt, updatedAt,
+          id, author, createdAt, updatedAt,
         } = showComment;
         const articleRef = {
           slug: article.slug
@@ -38,6 +38,7 @@ export const createComment = async (req, res) => {
         return res.status(201).json({
           message: 'commented',
           comment: {
+            id,
             body: showComment.body,
             author,
             article: articleRef,
