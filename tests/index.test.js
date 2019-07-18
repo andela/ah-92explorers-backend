@@ -1,7 +1,7 @@
 const userTrue = {
-  username: 'love1234',
-  email: 'love123@gmail.com',
-  password: 'Alpha123$'
+  email: 'peter@gmail.com',
+  username: 'peter',
+  password: 'Password12$',
 };
 
 const adminLogin = {
@@ -11,8 +11,14 @@ const adminLogin = {
 };
 
 const login = {
-  email: 'love123@gmail.com',
-  password: 'Alpha123$'
+  email: 'peter@gmail.com',
+  password: 'Password12$'
+};
+
+const userAdmin = {
+  email: 'patthy@gmail.com',
+  username: 'pathhy',
+  password: 'Password12$'
 };
 
 const incompleteUser = {
@@ -67,6 +73,19 @@ const invalidDummy1 = {
   email: 'love23@gmail.com',
   password: 'Alpha123$',
 };
+
+const article1 = {
+  title: 'The basics of nodejs',
+  body: 'JavaScript is a language which has many frameworks and libraries',
+  tagList: 'nodejs, programming'
+};
+
+const article2 = {
+  title: 'The',
+  body: 'JavaScript',
+  tagList: 'nodejs, programming'
+};
+
 // twitter user
 export const twitterUser = (req, res, next) => {
   req.user = {
@@ -113,5 +132,8 @@ export default {
   emailVerification,
   invalidDummy,
   invalidDummy1,
-  adminLogin
+  article1,
+  article2,
+  userAdmin,
+  adminLogin,
 };

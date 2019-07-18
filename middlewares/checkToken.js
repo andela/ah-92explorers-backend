@@ -6,11 +6,11 @@ dotenv.config();
 
 export const checkToken = async (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1]; // Fetch the token and check if it exists in the redis db
+    const token = req.headers.authorization.startsWith('Bearer') ? req.headers.authorization.split(' ')[1] : req.headers.authorization; // Fetch the token and check if it exists in the redis db
     const tokenFound = await client.getAsync(token);
     switch (true) {
       case token === undefined:
-        return res.json({
+        return res.status(401).json({
           error: 'unauthorised to use this resource, please signup/login',
         });
 

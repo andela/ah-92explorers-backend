@@ -8,7 +8,7 @@ const swaggerDefinition = {
       'Create a community of like minded authors to foster inspiration and innovation by leveraging the modern web',
   },
   host: 'ah-92explorers-api.herokuapp.com',
-  schemes: ['https'],
+  schemes: ['https', 'http'],
   basePath: '/',
   securityDefinitions: {
     bearerAuth: {

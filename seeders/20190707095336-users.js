@@ -1,24 +1,24 @@
 import uuid from 'uuidv4';
-import auth from '../helpers/auth';
+import auth from '../helpers/auth'
 
 export const up = (queryInterface, Sequelize) => queryInterface.bulkInsert('users',
   [
     {
-      id: uuid(),
+      id: 'c90dee64-663d-4d8b-b34d-12acba22cd30',
       email: 'johnnie@gmail.com',
       username: 'jhonnie',
-      password: auth.hashPassword('Alphamugerwa12$'),
-      accessLevel: 2,
+      password: auth.hashPassword('Password12$'),
+      accessLevel: 2
     },
     {
-      id: uuid(),
+      id: 'c90dee64-663d-4d8b-b34d-12acba22cd31',
       email: 'peter@gmail.com',
       username: 'peterJ',
-      password: auth.hashPassword('Alphamugerwa12$'),
-      accessLevel: 1,
+      password: auth.hashPassword('Password12$'),
+      accessLevel: 1
     },
     {
-      id: uuid(),
+      id: 'c90dee64-663d-4d8b-b34d-12acba22cd32',
       email: 'ackram@gmail.com',
       username: 'akramTinny',
       password: auth.hashPassword('Alphamugerwa12$'),

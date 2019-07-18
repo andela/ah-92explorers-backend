@@ -32,7 +32,7 @@ describe('Testing creation of users', () => {
     chai.request(app)
       .post('/api/admin/users')
       .set('Authorization', `Bearer ${data[0]}`)
-      .send(user.userTrue)
+      .send(user.userAdmin)
       .end((err, res) => {
         const { status, body } = res;
         expect(status).to.equal(201);

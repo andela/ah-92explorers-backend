@@ -1,7 +1,7 @@
 import express from 'express';
 import { checkToken, checkAdmin } from '../../middlewares';
 import userController from '../../controllers/admin';
-import validators from '../../middlewares/validations/validations';
+import validators from '../../middlewares/validations/authValidations';
 
 const router = express.Router();
 router.post('/admin/users', validators.validateCreateUser, checkToken, checkAdmin, userController.createUser);

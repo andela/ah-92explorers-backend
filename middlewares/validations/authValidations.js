@@ -1,4 +1,4 @@
-class Validations {
+class authValidations {
   static async validateCreateUser(req, res, next) {
     const { username, email, password } = req.body;
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -88,4 +88,4 @@ class Validations {
   }
 }
 
-export default Validations;
+export default authValidations;
