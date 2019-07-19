@@ -43,13 +43,14 @@ const articleMigration = {
         allowNull: true
       },
       createdAt: {
-        allowNull: false,
+        defaultValue: Sequelize.fn('now'),
         type: Sequelize.DATE,
         default: true
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: Sequelize.fn('now'),
+        type: Sequelize.DATE,
+        default: true
       }
     }),
   down: queryInterface => queryInterface.dropTable('articles')

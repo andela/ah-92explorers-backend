@@ -160,6 +160,20 @@ router.get('/reset-password/:token', resetPasswordController.getToken);
 */
 router.put('/password', Validations.validatePasswordOnReset, resetPasswordController.resetPassword);
 router.post('/users/login', Validations.validateSiginUser, signin);
+router.post('/users/login', Validations.validateSiginUser, signin);
+// facebook router
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook'), socialAuth.userFacebookGoogle);
+// google router
+router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
+
+router.get('/auth/google/callback', passport.authenticate('google'), socialAuth.userFacebookGoogle);
+// twitter router
+router.get('/auth/twitter', passport.authenticate('twitter', { scope: ['email', 'profile'] }));
+
+router.get('/auth/twitter/callback', passport.authenticate('twitter'), socialAuth.userTwitter);
+
 router.get('/users/verify/:token', verifyUser);
 router.post('/users/signout', checkToken, signoutUser);
 /**

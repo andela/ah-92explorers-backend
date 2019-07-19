@@ -13,6 +13,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,7 +23,6 @@ export default (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    provider: { type: DataTypes.STRING },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -71,8 +71,9 @@ export default (sequelize, DataTypes) => {
     },
   }, {});
   users.associate = (models) => {
-    users.hasMany(models.articles, { foreignKey: 'authorId', allowNull: false });
+    users.hasMany(models.articles, { as: 'author', foreignKey: 'authorId' });
     users.hasMany(models.comments, { foreignKey: 'authorId', allowNull: false });
+    users.hasMany(models.ratings, { foreignKey: 'userId' });
   };
   return users;
 };

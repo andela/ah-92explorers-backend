@@ -85,4 +85,58 @@ describe('Testing if user can rate and see a rating of articles', () => {
         done();
       });
   });
+
+  it('should fetch all ratings of a given article', (done) => {
+    chai.request(app)
+      .get('/api/article/the-basics-of-javaa/rating')
+      .end((error, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(body).to.have.property('rating');
+        expect(body.message).to.have.equals('successfully fetched article ratings');
+        done();
+      });
+  });
+
+  it('should not fetch ratings of an article which is not registered/published', (done) => {
+    chai.request(app)
+      .get('/api/article/the-basics-of-ja/rating')
+      .end((error, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(404);
+        expect(body).to.have.property('error');
+        expect(body.error).to.have.equals('failed to find article ratings');
+        done();
+      });
+  });
+
+  it('should return the article ratings on a the first page', (done) => {
+    chai.request(app)
+      .get('/api/article/the-basics-of-javaa/rating?page=1')
+      .end((err, res) => {
+        if (err) done(err);
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(typeof body).to.be.equal('object');
+        expect(body).to.have.property('rating');
+        expect(Object.prototype.toString.call(res.body.rating)).to.be.equal('[object Array]');
+        expect(body).to.have.property('metadata');
+        done();
+      });
+  });
+
+  it('should return all article ratings on the first page with specified limit', (done) => {
+    chai.request(app)
+      .get('/api/article/the-basics-of-javaa/rating?page=1&limit=1')
+      .end((err, res) => {
+        if (err) done(err);
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(typeof body).to.be.equal('object');
+        expect(body).to.have.property('rating');
+        expect(Object.prototype.toString.call(res.body.rating)).to.be.equal('[object Array]');
+        expect(body).to.have.property('metadata');
+        done();
+      });
+  });
 });

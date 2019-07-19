@@ -67,6 +67,46 @@ class Rating {
       return res.status(500).json({ error: 'failed to rate article' });
     }
   }
+
+  static async getRating(req, res) {
+    try {
+      let page, limit;
+      if (Object.keys(req.query).length === 0) {
+        page = 1; limit = 10;
+      } else if (req.query.limit === undefined) {
+        ({ page } = req.query); limit = 10;
+      } else ({ page, limit } = req.query);
+      const { articleSlug } = req.params;
+      const rating = await ratings.findAll({
+        where: { articleSlug },
+        attributes: ['rating'],
+        offset: ((parseInt(page, 10) - 1) * limit),
+        limit
+      });
+
+      if (rating.length === 0) {
+        return res.status(404).json({
+          error: 'failed to find article ratings'
+        });
+      }
+      const allRatings = await ratings.findAll({ where: { articleSlug } });
+      return res.status(200).json({
+        message: 'successfully fetched article ratings',
+        rating,
+        metadata: {
+          currentPage: parseInt(page, 10),
+          previousPage: parseInt(page, 10) > 1 ? parseInt(page, 10) - 1 : null,
+          nextPage: Math.ceil(allRatings.length / limit) > page ? parseInt(page, 10) + 1 : null,
+          totalPages: Math.ceil(allRatings.length / limit),
+          limit: parseInt(limit, 10)
+        }
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to fetch article ratings'
+      });
+    }
+  }
 }
 
 export default Rating;
