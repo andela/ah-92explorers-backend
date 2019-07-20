@@ -245,6 +245,36 @@ describe('CRUD articles routes', () => {
         done();
       });
   });
+
+  it('should return paginated articles on a the first page', (done) => {
+    chai.request(app)
+      .get('/api/articles/feed?page=1')
+      .end((err, res) => {
+        if (err) done(err);
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.should.have.property('articles');
+        res.body.articles.should.be.an('array');
+        res.body.should.have.property('metadata');
+        res.body.metadata.should.be.an('object');
+        done();
+      });
+  });
+
+  it('should return paginated articles on the first page with specified limit', (done) => {
+    chai.request(app)
+      .get('/api/articles/feed?page=1&limit=1')
+      .end((err, res) => {
+        if (err) done(err);
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.should.have.property('articles');
+        res.body.articles.should.be.an('array');
+        res.body.should.have.property('metadata');
+        res.body.metadata.should.be.an('object');
+        done();
+      });
+  });
 });
 
 export default {

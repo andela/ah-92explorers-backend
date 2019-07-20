@@ -6,7 +6,6 @@ export default (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
-
     articleSlug: {
       type: DataTypes.STRING,
       references: {
@@ -17,7 +16,6 @@ export default (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       allowNull: false
     },
-
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false

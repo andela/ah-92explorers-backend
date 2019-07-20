@@ -43,5 +43,6 @@ const router = express.Router();
 */
 
 router.post('/article/:articleSlug/rate', checkToken, ratingValidations.validateRating, ratingController.rateArticle);
+router.get('/article/:articleSlug/rating', ratingController.getRating);
 
 export default router;

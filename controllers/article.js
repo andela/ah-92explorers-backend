@@ -18,21 +18,41 @@ class Article {
    */
   static async retrieveArticles(req, res) {
     try {
+      // @pagination
+      let page, limit;
+      if (Object.keys(req.query).length === 0) {
+        page = 1; limit = 10;
+      } else if (req.query.limit === undefined) {
+        ({ page } = req.query); limit = 10;
+      } else ({ page, limit } = req.query);
       // @retrieve articles
       const allArticles = await articles.findAll({
         order: [['createdAt', 'DESC']],
+        attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'],
         include: [
           {
             model: users,
             as: 'author',
-            attributes: ['username', 'email', 'id']
+            attributes: ['username']
           }
-        ]
+        ],
+        offset: ((parseInt(page, 10) - 1) * limit),
+        limit
       });
       allArticles.forEach((item) => {
         item.body = he.decode(item.body);
       });
-      return res.status(200).json({ articles: allArticles });
+      const totalArticles = await articles.findAll();
+      return res.status(200).json({
+        articles: allArticles,
+        metadata: {
+          currentPage: parseInt(page, 10),
+          previousPage: parseInt(page, 10) > 1 ? parseInt(page, 10) - 1 : null,
+          nextPage: Math.ceil(totalArticles.length / limit) > page ? parseInt(page, 10) + 1 : null,
+          totalPages: Math.ceil(totalArticles.length / limit),
+          limit: parseInt(limit, 10)
+        }
+      });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to retrieve articles, please try again' });
     }
