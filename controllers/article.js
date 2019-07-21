@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import he from 'he';
+import open from 'open';
 import models from '../models';
 
 const { articles, users } = models;
@@ -185,6 +186,51 @@ class Article {
       return res.status(204).send('');
     } catch (error) {
       return res.status(500).json({ error: 'Failed to delete article, please try again' });
+    }
+  }
+
+  /**
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {object} response
+   */
+  static async shareArticle(req, res) {
+    const { slug, channel } = req.params;
+    const articleSlug = await articles.findOne({
+      where: { slug: req.params.slug }
+    });
+    if (!articleSlug) {
+      return res.status(404).json({
+        status: 404,
+        message: 'Article is not found.'
+      });
+    }
+    const url = `${process.env.APP_URL}/api/articles/${slug}/share/${channel}`;
+    switch (channel) {
+      case 'facebook':
+        if (process.env.NODE_ENV !== 'test') open(`https:www.facebook.com/sharer/sharer.php?u=${url}`);
+        res.status(200).json({
+          status: 200,
+          message: `Article shared to ${channel}`,
+        });
+        break;
+      case 'twitter':
+        if (process.env.NODE_ENV !== 'test') { open(`https://twitter.com/intent/tweet?url=${url}`); }
+        res.status(200).json({
+          status: 200,
+          message: `Article shared to ${channel}`,
+        });
+        break;
+      case 'mail':
+        if (process.env.NODE_ENV !== 'test') open(`mailto:?subject=${slug}&body=${url}`);
+        res.status(200).json({
+          status: 200,
+          message: `Article shared to ${channel}`,
+        });
+        break;
+      default:
+        break;
     }
   }
 }

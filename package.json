@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node index.js && redis-server",
     "dev": "NODE_ENV=development nodemon ./index.js --exec babel-node",
-    "test": "NODE_ENV=test npm run setup:test && mocha --require @babel/register ./tests --timeout 10000 --exit",
+    "test": "NODE_ENV=test npm run setup:test && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "setup:test": "NODE_ENV=test npm run migrate:undo && NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
     "setup:dev": "NODE_ENV=development npm run migrate:undo && NODE_ENV=development npm run migrate && NODE_ENV=development npm run seed",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls && nyc --reporter=lcov --reporter=text-lcov npm test",
@@ -51,6 +51,7 @@
     "nodemailer": "^6.2.1",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^1.19.1",
+    "open": "^6.4.0",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-google": "^0.3.0",
@@ -91,9 +92,10 @@
   },
   "nyc": {
     "exclude": [
-      "test/*",
+      "tests/*",
       "models/*",
       "migrations/*",
+      "middlewares/checkDb.js",
       "seeders/*",
       "config/*",
       "index.js"

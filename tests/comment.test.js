@@ -14,7 +14,7 @@ describe('Comment on Article', () => {
   it('should send back a token after sucessful login', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send(user.userTrue)
+      .send(user.adminLogin)
       .end((err, res) => {
         res.should.have.status(200);
         authToken = res.body.user.token; // get the token
