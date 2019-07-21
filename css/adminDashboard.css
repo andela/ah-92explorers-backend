@@ -1,0 +1,283 @@
+body
+{
+    background-color: #f9f9fc;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbarOne
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.logo
+{
+    width: 150px;
+    height: 50px;
+}
+
+.navIcons
+{
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.navLeft
+{
+    margin-left: 55%;
+}
+
+.btnDB
+{
+    border-color: rgba(255,255,255,.1);
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+    border-radius: 4px;
+    background: #e6e9f0;
+    border: 0;
+    background: rgb(230, 233, 240);;
+    color: #74788d;
+    border: 1px solid #e8ecfa;
+    outline: none;
+    cursor: pointer;
+}
+
+.navbarTwo
+{
+    background: #ffffff;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+ul li
+{
+    display: inline;
+    color: #959eaf;
+}
+
+li
+{
+    margin-right: 10px;
+    padding: .75rem 1.35rem;
+    cursor: pointer;
+}
+
+li:hover
+{
+    background: rgb(230, 233, 240);
+    color:#5867dd;
+}
+
+.navbarLeft
+{
+    margin-left: 10%;
+}
+
+.formcontrolSearch
+{
+    background: rgb(230, 233, 240);
+    outline: 0!important;
+    box-shadow: none;
+    color: #575962;
+    border: 0;
+    padding: 0px 0px 0px 13px;
+    margin-right:0;
+    margin-top: 10px;
+    margin-left: 320px;
+    line-height: 19.5px;
+    width: 200px;
+    height: 30px;
+}
+
+.headliner
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: .25rem 0;
+    margin-left: 12%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #434349;
+}
+
+.date
+{
+    background: #e1e3ec;
+    display: inline-flex;
+    height: 20px!important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-left: 57%;
+    width: 150px;
+    padding-left: 1rem;
+}
+
+.articleHeadliner
+{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 25px;
+    border-bottom: 1px solid #ebedf2;
+    min-height: 60px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.badge
+{
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.theArticles
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+}
+
+.firstComponent
+{
+    background: #fff;
+    width: 45%;
+}
+
+.articles
+{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 13px 0 rgba(82,63,105,.05);
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    height: 500px;
+    width: 30%;
+    margin-left: 50px;
+}
+
+.firstPhase
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 12%;
+}
+
+table
+{
+    display: block;
+    border-collapse: collapse;
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    max-height: 500px;
+}
+
+.head
+{
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #ebedf2;
+}
+
+.tableIcons
+{
+    height: 20px;
+    width: 20px;
+}
+
+.tb_sb
+{
+    padding: 16px 10px;
+    width: 252px;
+    text-align: center;
+}
+
+.tableProfile
+{
+    width: 30px;
+    height: 30px;
+}
+
+.tb_sb_1
+{
+    padding: 16px 10px;
+    width: 200px;
+    text-align: center;
+    border-bottom: 1px solid #ebedf2;
+}
+
+.secondPhase
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 12%;
+    margin-top: 20px;
+}
+
+.articlesBest
+{
+    background: #fff;
+    width: 38%;
+    margin-right: 30px;
+}
+
+.mediaHeadline
+{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 25px;
+    border-bottom: 1px solid #ebedf2;
+    min-height: 60px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.notifications
+{
+    background: #fff;
+    width: 38%;
+    height: 500px;
+}
+
+.mediaSubjects
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.badge2
+{
+    max-width: 8.5rem;
+    border-radius: 4px;
+}
+
+.mediaLeft
+{
+    margin-left: 15px;
+}
+
+footer
+{
+    padding: 2rem 0;
+    background-color: #181824;
+    text-align: center;
+    color: #fff;
+    margin-top: 25px;
+}

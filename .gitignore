@@ -1,8 +1,0 @@
-# Logs
-.DS_Store
-node_modules
-package-lock.json
-.nyc_output
-seeders
-.env
-.dist
