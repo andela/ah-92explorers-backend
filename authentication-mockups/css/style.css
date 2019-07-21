@@ -117,3 +117,7 @@ body {
   .form .btn.btn-google:hover, .form .btn.btn-google:active, .form .btn.btn-google:focus {
     background: #db3236;
     border-color: #db3236; }
+
+  button .link {
+    color: white;
+}

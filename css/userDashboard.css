@@ -15,6 +15,12 @@ body
     filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(354deg) brightness(105%) contrast(106%);
 }
 
+button a{
+    color: inherit;
+    text-decoration-line: none;
+}
+
+
 .navbar
 {
     width: 100%;
@@ -25,6 +31,11 @@ body
     display: flex;
     flex-direction: row;
     color: #ffffff;
+}
+
+.navbar ul li a{
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .restOfNav

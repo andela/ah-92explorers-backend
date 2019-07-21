@@ -1,3 +1,18 @@
+.lgBtn {
+   -webkit-border-radius: 36px;
+   border-radius: 36px;
+   -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+   box-shadow: 0 1px 4px rgba(0,0,0,.04);
+   background: none;
+   padding: 10px 28px;
+   height: 40px;
+   outline: none;
+   border: 1px solid rgba(0,0,0,.04);
+   cursor: pointer;
+   margin-right: 10px;
+   color: #fff;
+}
+
 .userProfile
 {
    display: block;
@@ -8,7 +23,6 @@
    padding: 25px;
    margin-top: 25px;
 }
-<<<<<<< HEAD
 
 .fb
 {
@@ -25,8 +39,6 @@
     filter: invert(40%) sepia(28%) saturate(872%) hue-rotate(164deg) brightness(95%) contrast(89%);
 }
 
-=======
->>>>>>> chore(user-profile): user profile mocks
 .form-control
 {
    width: 300px;
@@ -44,10 +56,6 @@
    margin-left: 15px;
    max-width: 100%;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
 .upBtn
 {
    border-radius: 3px;
@@ -63,24 +71,15 @@
    outline-color: #367fa9;
    background: #367fa9;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
 .avatar
 {
    height: 100px;
    width: 20%;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
 .firstForm
 {
    display: flex;
    flex-direction: row;
-<<<<<<< HEAD
    margin-top: 25px;
 }
 
@@ -107,14 +106,6 @@
     margin-left: 15px;
 }
 
-=======
-}
-.right
-{
-   margin-left: 100px;
-   margin-bottom: 30px;
-}
->>>>>>> chore(user-profile): user profile mocks
 .updateBtn
 {
    text-align: center;
@@ -131,53 +122,32 @@
    outline-color: #041B2D;
    background: #041B2D
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
 @media(max-width: 900px)
 {
    body
    {
        margin: 0;
    }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
    .avatar
    {
        width: 200px;
        height: 150px;
    }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
    .firstForm
    {
        flex-direction: column;
    }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
    .upBtn
    {
        width: 200px;
        padding: 5px 38px;
    }
-<<<<<<< HEAD
-
-=======
->>>>>>> chore(user-profile): user profile mocks
    .form-control
    {
        width: 50%;
        margin-left: 20px;
    }
 }
-<<<<<<< HEAD
 
 body
 {
@@ -426,7 +396,4 @@ li
        width: 85%;
        margin-bottom: 50px;
    }
-
 }
-=======
->>>>>>> chore(user-profile): user profile mocks
