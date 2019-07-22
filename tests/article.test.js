@@ -246,3 +246,7 @@ describe('CRUD articles routes', () => {
       });
   });
 });
+
+export default {
+  authToken
+};
