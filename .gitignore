@@ -37,7 +37,7 @@ node_modules
 
 # dotenv file
 .env
+.env.sample
 
 # nyc output
 .nyc_output
-.env.sample
