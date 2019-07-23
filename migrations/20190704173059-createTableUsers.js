@@ -5,8 +5,8 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('use
     allowNull: false,
     primaryKey: true
   },
-  firstName: { type: Sequelize.STRING },
-  lastName: { type: Sequelize.STRING },
+  firstName: { type: Sequelize.STRING, allowNull: true },
+  lastName: { type: Sequelize.STRING, allowNull: true },
   username: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -27,6 +27,38 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('use
     allowNull: false,
     required: true
   },
+  bio: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  phone: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  facebook: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  twitter: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  linkedIn: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  instagram: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  location: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   accessLevel: {
     type: Sequelize.INTEGER,
     defaultValue: '0'
@@ -45,7 +77,7 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('use
     allowNull: false,
     type: Sequelize.DATE,
     defaultValue: Sequelize.fn('now')
-  },
+  }
 });
 
 export const down = queryInterface => queryInterface.dropTable('users');

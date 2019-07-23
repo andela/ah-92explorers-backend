@@ -10,9 +10,8 @@ cloudinary.config({
 });
 const storage = cloudinaryStorage({
   cloudinary,
-  folder: 'articles',
+  folder: 'uploads',
   allowedFormats: ['jpg', 'png'],
-  transformation: [{ width: 500, height: 500, crop: 'limit' }]
 });
 
 const configuration = multer({ storage }).single('file');
