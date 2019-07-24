@@ -79,8 +79,6 @@ class Profile {
         instagram,
         location
       });
-
-
       return res.status(200).json({
         message: 'User profile updated!',
         profile: {
@@ -99,6 +97,32 @@ class Profile {
     } catch (error) {
       return res.status(500).json({
         error: 'Failed to update user profile'
+      });
+    }
+  }
+
+  /**
+  * List users functionality
+  * @async
+  * @param  {object} req - Request object
+  * @param {object} res - Response object
+  * @return {json} Returns json object
+  * @static
+  */
+  static async listUsers(req, res) {
+    try {
+      const allUsers = await users.findAll({
+        attributes: ['id', 'username', 'email', 'bio', 'image', 'phone',
+          'facebook', 'twitter', 'linkedIn', 'instagram', 'location',
+          'createdAt', 'updatedAt']
+      });
+      return res.status(200).json({
+        message: 'successfully listed users functionality',
+        users: allUsers
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to fetch users'
       });
     }
   }

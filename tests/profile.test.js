@@ -106,4 +106,36 @@ describe('User Profile', () => {
         done();
       });
   });
+
+
+  // list users functionality
+  it('Should list users functionality', (done) => {
+    chai.request(app)
+      .get('/api/list-users')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', tokenGen)
+      .end((error, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(body).to.have.property('users');
+        expect(Object.prototype.toString.call(res.body.users)).to.be.equal('[object Array]');
+        done();
+      });
+  });
+  // list users functionality
+  it('Should not list users functionality if user is not authorised', (done) => {
+    chai.request(app)
+      .get('/api/list-users')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'zzxxxxxxxxxxxz')
+      .end((error, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(401);
+        expect(res.body).to.be.an('object');
+        expect(body).to.have.property('error');
+        expect(body.error).to.equals('unauthorised to use this resource, please signup/login');
+        done();
+      });
+  });
 });

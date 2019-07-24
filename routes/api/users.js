@@ -88,17 +88,13 @@ router.post('/users', Validations.validateCreateUser, signup);
 router.post('/users/login', Validations.validateSiginUser, signin);
 // facebook router
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
-
 router.get('/auth/facebook/callback', passport.authenticate('facebook'), socialAuth.userFacebookGoogle);
 // google router
 router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
-
 router.get('/auth/google/callback', passport.authenticate('google'), socialAuth.userFacebookGoogle);
 // twitter router
 router.get('/auth/twitter', passport.authenticate('twitter', { scope: ['email', 'profile'] }));
-
 router.get('/auth/twitter/callback', passport.authenticate('twitter'), socialAuth.userTwitter);
-
 router.get('/users/verify/:token', verifyUser);
 router.post('/users/signout', checkToken, signoutUser);
 /**
@@ -159,83 +155,25 @@ router.get('/reset-password/:token', resetPasswordController.getToken);
 *         description: Invalid token
 */
 router.put('/password', Validations.validatePasswordOnReset, resetPasswordController.resetPassword);
-router.post('/users/login', Validations.validateSiginUser, signin);
-router.post('/users/login', Validations.validateSiginUser, signin);
-// facebook router
-router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
-
-router.get('/auth/facebook/callback', passport.authenticate('facebook'), socialAuth.userFacebookGoogle);
-// google router
-router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
-
-router.get('/auth/google/callback', passport.authenticate('google'), socialAuth.userFacebookGoogle);
-// twitter router
-router.get('/auth/twitter', passport.authenticate('twitter', { scope: ['email', 'profile'] }));
-
-router.get('/auth/twitter/callback', passport.authenticate('twitter'), socialAuth.userTwitter);
-
-router.get('/users/verify/:token', verifyUser);
-router.post('/users/signout', checkToken, signoutUser);
 /**
 * @swagger
-* /api/password:
-*   post:
+* /api/list-users:
+*   get:
+*     security:
+*       - bearerAuth: []
 *     tags:
-*       - Auth
-*     name: Reset Password Link
-*     summary: Send a reset password email
+*       - Profile
+*     name: List users
+*     summary: User should be able to see the the list and profiles of existing authors.
 *     consumes:
 *       - application/json
-*     parameters:
-*       - name: body
-*         in: body
-*         properties:
-*           email:
-*             type: string
-*             example: abtex@gmail.com
-*         required:
-*           - email
 *     responses:
 *       200:
-*         description: We have e-mailed a password reset link, Check your email!
-*       404:
-*         description: The email provided does not exist
-*/
-router.post('/password', resetPasswordController.sendResetLinkEmail);
-router.get('/reset-password/:token', resetPasswordController.getToken);
-/**
-* @swagger
-* /api/password:
-*   put:
-*     tags:
-*       - Auth
-*     name: Reset Password
-*     summary: Reset password after receiving a token
-*     consumes:
-*       - application/json
-*     parameters:
-*       - name: body
-*         in: body
-*         properties:
-*           token:
-*             type: string
-*             example: ynuifsrdqwsdkensns
-*           password:
-*             type: string
-*             format: password
-*             example: stealth
-*         required:
-*           - token
-*           - password
-*     responses:
-*       200:
-*         description: Your password was reset successfully
+*         description: successfully listed users functionality
 *       401:
-*         description: Invalid token
+*         description: unauthorised to use this resource, please signup/login
 */
-router.put('/password', Validations.validatePasswordOnReset, resetPasswordController.resetPassword);
-
-router.post('/users/signout', checkToken, signoutUser);
+router.get('/list-users', checkToken, Profile.listUsers);
 
 /**
 * @swagger

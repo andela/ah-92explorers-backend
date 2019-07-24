@@ -36,6 +36,11 @@ const userAdmin = {
   password: 'Password12$'
 };
 
+const author = {
+  email: 'danny123@gmail.com',
+  password: 'Alphamugerwa12$'
+};
+
 const incompleteUser = {
   username: 'isaiah250',
   email: 'isaiah@gmail.com'
@@ -195,5 +200,6 @@ export default {
   profile,
   rating,
   ratingFalse,
-  ratingFalseNumber
+  ratingFalseNumber,
+  author
 };
