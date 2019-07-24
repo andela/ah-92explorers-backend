@@ -9,7 +9,11 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('lik
     type: Sequelize.UUID,
     allowNull: false,
     onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
+    references: {
+      model: 'users',
+      key: 'id'
+    }
   },
   articleSlug: {
     type: Sequelize.STRING,

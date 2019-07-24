@@ -10,7 +10,11 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       allowNull: false,
       onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
+      references: {
+        model: 'users',
+        key: 'id'
+      }
     },
     articleSlug: {
       type: DataTypes.STRING,
@@ -36,8 +40,8 @@ export default (sequelize, DataTypes) => {
     }
   });
   likes.associate = (models) => {
-    likes.belongsTo(models.articles, { foreignKey: 'articleSlug' });
-    likes.belongsTo(models.users, { foreignKey: 'userId' });
+    likes.belongsTo(models.articles, { as: 'likes', foreignKey: 'articleSlug' });
+    likes.belongsTo(models.users, { as: 'liker', foreignKey: 'userId', targetKey: 'id' });
   };
   return likes;
 };

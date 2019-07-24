@@ -33,6 +33,7 @@ describe('Search Functionality', () => {
       .end((err, res) => {
         expect(Object.prototype.toString.call(res.body.results)).to.be.equal('[object Array]');
         assert.notEqual(res.body.results.length, 0);
+        // expect(res.body.results[0].title).to.equals('i love you');
         done();
       });
   });

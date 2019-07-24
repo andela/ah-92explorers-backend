@@ -7,6 +7,7 @@ import search from './search';
 import ratings from './ratings';
 import likes from './likes';
 import report from './report';
+import comments from './comments';
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.use('/', search);
 router.use('/', ratings);
 router.use('/', likes);
 router.use('/', report);
+router.use('/', comments);
 
 export default router;

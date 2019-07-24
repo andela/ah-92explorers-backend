@@ -8,7 +8,7 @@ class Like {
       const { articleSlug } = req.params;
       const article = await articles.findOne({
         where: { slug: articleSlug },
-        include: [{ model: likes }]
+        include: [{ as: 'likes', model: likes }]
       });
 
       if (!article) {
@@ -18,7 +18,7 @@ class Like {
       }
       const user = await users.findOne({
         where: { email: req.decoded.email },
-        include: [{ model: likes }]
+        include: [{ as: 'liker', model: likes }]
       });
       const like = await likes.findOne({ where: { articleSlug: article.slug, userId: user.id }, attributes: ['typeState'] });
 
@@ -60,8 +60,7 @@ class Like {
       }
     } catch (error) {
       return res.status(500).json({
-        error:
-        'failed to like or unlike article'
+        error: 'failed to like or unlike article'
       });
     }
   }
@@ -71,7 +70,7 @@ class Like {
       const { articleSlug } = req.params;
       const article = await articles.findOne({
         where: { slug: articleSlug },
-        include: [{ model: likes }]
+        include: [{ as: 'likes', model: likes }]
       });
 
       if (!article) {
@@ -81,7 +80,7 @@ class Like {
       }
       const user = await users.findOne({
         where: { email: req.decoded.email },
-        include: [{ model: likes }]
+        include: [{ as: 'liker', model: likes }]
       });
       const like = await likes.findOne({ where: { articleSlug: article.slug, userId: user.id }, attributes: ['typeState'] });
       switch (true) {

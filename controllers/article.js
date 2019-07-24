@@ -4,7 +4,9 @@ import open from 'open';
 import models from '../models';
 import { accReadTime } from '../helpers/readTime';
 
-const { articles, users } = models;
+const {
+  articles, users, ratings, likes, comments
+} = models;
 
 dotenv.config();
 
@@ -30,12 +32,48 @@ class Article {
       // @retrieve articles
       const allArticles = await articles.findAll({
         order: [['createdAt', 'DESC']],
-        attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'],
+        attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'authorId'],
         include: [
           {
-            model: users,
             as: 'author',
-            attributes: ['username']
+            model: users,
+            attributes: ['username', 'image'],
+          },
+          {
+            as: 'comments',
+            model: comments,
+            attributes: ['id', 'body', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'commentor',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
+          },
+          {
+            as: 'ratings',
+            model: ratings,
+            attributes: ['rating', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'reviewer',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
+          },
+          {
+            as: 'likes',
+            model: likes,
+            attributes: ['typeState', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'liker',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
           }
         ],
         offset: ((parseInt(page, 10) - 1) * limit),

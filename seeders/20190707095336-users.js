@@ -56,7 +56,7 @@ export const up = (queryInterface, Sequelize) => queryInterface.bulkInsert('user
     },
     {
       id: 'c90dee64-663d-4d8b-b34d-12acba22cd33',
-      email: 'bilige@gmail.com',
+      email: 'bilige23@gmail.com',
       username: 'ambilige',
       password: auth.hashPassword('Alphamugerwa12$'),
       accessLevel: 2,

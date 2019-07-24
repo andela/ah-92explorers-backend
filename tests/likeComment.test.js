@@ -12,7 +12,7 @@ const userToken = [];
 const slugArticle = 'the-basics-of-java';
 let commentId;
 
-describe('Testing if user login', () => {
+describe('Tesing if user can like/unlike a comment', () => {
   it('should login an admin', (done) => {
     chai.request(app)
       .post('/api/users/login')
@@ -78,7 +78,7 @@ describe('Testing if user login', () => {
 
   it('should allow a user to like a comment', (done) => {
     chai.request(app)
-      .post(`/api/article/comment/${commentId}/like`)
+      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd99/like')
       .set('Authorization', `Bearer ${userToken[0]}`)
       .end((error, res) => {
         const { status, body } = res;
@@ -91,7 +91,7 @@ describe('Testing if user login', () => {
 
   it('should allow a user to unlike a comment', (done) => {
     chai.request(app)
-      .post(`/api/article/comment/${commentId}/like`)
+      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd99/like')
       .set('Authorization', `Bearer ${userToken[0]}`)
       .end((error, res) => {
         const { status, body } = res;
