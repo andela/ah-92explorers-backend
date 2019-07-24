@@ -28,7 +28,7 @@ export const signup = async (req, res) => {
     });
     await transaction.commit();
     if (newUser) {
-      const token = Auth.genToken(username, email);
+      const token = Auth.genToken(username, email, newUser.id);
       const msg = {
         to: email,
         from: 'authorshaven92@gmail.com',
@@ -74,7 +74,7 @@ export const signin = async (req, res) => {
         message: 'logged in',
         user: {
           id: user.id,
-          token: Auth.genToken(username, email),
+          token: Auth.genToken(username, email, user.id),
           username,
           email: user.email,
         },

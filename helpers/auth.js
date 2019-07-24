@@ -13,9 +13,10 @@ class Auth {
     return bcrypt.compareSync(password, hashedPassword);
   }
 
-  static genToken(username, email) {
+  static genToken(username, email, id) {
     const token = jwt.sign(
       {
+        id,
         email,
         username
       },

@@ -22,6 +22,11 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('use
     }
   },
   provider: { type: Sequelize.STRING },
+  notificationsOpt: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: true
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -1,4 +1,8 @@
 import db from '../models';
+import {
+  sendNotificationToFollower,
+  notificationForFollower,
+} from './notifications';
 
 const {
   comments, sequelize, articles, users,
@@ -41,6 +45,9 @@ class Comment {
           const articleRef = {
             slug: article.slug
           };
+          const message = `${commentor.username} commented on <a href="ah-92explorers-api.herokuapp.com/api/articles/${article.slug}">${article.title}</a>`;
+          await notificationForFollower(article.authorId, message, commentor, commentor.username);
+          await sendNotificationToFollower(article.authorId, message);
           return res.status(201).json({
             message: 'commented',
             comment: {
