@@ -31,8 +31,8 @@ const login = {
 };
 
 const userAdmin = {
-  email: 'patthy@gmail.com',
-  username: 'pathhy',
+  email: 'meiliss@gmail.com',
+  username: 'pathhyss',
   password: 'Password12$'
 };
 
