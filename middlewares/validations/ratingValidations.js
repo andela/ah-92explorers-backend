@@ -15,7 +15,7 @@ export default class ratingValidations {
 
       case rating < 0 || rating > 5:
         return res.status(400).json({
-          error: 'rating should be between 1-5'
+          error: 'rating should be 1-5'
         });
     }
 

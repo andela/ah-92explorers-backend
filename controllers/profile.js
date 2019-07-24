@@ -20,7 +20,9 @@ class Profile {
     try {
       const { username } = req.params;
       const user = await users.findOne({
-        where: { username }
+        where: { username },
+        attributes: ['firstName', 'lastName', 'bio', 'image', 'phone', 'facebook', 'twitter', 'linkedIn', 'instagram', 'location', 'username']
+
       });
 
       if (!user) {
@@ -29,24 +31,9 @@ class Profile {
         });
       }
 
-      const {
-        firstName, lastName, bio, image, phone, facebook, twitter, linkedIn, instagram, location
-      } = user;
-
       return res.status(200).json({
         message: 'User profile retrieved!',
-        profile: {
-          firstName,
-          lastName,
-          bio,
-          image,
-          phone,
-          facebook,
-          twitter,
-          linkedIn,
-          instagram,
-          location
-        },
+        profile: user,
       });
     } catch (err) {
       return res.status(500).json({

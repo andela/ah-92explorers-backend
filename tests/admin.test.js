@@ -136,7 +136,7 @@ describe('Testing admin feature to update user accessLevel', () => {
 describe('Testing admin feature to delete a user', () => {
   it('should delete a user given right id', (done) => {
     chai.request(app)
-      .delete(`/api/admin/users/${data[1]}`)
+      .delete('/api/admin/users/c90dee64-663d-4d8b-b34d-12acba22cd33')
       .set('Authorization', `Bearer ${data[0]}`)
       .end((err, res) => {
         const { status } = res;

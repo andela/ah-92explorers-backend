@@ -9,7 +9,7 @@ const userTrue = {
 
 const adminLogin = {
   email: 'ackram@gmail.com',
-  username: 'jhonnie',
+  username: 'akramTinny',
   password: 'Alphamugerwa12$',
 };
 
@@ -68,16 +68,18 @@ const emailVerification = {
 };
 
 const profile = {
-  firstName: 'isaiah',
-  lastName: 'runr',
+  email: 'ackram@gmail.com',
+  username: 'akramTinny',
   bio: 'A software developer and author',
   image: 'https://lh6.googleusercontent.com/-sZOpms2mUso/AAAAAAAAAAI/AAAAAAAAAgY/qI2F0nXUaU8/photo.jpg',
   phone: '+078899000000',
-  facebook: 'facebook.com/isaiahRn',
-  twitter: 'twitter.com/isaiahRn',
-  linkedIn: 'linkedin.com/isaiahRn',
-  instagram: 'instagram.com/isaiahRn',
+  facebook: 'facebook.com/peter',
+  twitter: 'twitter.com/peter',
+  linkedIn: 'linkedin.com/peter',
+  instagram: 'instagram.com/peter',
   location: 'gisozi',
+  firstName: 'Eloin',
+  lastName: 'Musk'
 };
 
 const userSignup = {
