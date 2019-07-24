@@ -64,6 +64,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: '0'
     },
+
     isVerified: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
