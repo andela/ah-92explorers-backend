@@ -3,10 +3,13 @@ import chaiHttp from 'chai-http';
 import app from '../index';
 import dummy from './index.test';
 
+const { expect } = chai;
 chai.use(chaiHttp);
 
 let authToken;
 let articleSlug;
+const slugArticle = 'the-basics-of-java';
+
 
 describe('CRUD articles routes', () => {
   // @user login
@@ -276,6 +279,61 @@ describe('CRUD articles routes', () => {
       });
   });
 });
+
+describe('Share articles across different channels', () => {
+  it('should send back a token after sucessful login', (done) => {
+    chai.request(app)
+      .post('/api/users/login')
+      .send(dummy.adminLogin)
+      .then((res) => {
+        res.should.have.status(200);
+        authToken = res.body.user.token; // get the token
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('should not share if the article is not found', (done) => {
+    chai.request(app)
+      .post(`/api/articles/${slugArticle}-6778/share/facebook`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((error, res) => {
+        expect(res.body.status).to.be.equal(404);
+        expect(res.body.message).to.equals('Article is not found.');
+        done();
+      });
+  });
+  it('should  share to facebook', (done) => {
+    chai.request(app)
+      .post(`/api/articles/${slugArticle}/share/facebook`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((error, res) => {
+        expect(res.body.status).to.be.equal(200);
+        expect(res.body.message).to.equals('Article shared to facebook');
+        done();
+      });
+  });
+  it('should  share to twitter', (done) => {
+    chai.request(app)
+      .post(`/api/articles/${slugArticle}/share/twitter`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((error, res) => {
+        expect(res.body.status).to.be.equal(200);
+        expect(res.body.message).to.equals('Article shared to twitter');
+        done();
+      });
+  });
+  it('should  share to mail', (done) => {
+    chai.request(app)
+      .post(`/api/articles/${slugArticle}/share/mail`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((error, res) => {
+        expect(res.body.status).to.be.equal(200);
+        expect(res.body.message).to.equals('Article shared to mail');
+        done();
+      });
+  });
+});
+
 
 export default {
   authToken

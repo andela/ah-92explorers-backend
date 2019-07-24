@@ -195,4 +195,39 @@ router.delete('/articles/:slug', checkToken, checkArticleOwner, article.deleteAr
 */
 router.post('/articles/:slug/comments', checkToken, createComment);
 
+/**
+* @swagger
+*  /api/articles/{slug}/share/{channel}:
+*    post:
+*      security:
+*       - bearerAuth: []
+*      tags:
+*        - Articles
+*      summary: Share an article
+*      description: returns the status and message.
+*      produces:
+*        - application/json
+*      parameters:
+*        - in: path
+*          name: slug
+*          schema:
+*            type: string
+*          required: true
+*          description: The author username
+*        - in: path
+*          name: channel
+*          schema:
+*            type: string
+*          required: true
+*          description: Channel have to be either facebook, twitter  or mail
+*      responses:
+*        200:
+*          description: The success message
+*        400:
+*          description: channel must be one of facebook, twitter, mail
+*        404:
+*          description: Article is not found.
+*/
+router.post('/articles/:slug/share/:channel', article.shareArticle);
+
 export default router;
