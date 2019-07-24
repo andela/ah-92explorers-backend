@@ -27,5 +27,4 @@ export const up = (queryInterface, Sequelize) => queryInterface.bulkInsert('user
   ],
   {}
 )
-
 export const down = (queryInterface, Sequelize) => queryInterface.bulkDelete('users', null, {});

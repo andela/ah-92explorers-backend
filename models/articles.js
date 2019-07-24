@@ -1,7 +1,7 @@
 import SequelizeSlugify from 'sequelize-slugify';
 
-const articleModel = (Sequelize, DataTypes) => {
-  const articles = Sequelize.define('articles', {
+export default (sequelize, DataTypes) => {
+  const articles = sequelize.define('articles', {
     id: {
       type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, allowNull: false, primaryKey: true,
     },
@@ -15,11 +15,10 @@ const articleModel = (Sequelize, DataTypes) => {
   }, {});
   articles.associate = (models) => {
     articles.belongsTo(models.users, { as: 'author', foreignKey: 'authorId', onDelete: 'CASCADE' });
+    articles.hasMany(models.ratings, { foreignKey: 'articleSlug' });
   };
   SequelizeSlugify.slugifyModel(articles, {
     source: ['title'], slugOptions: { lower: true }, overwrite: true, column: 'slug'
   });
   return articles;
 };
-
-export default articleModel;
