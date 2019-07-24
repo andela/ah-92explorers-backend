@@ -70,6 +70,23 @@ export const up = (queryInterface, Sequelize) => queryInterface.bulkInsert('user
       firstName: 'Sally',
       lastName: 'Layla',
       location: 'gisozi'
+    },
+    {
+      id: 'c90dee64-663d-4d8b-b34d-12acba22cd44',
+      email: 'celestin@gmail.com',
+      username: 'celestin',
+      password: auth.hashPassword('Alphamugerwa12$'),
+      accessLevel: 0,
+      bio: 'A software developer and author',
+      image: 'https://lh6.googleusercontent.com/-sZOpms2mUso/AAAAAAAAAAI/AAAAAAAAAgY/qI2F0nXUaU8/photo.jpg',
+      phone: '+078899000002',
+      facebook: 'facebook.com/niyoceles',
+      twitter: 'twitter.com/niyoceles',
+      linkedIn: 'linkedin.com/niyoceles',
+      instagram: 'instagram.com/niyoceles',
+      firstName: 'celes',
+      lastName: 'cel',
+      location: 'Gikondo'
     }
   ],
   {}
