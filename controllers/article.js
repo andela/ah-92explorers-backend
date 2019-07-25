@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import he from 'he';
 import open from 'open';
 import models from '../models';
+import { accReadTime } from '../helpers/readTime';
 
 const { articles, users } = models;
 
@@ -127,6 +128,7 @@ class Article {
           title, description, tagList, image, author
         } = article;
         const payload = {
+          time: accReadTime(article.body),
           slug,
           title,
           description,
