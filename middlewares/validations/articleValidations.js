@@ -15,7 +15,7 @@ class articleValidations {
     const { title, body } = req.body;
     const errors = [];
     if (title === null || title === undefined
-        || body === null || body === undefined) {
+      || body === null || body === undefined) {
       errors.push('title or body shouldn\'t be empty');
     } else if (title.length <= 5 || body.length <= 20) {
       errors.push('title length should be not less than 5 and body length shouldn\'t be less than 20');

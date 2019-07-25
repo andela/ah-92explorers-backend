@@ -5,6 +5,7 @@ import { checkArticleOwner } from '../../middlewares/checkResourceOwner';
 import validate from '../../middlewares/validations/articleValidations';
 import uploadImage from '../../middlewares/imageUpload';
 import { checkToken } from '../../middlewares';
+import articleStats from '../../controllers/readingStat';
 
 const router = express.Router();
 
@@ -196,6 +197,7 @@ router.delete('/articles/:slug', checkToken, checkArticleOwner, article.deleteAr
 *          description: Article is not found.
 */
 router.post('/articles/:slug/share/:channel', article.shareArticle);
+router.post('/articles/:articleSlug/record-reading', checkToken, articleStats.recordUserReading);
 
 /**
 * @swagger
