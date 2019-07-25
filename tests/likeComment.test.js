@@ -9,7 +9,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 const userToken = [];
 
-const slugArticle = 'the-basics-of-java';
 let commentId;
 
 describe('Tesing if user can like/unlike a comment', () => {
@@ -30,26 +29,6 @@ describe('Tesing if user can like/unlike a comment', () => {
       });
   });
 
-  it('Should let user comment on article with valid details', (done) => {
-    chai
-      .request(app)
-      .post(`/api/articles/${slugArticle}/comments`)
-      .set('Authorization', `Bearer ${userToken[0]}`)
-      .send(dummyData.comment)
-      .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
-        expect(res.statusCode).to.be.equal(201);
-        expect(typeof res.body.comment.body).to.be.equal('string');
-        expect(res.body.comment.body).to.be.equal('My dragon is finally flying');
-        expect(typeof res.body.comment.author).to.be.equal('object');
-        expect(res.body.comment.author).to.have.property('username');
-        expect(res.body.comment).to.have.property('createdAt');
-        expect(res.body.comment).to.have.property('updatedAt');
-        commentId = res.body.comment.id; // comment id
-        done();
-      });
-  });
-
   it('should not allow a user to like a comment with invalid article id', (done) => {
     chai.request(app)
       .post(`/api/article/comment/${commentId}2/like`)
@@ -66,7 +45,7 @@ describe('Tesing if user can like/unlike a comment', () => {
   it('should not allow user to like without authorization', (done) => {
     chai
       .request(app)
-      .post(`/api/article/comment/${commentId}/like`)
+      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd99/like')
       .set('Content-Type', 'application/json')
       .end((err, res) => {
         const { status } = res;

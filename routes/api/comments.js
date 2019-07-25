@@ -38,6 +38,8 @@ const router = express.Router();
 */
 router.post('/articles/:slug/comments', checkToken, commentController.createComment);
 router.get('/articles/:articleSlug/comments', commentController.getArticleComments);
+router.get('/comments/:commentId', commentController.getSingleComment);
+router.patch('/comments/:commentId', checkToken, commentController.updateComment);
 router.delete('/comments/:commentId', checkToken, commentController.deleteComment);
 
 export default router;

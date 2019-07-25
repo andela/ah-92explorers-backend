@@ -162,6 +162,18 @@ class Article {
             model: users,
             as: 'author',
             attributes: ['username', 'email', 'id']
+          },
+          {
+            as: 'comments',
+            model: comments,
+            attributes: ['id', 'body', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'commentor',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
           }
         ]
       });

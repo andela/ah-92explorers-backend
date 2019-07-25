@@ -47,7 +47,7 @@ app.use(passport.session());
 app.use(router);
 
 app.all('*', (_req, res) => {
-  res.status(400).json({
+  res.status(404).json({
     error: 'address not found',
   });
 });

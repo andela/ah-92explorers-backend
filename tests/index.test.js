@@ -26,6 +26,10 @@ const ratingFalse = {
   rating: 'a'
 };
 
+const emptyComment = {
+  body: ''
+};
+
 const ratingFalseNumber = {
   rating: 7
 };
@@ -234,5 +238,6 @@ export default {
   secondLogin,
   givenArticle,
   givenComment1,
-  givenComment2
+  givenComment2,
+  emptyComment
 };

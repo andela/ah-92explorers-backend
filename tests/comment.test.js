@@ -43,6 +43,17 @@ describe('Create, Get and Delete Comment', () => {
         done();
       });
   });
+  it('should not allow user to provide null body while commenting', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.emptyComment)
+      .end((err, res) => {
+        expect(res.body.error).to.be.equal('comment body cannot be null');
+        done();
+      });
+  });
   it('Should not allow user to comment on article with invalid token', (done) => {
     chai
       .request(app)
@@ -128,6 +139,30 @@ describe('Create, Get and Delete Comment', () => {
         done();
       });
   });
+  it('should let a user get a singleComment', (done) => {
+    chai
+      .request(app)
+      .get('/api/comments/c90dee64-663d-4d8b-b34d-12acba22cd99')
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(200);
+        expect(res.body).to.have.property('comment');
+        expect(res.body).to.have.property('edits');
+        done();
+      });
+  });
+  it('should not let a user get a singleComment with invalid id', (done) => {
+    chai
+      .request(app)
+      .get('/api/comments/c90dee64-663d-4d8b')
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(500);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equals('failed to get comment');
+        done();
+      });
+  });
   it('should not let a user to get comments with an invalid slug', (done) => {
     chai
       .request(app)
@@ -137,19 +172,6 @@ describe('Create, Get and Delete Comment', () => {
         expect(res.statusCode).to.be.equal(404);
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equals('failed to find article and comments');
-        done();
-      });
-  });
-  it('should not let a user delete a comment that he/she did not create', (done) => {
-    chai
-      .request(app)
-      .delete('/api/comments/c90dee64-663d-4d8b-b34d-12acba22cd98')
-      .set('Authorization', `Bearer ${authToken}`)
-      .end((err, res) => {
-        expect(typeof res.statusCode).to.be.equal('number');
-        expect(res.statusCode).to.be.equal(403);
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equals('you are not allowed to delete this comment');
         done();
       });
   });

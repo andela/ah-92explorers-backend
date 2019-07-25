@@ -42,6 +42,7 @@ describe('Search Functionality', () => {
         }
         expect(Object.prototype.toString.call(res.body.results)).to.be.equal('[object Array]');
         assert.notEqual(res.body.results.length, 0);
+        // expect(res.body.results[0].title).to.be.equal('i love you');
         done();
       });
   });
