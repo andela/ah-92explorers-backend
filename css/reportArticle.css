@@ -1,0 +1,94 @@
+
+.theBody
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%
+}
+
+.colOne
+{
+    margin-top: 25%;
+}
+
+.colTwo
+{
+    margin-left: 10%;
+    width: 700px;
+}
+
+.title
+{
+    font-family: 'Sniglet', cursive;
+}
+
+.tags
+{
+    padding: 5px 18px;
+    background: rgba(0,0,0,.05);
+    border: none;
+    color: rgba(0,0,0,.68);
+    outline: rgba(0,0,0,.05);
+    cursor: pointer;
+}
+
+
+
+
+.profileSection
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.reportForm
+{
+    background: #eeeeee;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px !important;
+    margin-top: 30px;
+}
+
+.profileName
+{
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.report
+{
+    margin-top: 30px;
+    height: 40px;
+    padding: 5px 38px;
+    color: #26D07C;
+    border: 1px solid #26D07C;
+    outline: #26D07C;
+    cursor: pointer;
+    background: none;
+}
+
+.cancel
+{
+    margin-top: 30px;
+    height: 40px;
+    padding: 5px 38px;
+    color: rgb(231, 104, 132);
+    border: 1px solid #26D07C;
+    outline: #26D07C;
+    cursor: pointer;
+    background: none;
+}
+
+.cmBox
+{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+}
+

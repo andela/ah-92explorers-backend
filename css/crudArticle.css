@@ -4,6 +4,12 @@
     width: 20px;
 }
 
+.bodyIcons_rate
+{
+    height: 25px;
+    width: 25px;
+}
+
 .bodyImg
 {
     height: 466.5px;
@@ -59,7 +65,7 @@ p
 
 .socialNet
 {
-    margin-left: 60%;
+    margin-left: 50%;
 }
 
 .profileSection
@@ -205,4 +211,21 @@ p
     {
         margin-left: 70%
     }
+}
+
+.logout
+{
+    margin-top: -20%;
+    /* margin-bottom: 20px; */
+    margin-left: 60%;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: #DC143C;
+    padding: 5px 18px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+    color: #ffffff;
 }

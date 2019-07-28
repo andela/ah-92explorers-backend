@@ -75,6 +75,9 @@ li:hover
     background: rgb(230, 233, 240);
     color:#5867dd;
 }
+a{
+    text-decoration: none; color:#959eaf
+}
 
 .navbarLeft
 {

@@ -350,6 +350,23 @@ li
     color: #ffffff;
 }
 
+.logout
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin-left: 45%; */
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: #DC143C;
+    padding: 5px 28px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+    color: #ffffff;
+}
+
 .profName
 {
     font-size: 10px;
