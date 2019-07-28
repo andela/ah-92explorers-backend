@@ -6,6 +6,124 @@ body
     font-family: 'Open Sans', sans-serif;
     background: #eeeeee;
 }
+.dropdown-links {
+    margin-left: 0px;
+    display: none;
+    padding-left: 20px;
+    background: #fff;
+    box-shadow: -1px 3px 8px 0px #00000038;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    margin-right: 0px;
+    position: absolute;
+    top: 40px;
+
+}
+.notification-card {
+    width: 400px;
+    height: 69px;
+    right: 0px;
+    bottom: 0px;
+    background: #fff;
+    box-shadow: -1px -1px 11px 2px #0000001f;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding-top: 5px;
+    padding-left: 5px;    
+    position: fixed;
+    z-index: 100;
+}
+.notification-card img {
+    width: 66px;
+    height: 63px;
+    border-radius: 4px;
+}
+.notifications-drop {
+    position: absolute;
+    width: 380px;
+    padding-left: 15px;
+    right: 129px;
+    top: 40px;
+    display: none;
+    position: absolute;
+    width: 275px;
+    padding-left: 15px;
+    background: #fff;
+    box-shadow: 2px 0px 4px 3px #0000000f;
+    border-radius: 4px;    color: #0000005e;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.read_status {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.notifications-drop > ul > li{
+    margin-right: 0px;
+    margin-bottom: 20px;
+}
+
+.notifications-drop > ul{
+    margin-left: 0px;
+    padding-left: 10px;
+}
+.notif-count {
+    z-index: 9999;
+    position: relative;
+    bottom: 10px;
+    background: red;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 50%;
+    color: #fff;
+    border: 1px solid #fff;
+    left: auto;
+    right: 35px;
+    cursor: pointer;
+}
+.title {
+    font-weight: bolder;
+    font-size: 18px;
+}
+.body {
+    font-size: 12px;
+    color: #8e8686;
+}
+.article-title {
+    font-weight: bolder;
+    font-size: 14px;
+}
+.notification-card ul {
+    margin-left: 40px;
+    display: inline-grid;
+    position: relative;
+    bottom: 80px;
+}
+.search-bar {
+    position: relative;
+    /* padding-bottom: 20px; */
+    /* padding-top: 30px; */
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #0000005e;
+    top: 30px;
+    padding-left: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 250px;
+    margin-right: 30px;
+}
+
+.dropdown-links > li:nth-of-type(0) {
+    margin-bottom: 10px;
+}
+
+.dropdown-links > li {
+    cursor: pointer;
+}
 
 .spBtn
 {
