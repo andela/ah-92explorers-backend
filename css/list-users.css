@@ -1,0 +1,93 @@
+.list-users {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card {
+    width: 30%;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.card-box {
+    background: #ffff;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.rounded-circle.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+
+.rounded-circle.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+.mx-auto {
+    margin: auto !important;
+}
+
+.social-links li a {
+    border-radius: 50%;
+    color: rgba(121, 121, 121, .8);
+    display: inline-block;
+    height: 30px;
+    line-height: 27px;
+    border: 2px solid rgba(121, 121, 121, .5);
+    text-align: center;
+    width: 30px;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-users ul li {
+    display: inline;
+    margin: 0px;
+}
+
+.btn-rounded {
+    border-radius: 2em;
+    margin: 0 auto;
+}
+
+.text-pink {
+    color: #ff679b !important;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.bio {
+    text-align: justify;
+}
