@@ -65,7 +65,7 @@ p
 
 .socialNet
 {
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 .profileSection
@@ -163,16 +163,6 @@ p
     filter: invert(78%) sepia(31%) saturate(3213%) hue-rotate(2deg) brightness(108%) contrast(89%);
 }
 
-.delete
-{
-    filter: invert(26%) sepia(37%) saturate(5056%) hue-rotate(347deg) brightness(88%) contrast(80%);
-}
-
-.edit
-{
-    filter: invert(48%) sepia(89%) saturate(351%) hue-rotate(113deg) brightness(97%) contrast(86%);
-}
-
 .cmBox
 {
     background: none;
@@ -180,6 +170,24 @@ p
     outline: none;
     font-size: 15px;
     width: 100%;
+}
+
+.ratingSection
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.ratings
+{
+    margin-left: 15px;
+}
+
+.time
+{
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 

@@ -34,6 +34,7 @@ body
     position: fixed;
     z-index: 100;
 }
+
 .notification-card img {
     width: 66px;
     height: 63px;
@@ -178,7 +179,7 @@ a {
 
 .logo
 {
-    margin-left: 15%;
+    margin-left: 12%;
     margin-right: 10%;
 }
 

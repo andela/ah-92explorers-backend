@@ -163,6 +163,7 @@ li
     display: flex;
     flex-direction: row;
     margin-left: 7%;
+    margin-bottom: 20px;
 }
 
 .article-card
@@ -257,4 +258,57 @@ li
         width: 85%;
         margin-bottom: 50px;
     }
+}
+
+
+/* Pagination */
+.pagination {
+    display: inline-block;
+    width: 34%;
+    float: right;
+    margin-bottom: 30px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+.pagination a.active {
+    background-color: #367FA9;
+    color: white;
+    border: 1px solid #367FA9;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination.ratings-pages {
+    width: 100%;
+    float: left;
+}
+.pagination.ratings-pages a {
+    color: black;
+    float: left;
+    padding: 2px 16px;
+    text-decoration: none;
+    border: none;
+    background: inherit;
+}
+.pagination.ratings-pages a.active {
+    background-color: #90DFAA;
+    color: #fff;
 }
