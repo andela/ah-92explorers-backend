@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    $('#followUnFollow').on('click',function()
+    {
+        if($(this).hasClass('follow'))
+            $(this).removeClass('follow').addClass('unfollow').text('Unfollow');
+        else
+            $(this).removeClass('unfollow').addClass('follow').text('Follow');           
+    });
+});

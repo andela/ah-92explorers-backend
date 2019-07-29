@@ -6,3 +6,4 @@ package-lock.json
 seeders
 .env
 .dist
+coverage
