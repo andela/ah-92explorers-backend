@@ -9,6 +9,8 @@
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|DM+Serif+Display|Open+Sans&display=swap" rel="stylesheet">
    <link href="css/profile.css" rel="stylesheet" type="text/css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="./js/follow.js"></script>
 </head>
 <body>
    <div class="navbar">
@@ -31,54 +33,48 @@
    </div>
 
    <div class="userProfile">
-       <h1>General Information  <i class="far fa-edit ed"></i></h1>
+       <h1>General Information  <a href="editProfile.html"><i class="far fa-edit ed"></i></a></h1>
        <img src="icons/terrestial.jpg" class="avatar"><br>
-       <button class="upBtn">Upload New Picture</button><br>
+       <button id="followUnFollow" class="upBtn followUnF follow">Follow</button>
        <div>
             <i class="fab fa-facebook fa-2x fb"></i>
             <i class="fab fa-twitter-square fa-2x tw"></i>
             <i class="fab fa-instagram inst fa-2x"></i>
+            <i class="fab fa-linkedin fa-2x"></i>
        </div>
 
        <br>
        <div class="firstForm">
            <div>
                <label>Firstname</label><br>
-               <div class="profName">Mugerwa</div>
+               <div class="profName">Runoro</div>
                
            </div>
 
            <div class="right">
                <label>Lastname</label><br>
-               <div class="profName">Mugerwa</div>
+               <div class="profName">Isaiah</div>
            </div>
        </div>
 
        <div class="firstForm">
            <div>
                <label>Username</label><br>
-               <div class="profName">Mugerwa</div>
+               <div class="profName">Isaiah250</div>
            </div>
 
            <div class="right">
-               <label>Password</label><br>
-               <div class="profName">Mugerwa</div>
+               <label>Phone</label><br>
+               <div class="profName">+2500984939430</div>
            </div>
        </div>
 
        <div class="firstForm">
            <div>
-               <label>New Password</label><br>
-               <div class="profName">New Password</div>
-           </div>
-
-           <div class="right1">
-               <label>Confirm Passwor</label><br>
-               <div class="profName">Confirm Password</div>
+               <label>Location</label><br>
+               <div class="profName">Kigali</div>
            </div>
        </div>
-
-       <button class="updateBtn">Update Profile</button>
    </div>
 </body>
 </html>

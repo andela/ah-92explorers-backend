@@ -77,7 +77,7 @@
     height: 40px;
     padding: 5px 38px;
     color: rgb(231, 104, 132);
-    border: 1px solid #26D07C;
+    border: 1px solid  rgb(231, 104, 132);
     outline: #26D07C;
     cursor: pointer;
     background: none;
