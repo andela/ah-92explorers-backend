@@ -34,6 +34,7 @@ body
     position: fixed;
     z-index: 100;
 }
+
 .notification-card img {
     width: 66px;
     height: 63px;
@@ -178,7 +179,7 @@ a {
 
 .logo
 {
-    margin-left: 15%;
+    margin-left: 12%;
     margin-right: 10%;
 }
 
@@ -468,21 +469,51 @@ li
     color: #ffffff;
 }
 
-.logout
+.signin
 {
     margin-top: 20px;
     margin-bottom: 20px;
-    /* margin-left: 45%; */
+    margin-left: 1%;
     -webkit-border-radius: 36px;
     border-radius: 36px;
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
     box-shadow: 0 1px 4px rgba(0,0,0,.04);
-    background: #DC143C;
+    background: #eeeeee;
     padding: 5px 28px;
     outline: none;
     border: 1px solid rgba(0,0,0,.04);
     cursor: pointer;
-    color: #ffffff;
+}
+.signup
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 1%;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: #eeeeee;
+    padding: 5px 28px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+}
+.createArt{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: -10%;
+    -webkit-border-radius: 36px;
+    border-radius: 36px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    background: #eeeeee;
+    padding: 5px 28px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.04);
+    cursor: pointer;
+
 }
 
 .profName
