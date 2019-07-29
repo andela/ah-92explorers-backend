@@ -162,7 +162,6 @@ router.put('/articles/:slug', checkToken, checkArticleOwner, uploadImage, valida
 *         description: Article deleted successfully
 */
 router.delete('/articles/:slug', checkToken, checkArticleOwner, article.deleteArticle);
-
 /**
 * @swagger
 *  /api/articles/{slug}/share/{channel}:

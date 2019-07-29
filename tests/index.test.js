@@ -171,6 +171,33 @@ const article2 = {
   tagList: 'nodejs, programming'
 };
 
+const highlightText = {
+  startIndex: 1,
+  stopIndex: 24,
+  highlight: 'language which has many',
+  comment: 'change tense'
+};
+
+const invalidEndIndex = {
+  startIndex: 1,
+  stopIndex: 1000,
+  highlight: 'language which has many',
+  comment: 'change tense'
+};
+
+const nullIndex = {
+  startIndex: 1,
+  highlight: 'language which has many',
+  comment: 'change tense'
+};
+
+const negativeIndex = {
+  startIndex: -12,
+  stopIndex: 20,
+  highlight: 'language which has many',
+  comment: 'change tense'
+};
+
 // twitter user
 export const twitterUser = (req, res, next) => {
   req.user = {
@@ -239,5 +266,9 @@ export default {
   givenArticle,
   givenComment1,
   givenComment2,
-  emptyComment
+  emptyComment,
+  highlightText,
+  invalidEndIndex,
+  nullIndex,
+  negativeIndex
 };

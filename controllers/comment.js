@@ -5,15 +5,16 @@ import {
 } from './notifications';
 
 const {
-  comments, sequelize, articles, users, commentEdits
+  comments, sequelize, articles, users, 
+  commentEdits, highlightArticleComments
 } = db;
 
 class Comment {
   static async createComment(req, res) {
+    const transaction = await sequelize.transaction();
     const { body } = req.body;
     const { slug } = req.params;
     const { username } = req.decoded;
-    const transaction = await sequelize.transaction();
     try {
       if (body.length <= 0) {
         return res.status(400).json({
@@ -206,6 +207,34 @@ class Comment {
     } catch (error) {
       return res.status(500).json({
         error: 'failed to get comment'
+      })
+    }
+  }
+  
+  static async highlightTextAndComment(req, res) {
+    try {
+      const { articleSlug } = req.params;
+      const {
+        comment, highlight, startIndex, stopIndex
+      } = req.body;
+      const { email } = req.decoded;
+      const article = await articles.findOne({ where: { slug: articleSlug } });
+      const user = await users.findOne({ where: { email } });
+      const highlightText = await highlightArticleComments.create({
+        startIndex,
+        stopIndex,
+        highlight,
+        comment,
+        articleSlug: article.slug,
+        authorId: user.id
+      }, { returning: true });
+      return res.status(201).json({
+        message: 'successfully commented on text',
+        highlightText
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to comment on highlited text'
       });
     }
   }

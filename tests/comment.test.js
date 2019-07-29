@@ -199,4 +199,71 @@ describe('Create, Get and Delete Comment', () => {
         done();
       });
   });
+  it('Should let user comment on highlited text in an article with valid details', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.highlightText)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(201);
+        expect(res.body.message).to.be.equal('successfully commented on text');
+        expect(res.body.highlightText).to.have.property('comment');
+        expect(res.body.highlightText).to.have.property('startIndex');
+        expect(res.body.highlightText).to.have.property('stopIndex');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalid Indexes', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.invalidEndIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('stopIndex is invalid');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalid null body', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.nullIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('highlight, startIndex, stopIndex and comment cannot be left empty');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with negative Indexes than article', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.negativeIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('startIndex is invalid');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalidSlug', (done) => {
+    chai
+      .request(app)
+      .post('/api/articles/thelondon/highlight/comments')
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.highlightText)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(404);
+        expect(res.body.error).to.be.equal('failed to find article');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
 });

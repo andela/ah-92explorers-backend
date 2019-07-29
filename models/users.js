@@ -77,8 +77,7 @@ export default (sequelize, DataTypes) => {
     users.hasMany(models.articles, { as: 'author', foreignKey: 'authorId' });
     users.hasMany(models.ratings, { foreignKey: 'userId' });
     users.hasMany(models.likes, { as: 'liker', foreignKey: 'userId', sourceKey: 'id' });
-    users.hasMany(models.articles, { foreignKey: 'authorId', allowNull: false });
-    users.hasMany(models.comments, { foreignKey: 'authorId', allowNull: false });
+    users.hasMany(models.highlightArticleComments, { foreignKey: 'authorId', sourceKey: 'id' });
     users.hasMany(models.Follow, { as: 'User', foreignKey: 'followed' });
     users.hasMany(models.bookmark, { foreignKey: 'userId', allowNull: false });
     users.hasMany(models.articleStats, { foreignKey: 'userId' });
