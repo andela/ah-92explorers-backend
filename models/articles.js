@@ -47,6 +47,7 @@ export default (sequelize, DataTypes) => {
     articles.belongsTo(models.users, { as: 'author', foreignKey: 'authorId' });
     articles.hasMany(models.ratings, { foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.likes, { foreignKey: 'articleSlug', sourceKey: 'slug' });
+    articles.hasMany(models.bookmark, { foreignKey: 'articleId' });
   };
   return articles;
 };
