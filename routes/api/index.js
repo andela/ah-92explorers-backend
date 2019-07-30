@@ -6,6 +6,7 @@ import articles from './articles';
 import search from './search';
 import ratings from './ratings';
 import likes from './likes';
+import report from './report';
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use('/', articles);
 router.use('/', search);
 router.use('/', ratings);
 router.use('/', likes);
+router.use('/', report);
 
 export default router;
