@@ -35,7 +35,7 @@ export default (sequelize, DataTypes) => {
     });
     Follow.belongsTo(models.users, {
       foreignKey: 'followed',
-      as: 'User',
+      as: 'following',
       targetkey: 'id',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'

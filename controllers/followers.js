@@ -61,7 +61,7 @@ class follower {
       const followers = await Follow.findAll({
         attributes: [],
         where: { followed: loggedinUser.id },
-        include: [{ model: users, as: 'User', attributes: ['username', 'image'] }]
+        include: [{ model: users, as: 'follower', attributes: ['username', 'image'] }]
       });
       return followers.length
         ? res.status(200).json({
@@ -87,7 +87,7 @@ class follower {
       const following = await Follow.findAll({
         attributes: [],
         where: { userId: loggedinUser.id },
-        include: [{ model: users, as: 'User', attributes: ['username', 'image'] }]
+        include: [{ model: users, as: 'following', attributes: ['username', 'image'] }]
       });
       return following.length
         ? res.status(200).json({
