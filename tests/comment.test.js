@@ -7,9 +7,10 @@ chai.use(chaiHttp);
 const { expect } = chai;
 const slugArticle = 'the-basics-of-java';
 let authToken;
+let authToken2;
 const invalidToken = 'ohgod';
 
-describe('Comment on Article', () => {
+describe('Create, Get and Delete Comment', () => {
   // @user login
   it('should send back a token after sucessful login', (done) => {
     chai.request(app)
@@ -18,6 +19,16 @@ describe('Comment on Article', () => {
       .end((err, res) => {
         res.should.have.status(200);
         authToken = res.body.user.token; // get the token
+        done();
+      });
+  });
+  it('should send back a token after sucessful login', (done) => {
+    chai.request(app)
+      .post('/api/users/login')
+      .send(user.secondLogin)
+      .end((err, res) => {
+        res.should.have.status(200);
+        authToken2 = res.body.user.token; // get the token
         done();
       });
   });
@@ -77,8 +88,8 @@ describe('Comment on Article', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .send(user.login)
       .end((err, res) => {
-        // expect(typeof res.statusCode).to.be.equal('number');
-        expect(res.statusCode).to.be.equal(400);
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(500);
         done();
       });
   });
@@ -97,6 +108,72 @@ describe('Comment on Article', () => {
         expect(res.body.comment.author).to.have.property('username');
         expect(res.body.comment).to.have.property('createdAt');
         expect(res.body.comment).to.have.property('updatedAt');
+        done();
+      });
+  });
+  it('should let a user get all comments on an article with a valid article slug', (done) => {
+    chai
+      .request(app)
+      .get('/api/articles/the-basics-of-java/comments')
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(200);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('article');
+        expect(res.body.message).to.equals('successfully fetched comments of this article');
+        expect(res.body.article).to.have.property('createdAt');
+        expect(res.body.article).to.have.property('comments');
+        expect(res.body.article.comments[0]).to.have.property('body');
+        expect(res.body.article.comments[0]).to.have.property('commentor');
+        done();
+      });
+  });
+  it('should not let a user to get comments with an invalid slug', (done) => {
+    chai
+      .request(app)
+      .get('/api/articles/the-basics-of-jav/comments')
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(404);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equals('failed to find article and comments');
+        done();
+      });
+  });
+  it('should not let a user delete a comment that he/she did not create', (done) => {
+    chai
+      .request(app)
+      .delete('/api/comments/c90dee64-663d-4d8b-b34d-12acba22cd98')
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(403);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equals('you are not allowed to delete this comment');
+        done();
+      });
+  });
+  it('should let a user delete a comment that he/she created', (done) => {
+    chai
+      .request(app)
+      .delete('/api/comments/c90dee64-663d-4d8b-b34d-12acba22cd98')
+      .set('Authorization', `Bearer ${authToken2}`)
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(204);
+        done();
+      });
+  });
+  it('should not let a user delete a comment provided wrong id', (done) => {
+    chai
+      .request(app)
+      .delete('/api/comments/c90dee64-663d-4d8b-b34d-12acba22cd98')
+      .set('Authorization', `Bearer ${authToken}`)
+      .end((err, res) => {
+        expect(typeof res.statusCode).to.be.equal('number');
+        expect(res.statusCode).to.be.equal(404);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equals('failed to find comment');
         done();
       });
   });

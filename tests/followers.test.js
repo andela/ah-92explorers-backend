@@ -168,7 +168,7 @@ describe('Following a user', () => {
         done();
       });
   });
-  it('should be able to follow each other', (done) => {
+  it('should allow users to follow each other', (done) => {
     chai.request(app)
       .post(`/api/${userName1}/follow`)
       .set('Authorization', `Bearer ${tokenGen2}`)

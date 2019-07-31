@@ -79,7 +79,7 @@ class Rating {
       const rating = await ratings.findAll({
         where: { articleSlug },
         attributes: ['rating'],
-        include: [{ model: users, attributes: ['username', 'image'] }],
+        include: [{ as: 'reviewer', model: users, attributes: ['username', 'image'] }],
         offset: ((parseInt(page, 10) - 1) * limit),
         limit
       });

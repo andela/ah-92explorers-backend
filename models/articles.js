@@ -30,7 +30,7 @@ export default (sequelize, DataTypes) => {
     authorId: {
       type: DataTypes.UUID,
       references: {
-        model: 'user',
+        model: 'users',
         key: 'id'
       }
     },
@@ -45,9 +45,10 @@ export default (sequelize, DataTypes) => {
   });
   articles.associate = (models) => {
     articles.belongsTo(models.users, { as: 'author', foreignKey: 'authorId' });
-    articles.hasMany(models.ratings, { foreignKey: 'articleSlug', sourceKey: 'slug' });
-    articles.hasMany(models.likes, { foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.bookmark, { foreignKey: 'articleId' });
+    articles.hasMany(models.ratings, { as: 'ratings', foreignKey: 'articleSlug', sourceKey: 'slug' });
+    articles.hasMany(models.likes, { as: 'likes', foreignKey: 'articleSlug', sourceKey: 'slug' });
+    articles.hasMany(models.comments, { as: 'comments', foreignKey: 'articleId', sourceKey: 'id' });
   };
   return articles;
 };
