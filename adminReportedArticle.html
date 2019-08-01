@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Reported Article</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/adminReportedArticle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="navbarOne">
-        <a href="./index.html"><img src="icons/logo.png" class="logo"></a>
-        <button class="btnDB">Dashboard</button>
-        <img src="icons/notification.svg" class="navIcons navLeft">
-        <img src="icons/man.svg" class="navIcons" style="margin-left: 10px">
-    </div>
+        <div class="navbarOne">
+                <a href="./index.html"><img src="icons/logo.png" class="logo"></a>
+                <button class="btnDB">Dashboard</button>
+                <img src="icons/notification.svg" class="navIcons navLeft">
+                <img src="icons/man.svg" class="navIcons" style="margin-left: 10px">
+                <a href="#"><button class="signout">sign out</button></a>
+            </div>
 
     <div class="navbarTwo">
         <div class="navbarLeft">
@@ -30,7 +32,7 @@
     </div>
 
     <div class="headliner">
-        <h3>Reported Article</h3>
+        <h3>Reported Articles</h3>
         <img>
     </div>
 
@@ -40,114 +42,54 @@
                 <thead class="head">
                     <tr>
                         <th class="tb_sb">Reported by</th>
-                        <th class="tb_sb">Name</th>
+                        <th class="tb_sb">Article</th>
                         <th class="tb_sb_message">Message</th>
                         <th class="tb_sb">Type</th>
                         <th class="tb_sb">Date</th>
-                        <th class="tb_sb">Access</th>
                         <th class="tb_sb">Actions</th>
                     </tr>
                 </thead>
                 <tbody style="overflow-y: auto">
                     <tr>
-                        <th class="tb_sb_1"><img src="icons/man.svg" class="tableProfile"></th>
-                        <td class="tb_sb_1">Celestin </td>
+                        <td class="tb_sb_1"> <img src="icons/man.svg" class="tableProfile"><br>Celestin </td>
+                        <td class="tb_sb_1">JavaScript is a language which has many frameworks and libraries</td>
                         <td class="tb_sb_5">Hi, I would like to inform you that this article has violate the rules and regulations of Authors Haven</td>
                         <td class="tb_sb_1">Violation rules</td>
                         <td class="tb_sb_1">11/21/19</td>
-                        <td class="tb_sb_1">1</td>
                         <td class="tb_sb_1">
-                            <img src="icons/trash.svg" class="tableIcons">
+                                <span class="fa fa-ban" style="color:brown"></span>
+                                <span class="fa fa-trash" style="color:brown"></span>
+                            <a href="./crudArticle.html" style="color:black"><span class="fa fa-eye" style="color:blue" ></span></a>
                         </td>
                     </tr>
                        <tr>
-                        <th class="tb_sb_1"><img src="icons/man.svg" class="tableProfile"></th>
-                        <td class="tb_sb_1">Celestin </td>
+                        <td class="tb_sb_1"> <img src="icons/man.svg" class="tableProfile"><br>Celestin </td>
+                        <td class="tb_sb_1">Express is a language which has many frameworks and libraries</td>
                         <td class="tb_sb_1">Hi, I would like to inform you that this article has violate the rules and regulations of Authors Haven</td>
                         <td class="tb_sb_1">Violation rules</td>
                         <td class="tb_sb_1">11/21/19</td>
-                        <td class="tb_sb_1">1</td>
                         <td class="tb_sb_1">
-                            <img src="icons/trash.svg" class="tableIcons">
+                                <span class="fa fa-ban" style="color:brown"></span>
+                                <span class="fa fa-trash" style="color:brown"></span>
+<a href="./crudArticle.html" style="color:black"><span class="fa fa-eye" style="color:blue" ></span></a>
                         </td>
                     </tr>
                     <tr>
-                        <th class="tb_sb_1"><img src="icons/man.svg" class="tableProfile"></th>
-                        <td class="tb_sb_1">Celestin </td>
+                        <td class="tb_sb_1"> <img src="icons/man.svg" class="tableProfile"><br>Celestin </td>
+                        <td class="tb_sb_1">Node is a language which has many frameworks and libraries</td>
                         <td class="tb_sb_1">Hi, I would like to inform you that this article has violate the rules and regulations of Authors Haven</td>
                         <td class="tb_sb_1">Violation rules</td>
                         <td class="tb_sb_1">11/21/19</td>
-                        <td class="tb_sb_1">1</td>
                         <td class="tb_sb_1">
-                            <img src="icons/trash.svg" class="tableIcons">
+                            <span class="fa fa-ban" style="color:brown"></span>
+                            <span class="fa fa-trash" style="color:brown"></span>
+<a href="./crudArticle.html" style="color:black"><span class="fa fa-eye" style="color:blue" ></span></a>
                         </td>
                     </tr>
                 </tbody> 
             </table>
         </div>
     </div>
-
-    <div class="secondPhase">
-        <div class="articlesBest">
-            <div class="mediaHeadline">
-                <h3>Best Sellers</h3>
-                <h4>Today</h4>
-                <h4>Week</h4>
-                <h4>Month</h4>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product27.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product27.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product27.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-        </div>
-        <div class="notifications">
-            <div class="mediaHeadline">
-                <h3>Best Sellers</h3>
-                <h4>Today</h4>
-                <h4>Week</h4>
-                <h4>Month</h4>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product15.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product15.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-            <div class="mediaSubjects">
-                <img src="https://keenthemes.com/metronic/preview/demo5/assets/media//products/product15.jpg" class="badge2">
-                <div class="mediaLeft">
-                    <h4>Great Logo Designer</h4>
-                    <p>Author: Michael Released: 23:07</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <h2>
             Authors Heaven
