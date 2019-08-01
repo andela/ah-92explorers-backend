@@ -1,12 +1,11 @@
 /* Pagination */
 .pagination.on-landing {
-    margin-top: 20px;
     width: auto;
-    float: right;
+    float: none;
     margin: 20px auto;
     display: block;
     padding: 0px;
-    width: 36.4%;
+    width: 25%;
 }
 
 .pagination {

@@ -117,3 +117,19 @@ body {
   .form .btn.btn-google:hover, .form .btn.btn-google:active, .form .btn.btn-google:focus {
     background: #db3236;
     border-color: #db3236; }
+
+    .form .btn.btn-twitter {
+      background: #0b99cd;
+      border-color: #0b99cd; }
+
+  .fa-facebook {
+      color: #3C599F;
+  }
+  
+  .fa-twitter {
+      color: #0b99cd;
+  }
+
+  .fa-google {
+    color: #db3236;
+}

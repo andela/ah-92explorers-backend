@@ -1,0 +1,37 @@
+.all-stats {
+    background: #fff;
+    width: 80%;
+    margin: 20px auto;
+    padding: 30px;
+}
+
+.article-title {
+    width: 400px;
+}
+
+.article-t a{
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+th {
+    text-align: left;
+    width: 200px;
+}
+
+td {
+    padding: 8px 0px;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+td a {
+    text-decoration: none;
+    color: #63c1ec;
+}
+
+.sub{
+    color: grey
+}
