@@ -11,11 +11,11 @@
 </head>
 <body>
         <div class="navbar">
-            <img src="icons/logo.png" class="logo">
+            <a href="./index.html"><img src="icons/logo.png" class="logo"></a>
             <ul>
-                <li>Dashboard</li>
-                <li>Favourites</li>
-                <li>Profile</li>
+                <li><a href="adminDashboard.html">Dashboard</a></li>
+                <li><a href="">Stats</a></li>
+                <li><a href="profile.html">Profile</a></li>
             </ul>
             <div class="restOfNav">
                 <img src="icons/search.svg" class="navIcons navIconColor disappear">
@@ -23,7 +23,15 @@
                 <img src="icons/man.svg" class="navIcons manIcon">
                 <div>
                     <span class="navName">Celestin</span>
-                    <img src="icons/down-arrow.svg" class="navIcons navIconColor navIconSmall disappear">
+                    <img src="icons/down-arrow.svg" class="navIcons navIconColor dropdown navIconSmall disappear">
+                    <ul class="dropdown-links">
+                        <li>
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li>
+                            <a href="./index.html">Sign out</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -50,5 +58,6 @@
                 </div>
             </div>
         </div>
+        <script src="./js/dropdown.js"/>
 </body>
 </html>

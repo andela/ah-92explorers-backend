@@ -12,6 +12,15 @@ button a{
     text-decoration-line: none;
 }
 
+.signout {
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    background: red;
+    border: none;
+    margin-left: 12px;
+    margin-top: 25px;
+}
 .logo
 {
     width: 200px;

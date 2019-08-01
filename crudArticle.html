@@ -13,9 +13,9 @@
         <div class="navbar">
             <img src="icons/logo.png" class="logo">
             <ul>
-                <li>Dashboard</li>
-                <li>Favourites</li>
-                <li>Profile</li>
+                <li><a href="./userDashboard.html">Dashboard</a></li>
+                <li><a href="./stats.html">Stats</a></li>
+                <li><a href="./profile.html">Profile</a></li>
             </ul>
             <div class="restOfNav">
                 <img src="icons/search.svg" class="navIcons navIconColor disappear">
@@ -23,7 +23,15 @@
                 <img src="icons/man.svg" class="navIcons manIcon">
                 <div>
                     <span class="navName">Mugerwa</span>
-                    <img src="icons/down-arrow.svg" class="navIcons navIconColor navIconSmall disappear">
+                    <img src="icons/down-arrow.svg" class="navIcons navIconColor navIconSmall dropdown disappear">
+                    <ul class="dropdown-links">
+                        <li>
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li>
+                            <a href="./index.html">Sign out</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -105,6 +113,6 @@
                 </div>
             </div>
         </div>
-    
+    <script src="./js/dropdown.js"/>
 </body>
 </html>

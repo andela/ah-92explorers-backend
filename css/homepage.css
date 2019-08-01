@@ -84,6 +84,7 @@ body
     left: auto;
     right: 35px;
     cursor: pointer;
+    font-size: 12px;
 }
 .title {
     font-weight: bolder;

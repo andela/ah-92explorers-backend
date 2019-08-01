@@ -13,6 +13,14 @@ body
     margin-top: 20px;
 }
 
+.signout {
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    background: red;
+    border: none;
+    margin-left: 12px;
+}
 .logo
 {
     width: 150px;
