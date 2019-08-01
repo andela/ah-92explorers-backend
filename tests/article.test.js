@@ -46,13 +46,31 @@ describe('CRUD articles routes', () => {
   });
 
   // @fail to create when the title is empty
-  it('should not create an article if either the title or the body is null', (done) => {
+  it('should not create an article if the title is null', (done) => {
     chai.request(app)
       .post('/api/articles')
       .set('Authorization', `Bearer ${authToken}`)
       .set('Content-Type', 'multipart/form-data')
       .field('article', '')
       .field('body', dummy.article1.body)
+      .field('tagList', dummy.article1.tagList)
+      .attach('image', '')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('Object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+
+  // @fail to create when the title is empty
+  it('should not create an article if the body is null', (done) => {
+    chai.request(app)
+      .post('/api/articles')
+      .set('Authorization', `Bearer ${authToken}`)
+      .set('Content-Type', 'multipart/form-data')
+      .field('article', dummy.article1.title)
+      .field('body', '')
       .field('tagList', dummy.article1.tagList)
       .attach('image', '')
       .end((err, res) => {
@@ -190,12 +208,28 @@ describe('CRUD articles routes', () => {
   });
 
   // @fail update if the title updated is empty
-  it('should not create an article if the title or body updated is empty', (done) => {
+  it('should not create an article if the title updated is empty', (done) => {
     chai.request(app)
       .put(`/api/articles/${articleSlug}`)
       .set('Authorization', `Bearer ${authToken}`)
       .set('Content-Type', 'multipart/form-data')
       .field('title', dummy.article2.title)
+      .attach('image', '')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('Object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+
+  // @fail update if the body updated is empty
+  it('should not create an article if the body updated is empty', (done) => {
+    chai.request(app)
+      .put(`/api/articles/${articleSlug}`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .set('Content-Type', 'multipart/form-data')
+      .field('body', dummy.article2.body)
       .attach('image', '')
       .end((err, res) => {
         res.should.have.status(400);
@@ -302,7 +336,7 @@ describe('Share articles across different channels', () => {
         done();
       });
   });
-  it('should  share to facebook', (done) => {
+  it('should share to facebook', (done) => {
     chai.request(app)
       .post(`/api/articles/${slugArticle}/share/facebook`)
       .set('Authorization', `Bearer ${authToken}`)
@@ -312,7 +346,7 @@ describe('Share articles across different channels', () => {
         done();
       });
   });
-  it('should  share to twitter', (done) => {
+  it('should share to twitter', (done) => {
     chai.request(app)
       .post(`/api/articles/${slugArticle}/share/twitter`)
       .set('Authorization', `Bearer ${authToken}`)
@@ -322,7 +356,7 @@ describe('Share articles across different channels', () => {
         done();
       });
   });
-  it('should  share to mail', (done) => {
+  it('should share to mail', (done) => {
     chai.request(app)
       .post(`/api/articles/${slugArticle}/share/mail`)
       .set('Authorization', `Bearer ${authToken}`)
@@ -333,7 +367,6 @@ describe('Share articles across different channels', () => {
       });
   });
 });
-
 
 export default {
   authToken

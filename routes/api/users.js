@@ -12,6 +12,7 @@ import Follower from '../../controllers/followers';
 import { checkToken } from '../../middlewares';
 import socialAuth from '../../controllers/socialAuth';
 import resetPasswordController from '../../controllers/resetPassword';
+import articleStats from '../../controllers/readingStat';
 
 // const follower = new Follower();
 
@@ -281,5 +282,7 @@ router.patch('/profiles', checkToken, uploadImage, Validations.validateProfile, 
 router.post('/:username/follow', checkToken, Follower.follow);
 router.get('/followers', checkToken, Follower.followers);
 router.get('/following', checkToken, Follower.following);
+
+router.get('/users/reading-stats', checkToken, articleStats.getUserReadingStats);
 
 export default router;

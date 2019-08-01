@@ -49,6 +49,7 @@ export default (sequelize, DataTypes) => {
     articles.hasMany(models.ratings, { as: 'ratings', foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.likes, { as: 'likes', foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.comments, { as: 'comments', foreignKey: 'articleId', sourceKey: 'id' });
+    articles.hasMany(models.articleStats, { foreignKey: 'articleSlug', sourceKey: 'slug' });
   };
   return articles;
 };

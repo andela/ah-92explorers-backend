@@ -64,7 +64,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: '0'
     },
-
     isVerified: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
@@ -79,6 +78,7 @@ export default (sequelize, DataTypes) => {
     users.hasMany(models.comments, { foreignKey: 'authorId', allowNull: false });
     users.hasMany(models.Follow, { as: 'User', foreignKey: 'followed' });
     users.hasMany(models.bookmark, { foreignKey: 'userId', allowNull: false });
+    users.hasMany(models.articleStats, { foreignKey: 'userId' });
   };
   return users;
 };

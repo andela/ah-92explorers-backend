@@ -140,7 +140,7 @@ describe('Following a user', () => {
         done();
       });
   });
-  it('should be able to sign up2', (done) => {
+  it('should be able to sign up', (done) => {
     chai.request(app)
       .post('/api/users')
       .send(user.userSignup)
@@ -149,11 +149,10 @@ describe('Following a user', () => {
         expect(status).to.equal(201);
         expect(res.body).to.be.an('object');
         expect(body).to.have.property('message');
-        expect(body).to.have.property('user');
         done();
       });
   });
-  it('should be able to sign in2', (done) => {
+  it('should be able to sign in', (done) => {
     chai.request(app)
       .post('/api/users/login')
       .send(user.userLogin)
