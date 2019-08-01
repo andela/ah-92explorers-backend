@@ -341,7 +341,7 @@ li
     display: flex;
     flex-direction: row;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .firstRowFirst
@@ -734,3 +734,4 @@ li
         margin-left: 30%
     }
 }
+

@@ -7,17 +7,14 @@
     <title>Landing Page</title>   
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="css/homepage.css" rel="stylesheet" type="text/css">
+    <link href="css/pagination.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <nav>
         <div class="firstNavbar">
             <img src="icons/logo.png" class="logo">
             <input class="search-bar" type="text" name="search" placeholder="Title, author, tag, keyword ..."/>
-            <!-- <img src="icons/search.svg" class="navIcons notifications disappear"> -->
-            <!-- <div>
-                <img src="icons/notification.svg" class="navIcons notifications disappear">
-                <span class="notif-count">6</span>
-            </div> -->
+            
             <div class="notifications-drop">
             <ul>
                 <li class="title">hillary liked your article <span>unread</span></li>
@@ -27,8 +24,6 @@
                 <li class="title">hillary liked your article <span>unread</span></li>
             </ul>
             </div>
-
-            <!-- <a href="./userDashboard.html"><img src="icons/man.svg" class="manIcon"></a> -->
         
             <button class="signup"> <a href="authentication-mockups/signup.html">Sign Up</a></button>
             <button class="signin"><a href="authentication-mockups/login.html">Sign In</a></button>
@@ -224,15 +219,18 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="notification-card">
-            <img src="./icons/beautiful.jpeg"/>
-            <ul>
-                <li class="title">update on article you liked</li>
-                <li class="body">celestine commented on <span class="article-title">how to learn java</span></li>
-            </ul>
-        </div> -->
-        <!-- <button class="showMore">Logout</button></div> -->
 
+        </div>
+        <div class="pagination on-landing">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
     </div>
     <script src="./js/dropdown.js"></script>
 </body>
