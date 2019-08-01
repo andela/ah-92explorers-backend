@@ -5,13 +5,11 @@ import user from './index.test';
 
 chai.use(chaiHttp);
 const { expect } = chai;
-
 let tokenGen1;
 let tokenGen2;
 const userName1 = 'akramTinny';
 const userName2 = 'peter';
 const userNameSample = 'isaie';
-
 describe('Following a user', () => {
   it('should be able to sign in1', (done) => {
     chai.request(app)
@@ -31,7 +29,6 @@ describe('Following a user', () => {
         done();
       });
   });
-
   it('should be able to follow each other', (done) => {
     chai.request(app)
       .post(`/api/${userName2}/follow`)
@@ -72,7 +69,6 @@ describe('Following a user', () => {
         done();
       });
   });
-
   it('should not be able to follow themselves', (done) => {
     chai.request(app)
       .post(`/api/${userName1}/follow`)

@@ -9,6 +9,9 @@ describe('Search Functionality', () => {
     chai.request(app)
       .get('/api/articles?title=How to train your dragon')
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(Object.prototype.toString.call(res.body.results)).to.be.equal('[object Array]');
         assert.notEqual(res.body.results.length, 0);
         expect(res.body.results[0]).to.have.property('title');
@@ -20,6 +23,9 @@ describe('Search Functionality', () => {
     chai.request(app)
       .get('/api/articles?tag=life')
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(Object.prototype.toString.call(res.body.results)).to.be.equal('[object Array]');
         assert.notEqual(res.body.results.length, 0);
         expect(res.body.results[0]).to.have.property('tagList');
@@ -31,9 +37,11 @@ describe('Search Functionality', () => {
     chai.request(app)
       .get('/api/articles?keyword=how')
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(Object.prototype.toString.call(res.body.results)).to.be.equal('[object Array]');
         assert.notEqual(res.body.results.length, 0);
-        // expect(res.body.results[0].title).to.equals('i love you');
         done();
       });
   });
@@ -41,6 +49,9 @@ describe('Search Functionality', () => {
     chai.request(app)
       .get('/api/articles?keyword=ow')
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res.statusCode).to.be.equal(404);
         done();
       });

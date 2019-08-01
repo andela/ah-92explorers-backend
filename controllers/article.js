@@ -3,6 +3,7 @@ import he from 'he';
 import open from 'open';
 import models from '../models';
 import { accReadTime } from '../helpers/readTime';
+import { notificationForFollower, sendNotificationToFollower } from './notifications';
 
 const {
   articles, users, ratings, likes, comments
@@ -131,6 +132,9 @@ class Article {
         image,
         author: { username, bio, image: user.image },
       };
+      const message = `${username} published new article`;
+      await notificationForFollower(article.authorId, message);
+      await sendNotificationToFollower(article.authorId, message);
       return res.status(201).json({ message: 'Article created successfully', article: payload });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to create article, please try again' });
@@ -210,6 +214,11 @@ class Article {
       const {
         slug, authorId, image, createdAt, updatedAt
       } = updatedArticle[1][0];
+      const message = `
+      ${req.decoded.username} 
+      updated article ${updatedArticle[1][0].title}`;
+      await notificationForFollower(updatedArticle[1][0].authorId, message);
+      await sendNotificationToFollower(updatedArticle[1][0].authorId, message);
       const payload = {
         slug,
         title,

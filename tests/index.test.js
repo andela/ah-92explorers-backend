@@ -121,6 +121,30 @@ const fakeRoleLevelInteger = {
   accessLevel: 5
 };
 
+
+const givenArticle = {
+  title: 'article medium',
+  body: `it’s just the “cost of doing business.
+  I first heard that phrase as we mulled over my client’s plea deal. 
+  Evidently, when you run a multinational company, you pay a lot of bills that 
+  would give the rest of us sticker shock. One of them was a multibillion-dollar
+   fine for price-fixing.I was just a few months out of Harvard Law, working at 
+   one of the top law firms in New York, and I felt like I was staring through the 
+   looking glass. I had naively assumed that these record penalties would stun my 
+   clients, but I was wrong. In the end, navigating antitrust violations was just 
+   another business negotiation.Sound familiar? Facebook was hit with a $5 billion 
+   fine from the Federal Trade Commission earlier this month for mishandling user data`,
+  tagList: 'life, boost, chill',
+};
+
+const givenComment1 = {
+  body: 'Woowww! Nice article bro:)'
+};
+
+const givenComment2 = {
+  body: 'What?????? You must be joking:)'
+};
+
 const invalidDummy = {
   email: 'love123@gmail.com',
   password: 'Alpha13$',
@@ -207,5 +231,8 @@ export default {
   ratingFalse,
   ratingFalseNumber,
   author,
-  secondLogin
+  secondLogin,
+  givenArticle,
+  givenComment1,
+  givenComment2
 };

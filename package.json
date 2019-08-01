@@ -4,8 +4,7 @@
   "description": "A Social platform for the creative at heart",
   "main": "index.js",
   "scripts": {
-    "start": "npm run create && NODE_ENV=production babel-node index.js && redis-server",
-    "create": "NODE_ENV=production sequelize db:migrate && npm run seed",
+    "start": "babel-node index.js && redis-server",
     "dev": "NODE_ENV=development nodemon ./index.js --exec babel-node",
     "test": "NODE_ENV=test npm run setup:test && NODE_ENV=test mocha --require @babel/register ./tests --timeout 10000 --exit",
     "setup:test": "NODE_ENV=test npm run migrate:undo && NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
@@ -75,7 +74,8 @@
     "swagger-ui-express": "^4.0.6",
     "underscore": "^1.9.1",
     "uuid": "^3.3.2",
-    "uuidv4": "^4.0.0"
+    "uuidv4": "^4.0.0",
+    "socket.io": "*"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",

@@ -11,24 +11,20 @@ class follower {
    * @param {object} res
    * @returns {object} res message
    */
-
   static async follow(req, res) {
     try {
       const { username } = req.params;
       const checkUser = await users.findOne({ where: { username } });
       const loggedinUser = await users.findOne({ where: { username: req.decoded.username } });
-
       if (!checkUser) {
         return res.status(404).json({ error: 'User does not exists!' });
       }
       if (checkUser.id === loggedinUser.id) {
         return res.status(400).json({ error: 'You can not follow yourself' });
       }
-
       const following = await Follow.findOne({
         where: { userId: loggedinUser.id, followed: checkUser.id }
       });
-
       if (!following) {
         await Follow.create({
           followed: checkUser.id,
@@ -38,7 +34,6 @@ class follower {
           message: `you are following ${checkUser.username}`,
         });
       }
-
       await Follow.destroy({ where: { userId: loggedinUser.id, followed: checkUser.id } });
       return res.status(200).json({
         message: `you unfollowed ${checkUser.username}`,
@@ -54,7 +49,6 @@ class follower {
    * @param {object} res
    * @returns {object} res message
    */
-
   static async followers(req, res) {
     try {
       const loggedinUser = await users.findOne({ where: { username: req.decoded.username } });
@@ -80,7 +74,6 @@ class follower {
    * @param {object} res
    * @returns {object} res message
    */
-
   static async following(req, res) {
     try {
       const loggedinUser = await users.findOne({ where: { username: req.decoded.username } });

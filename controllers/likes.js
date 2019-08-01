@@ -1,4 +1,10 @@
 import models from '../models';
+import {
+  notificationForFavorite,
+  notifyFavoritees,
+  notificationForFollower,
+  sendNotificationToFollower,
+} from './notifications';
 
 const { articles, likes, users } = models;
 
@@ -21,7 +27,7 @@ class Like {
         include: [{ as: 'liker', model: likes }]
       });
       const like = await likes.findOne({ where: { articleSlug: article.slug, userId: user.id }, attributes: ['typeState'] });
-
+      const message = `${req.decoded.username} liked an article you follow`;
       switch (true) {
         case !like:
           await likes.create({
@@ -29,6 +35,10 @@ class Like {
             articleSlug: article.slug,
             typeState: 1
           });
+          await notificationForFollower(article.id, message);
+          await sendNotificationToFollower(article.id, message);
+          await notificationForFavorite(article.id, message, article.authorId, article.slug);
+          await notifyFavoritees(article.id, message, article.authorId, article.slug);
           return res.status(201).json({
             message: 'successfully liked article'
           });

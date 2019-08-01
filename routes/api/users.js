@@ -13,6 +13,12 @@ import { checkToken } from '../../middlewares';
 import socialAuth from '../../controllers/socialAuth';
 import resetPasswordController from '../../controllers/resetPassword';
 import articleStats from '../../controllers/readingStat';
+import {
+  subscribe,
+  allNotifications,
+  singleNotification,
+  deleteNotification
+} from '../../controllers/notifications';
 
 // const follower = new Follower();
 
@@ -285,4 +291,9 @@ router.get('/following', checkToken, Follower.following);
 
 router.get('/users/reading-stats', checkToken, articleStats.getUserReadingStats);
 
+
+router.patch('/notifications/subscribe', checkToken, subscribe);
+router.get('/notifications', checkToken, allNotifications);
+router.get('/notifications/:id', checkToken, singleNotification);
+router.delete('/notifications/:id', checkToken, deleteNotification);
 export default router;
