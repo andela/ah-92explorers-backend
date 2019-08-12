@@ -8,15 +8,28 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/adminReportedArticle.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="css/adminNavbar.css" rel="stylesheet" type="text/css">
+ 
 </head>
 <body>
-        <div class="navbarOne">
-                <a href="./index.html"><img src="icons/logo.png" class="logo"></a>
-                <button class="btnDB">Dashboard</button>
-                <img src="icons/notification.svg" class="navIcons navLeft">
-                <img src="icons/man.svg" class="navIcons" style="margin-left: 10px">
-                <a href="#"><button class="signout">sign out</button></a>
-            </div>
+        <div class="navBarAdminPanel" style="color: gray"; width: 100%>
+                <div class="firstNavbar">
+                    <img src="icons/logo.png" class="logo">
+                    <a href="./userDashboard.html"><img src="icons/man.svg" class="manIcon"></a>
+                    <div class="nameAndIcon">
+                        <div class="navName">Mugerwa</div>
+                        <img src="icons/down-arrow.svg" class="navIcons dropdown">
+                        <ul class="dropdown-links">
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="./userDashboard.html">My Articles</a></li>
+                            <li><a href="./list-users.html">People</a></li>
+                            <li><a href="./stats.html">Stats</a></li>
+                            <li><a href="./index.html">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
     <div class="navbarTwo">
         <div class="navbarLeft">
             <ul>
@@ -56,7 +69,6 @@
                         <td class="tb_sb_1">Violation rules</td>
                         <td class="tb_sb_1">11/21/19</td>
                         <td class="tb_sb_1">
-                                <span class="fa fa-ban" style="color:coral"></span>
                                 <span class="fa fa-trash" style="color:brown"></span>
                             <a href="./crudArticle.html" style="color:black"><span class="fa fa-eye" style="color:blue" ></span></a>
                         </td>
@@ -94,5 +106,6 @@
             Authors Heaven
         </h2>
     </footer>
+    <script src="./js/dropdown.js"></script>
 </body>
 </html>
