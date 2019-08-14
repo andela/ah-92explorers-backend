@@ -4,7 +4,7 @@ node_js:
   - 'stable'
 
 cache:
-  - 'node_modules'
+  npm: false
 
 services:
   - postgresql
