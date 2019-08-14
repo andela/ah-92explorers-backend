@@ -7,6 +7,7 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     logging: false,
+    seederStorage: 'sequelize',
   },
   test: {
     use_env_variable: 'DATABASE_TEST',
@@ -17,6 +18,7 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     logging: false,
+    seederStorage: 'sequelize',
   },
   email: {
     user: process.env.SENDER_EMAIL,
