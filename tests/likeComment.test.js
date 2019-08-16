@@ -3,13 +3,10 @@ import chaiHttp from 'chai-http';
 import app from '../index';
 import dummyData from './index.test';
 
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
 const userToken = [];
-
-let commentId;
 
 describe('Tesing if user can like/unlike a comment', () => {
   it('should login an admin', (done) => {
@@ -31,7 +28,7 @@ describe('Tesing if user can like/unlike a comment', () => {
 
   it('should not allow a user to like a comment with invalid article id', (done) => {
     chai.request(app)
-      .post(`/api/article/comment/${commentId}2/like`)
+      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd9x/like')
       .set('Authorization', `Bearer ${userToken[0]}`)
       .end((error, res) => {
         const { status, body } = res;

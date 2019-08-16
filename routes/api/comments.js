@@ -1,6 +1,6 @@
 import express from 'express';
 import commentController from '../../controllers/comment';
-import { checkToken } from '../../middlewares';
+import { checkToken, checkHighlightAndComment } from '../../middlewares';
 
 const router = express.Router();
 
@@ -41,5 +41,6 @@ router.get('/articles/:articleSlug/comments', commentController.getArticleCommen
 router.get('/comments/:commentId', commentController.getSingleComment);
 router.patch('/comments/:commentId', checkToken, commentController.updateComment);
 router.delete('/comments/:commentId', checkToken, commentController.deleteComment);
+router.post('/articles/:articleSlug/highlight/comments', checkToken, checkHighlightAndComment, commentController.highlightTextAndComment);
 
 export default router;

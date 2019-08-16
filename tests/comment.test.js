@@ -74,7 +74,6 @@ describe('Create, Get and Delete Comment', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(404);
         expect(res.body.error).to.be.equal('article or user not found');
         done();
@@ -87,7 +86,6 @@ describe('Create, Get and Delete Comment', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(404);
         done();
       });
@@ -111,11 +109,8 @@ describe('Create, Get and Delete Comment', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .send(user.comment)
       .end((err, res) => {
-        // expect(typeof res.statusCode).to.be.equal('number');
         expect(res.statusCode).to.be.equal(201);
-        // expect(typeof res.body.comment.body).to.be.equal('string');
         expect(res.body.comment.body).to.be.equal('My dragon is finally flying');
-        // expect(typeof res.body.comment.author).to.be.equal('object');
         expect(res.body.comment.author).to.have.property('username');
         expect(res.body.comment).to.have.property('createdAt');
         expect(res.body.comment).to.have.property('updatedAt');
@@ -196,6 +191,73 @@ describe('Create, Get and Delete Comment', () => {
         expect(res.statusCode).to.be.equal(404);
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equals('failed to find comment');
+        done();
+      });
+  });
+  it('Should let user comment on highlited text in an article with valid details', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.highlightText)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(201);
+        expect(res.body.message).to.be.equal('successfully commented on text');
+        expect(res.body.highlightText).to.have.property('comment');
+        expect(res.body.highlightText).to.have.property('startIndex');
+        expect(res.body.highlightText).to.have.property('stopIndex');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalid Indexes', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.invalidEndIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('stopIndex is invalid');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalid null body', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.nullIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('highlight, startIndex, stopIndex and comment cannot be left empty');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with negative Indexes than article', (done) => {
+    chai
+      .request(app)
+      .post(`/api/articles/${slugArticle}/highlight/comments`)
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.negativeIndex)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(400);
+        expect(res.body.error).to.be.equal('startIndex is invalid');
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should not let user comment on highlited text in an article with invalidSlug', (done) => {
+    chai
+      .request(app)
+      .post('/api/articles/thelondon/highlight/comments')
+      .set('Authorization', `Bearer ${authToken}`)
+      .send(user.highlightText)
+      .end((err, res) => {
+        expect(res.statusCode).to.be.equal(404);
+        expect(res.body.error).to.be.equal('failed to find article');
+        expect(res.body).to.have.property('error');
         done();
       });
   });
