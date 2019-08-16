@@ -27,6 +27,9 @@ export default (Sequelize, DataTypes) => {
   comments.associate = (models) => {
     comments.belongsTo(models.articles, { as: 'comments', foreignKey: 'articleId', onDelete: 'CASCADE', });
     comments.belongsTo(models.users, { as: 'commentor', foreignKey: 'authorId', onDelete: 'CASCADE', });
+    comments.hasMany(models.commentEdits, {
+      as: 'edits', foreignKey: 'commentId', onDelete: 'CASCADE', sourceKey: 'id'
+    });
   };
   return comments;
 };

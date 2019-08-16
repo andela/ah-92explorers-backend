@@ -5,7 +5,7 @@ import {
 } from './notifications';
 
 const {
-  comments, sequelize, articles, users,
+  comments, sequelize, articles, users, commentEdits
 } = db;
 
 class Comment {
@@ -15,6 +15,11 @@ class Comment {
     const { username } = req.decoded;
     const transaction = await sequelize.transaction();
     try {
+      if (body.length <= 0) {
+        return res.status(400).json({
+          error: 'comment body cannot be null'
+        });
+      }
       const article = await articles.findOne({
         where: {
           slug,
@@ -83,7 +88,8 @@ class Comment {
             as: 'commentor',
             model: users,
             attributes: ['username', 'image']
-          }]
+          }
+          ]
         }]
       });
 
@@ -99,7 +105,7 @@ class Comment {
       });
     } catch (error) {
       return res.status(500).json({
-        error: 'failed to fetch comments'
+        error: 'failed to fetch comments and history'
       });
     }
   }
@@ -140,5 +146,69 @@ class Comment {
       });
     }
   }
+
+  static async updateComment(req, res) {
+    try {
+      const { commentId } = req.params;
+      const { email } = req.decoded;
+      const { body } = req.body;
+      const user = await users.findOne({
+        where: { email }
+      });
+      const comment = await comments.findOne({
+        where: { id: commentId }
+      });
+      if (comment.authorId !== user.id) {
+        return res.status(403).json({
+          error: 'user cannot update this comment'
+        });
+      }
+      await comments.update(
+        {
+          body
+        },
+        {
+          where: { id: commentId }
+        }
+      );
+      await commentEdits.create({
+        commentId: comment.id,
+        body: comment.body
+      });
+      return res.status(200).json({
+        message: 'successfully updated and tracked comment',
+        comment: {
+          body,
+          id: comment.id
+        }
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to update and track comment'
+      });
+    }
+  }
+
+  static async getSingleComment(req, res) {
+    try {
+      const { commentId } = req.params;
+      const edits = await commentEdits.findAll({
+        where: { commentId }
+      });
+      const comment = await comments.findOne({
+        where: { id: commentId }
+      });
+
+      return res.status(200).json({
+        comment,
+        edits
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to get comment'
+      });
+    }
+  }
 }
+
 export default Comment;

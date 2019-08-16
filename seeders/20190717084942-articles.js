@@ -4,7 +4,7 @@ export const up = (queryInterface, Sequelize) => queryInterface.bulkInsert(
   'articles',
   [
     {
-      id: 'c90dee64-663d-4d8b-b34d-12acba22cd57',
+      id: 'c90dee64-663d-4d8b-b34d-12acba22cd92',
       title: 'The basics of java',
       slug: 'the-basics-of-java',
       body: 'JavaScript is a language which has many frameworks and libraries',
