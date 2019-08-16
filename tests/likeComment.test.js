@@ -8,8 +8,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 const userToken = [];
 
-let commentId;
-
 describe('Tesing if user can like/unlike a comment', () => {
   it('should login an admin', (done) => {
     chai.request(app)
@@ -44,7 +42,7 @@ describe('Tesing if user can like/unlike a comment', () => {
   it('should not allow user to like without authorization', (done) => {
     chai
       .request(app)
-      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd98/like')
+      .post('/api/article/comment/c90dee64-663d-4d8b-b34d-12acba22cd99/like')
       .set('Content-Type', 'application/json')
       .end((err, res) => {
         const { status } = res;

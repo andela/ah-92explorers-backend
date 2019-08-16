@@ -5,8 +5,8 @@ import {
 } from './notifications';
 
 const {
-  comments, sequelize, articles, users, 
-  commentEdits, highlightArticleComments
+  comments, sequelize, articles, users, commentEdits,
+  highlightArticleComments
 } = db;
 
 class Comment {
@@ -207,10 +207,10 @@ class Comment {
     } catch (error) {
       return res.status(500).json({
         error: 'failed to get comment'
-      })
+      });
     }
   }
-  
+
   static async highlightTextAndComment(req, res) {
     try {
       const { articleSlug } = req.params;
