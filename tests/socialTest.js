@@ -19,7 +19,7 @@ describe('Social Login', () => {
         email: 'celestin.niyonsaba@andela.com'
       })
       .end((err, res) => {
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -33,7 +33,7 @@ describe('Social Login', () => {
         email: 'celestin.niyonsaba@andela.com'
       })
       .end((err, res) => {
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -47,7 +47,7 @@ describe('Social Login', () => {
         email: 'celestin.niyonsaba@andela.com'
       })
       .end((err, res) => {
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         done();
       });
