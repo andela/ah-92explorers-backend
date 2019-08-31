@@ -48,7 +48,7 @@ describe('Search Functionality', () => {
   });
   it('should return 404 on empty search results', (done) => {
     chai.request(app)
-      .get('/api/articles?keyword=ow')
+      .get('/api/articles?keyword=owhhh')
       .end((err, res) => {
         if (err) {
           done(err);
