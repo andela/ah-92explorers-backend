@@ -174,6 +174,11 @@ class Article {
                 attributes: ['username', 'image']
               }
             ]
+          },
+          {
+            as: 'ratings',
+            model: ratings,
+            attributes: ['articleSlug', 'rating']
           }
         ]
       });
@@ -190,6 +195,7 @@ class Article {
           tagList,
           image,
           author,
+          rating: article.ratings
         };
         return res.status(200).json({ article: payload });
       }
