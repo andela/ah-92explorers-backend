@@ -65,7 +65,7 @@ describe('Reset Password via email', () => {
         res.should.have.status(200);
         res.should.be.an('object');
         res.body.should.have.property('message');
-        res.body.should.have.property('message').eql('We have e-mailed a password reset link, Check your email!');
+        res.body.should.have.property('message').eql('We have sent a password reset link to your email');
         done();
       });
   });
@@ -77,8 +77,6 @@ describe('Reset Password via email', () => {
         if (err) done(err);
         res.should.have.status(200);
         res.should.be.an('object');
-        res.body.should.have.property('token');
-        res.body.should.have.property('token').eql(newUserToken);
         done();
       });
   });
@@ -95,7 +93,7 @@ describe('Reset Password via email', () => {
         res.should.have.status(200);
         res.should.be.an('object');
         res.body.should.have.property('message');
-        res.body.should.have.property('message').eql('Your password was reset successfully');
+        res.body.should.have.property('message').eql('You have successfully reset your password');
         done();
       });
   });
@@ -122,10 +120,10 @@ describe('Reset Password via email', () => {
       })
       .end((err, res) => {
         if (err) done(err);
-        res.should.have.status(401);
+        res.should.have.status(403);
         res.should.be.an('object');
         res.body.should.have.property('error');
-        res.body.should.have.property('error').eql('Invalid token');
+        res.body.should.have.property('error').eql('Permission to access this resource has been denied');
         done();
       });
   });

@@ -82,7 +82,7 @@ class authValidations {
       firstName, lastName, phone
     } = req.body;
     const nameRegex = /^[a-zA-Z]*$/;
-    const phoneRegex = /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{9})$/gm;
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
     switch (true) {
       case nameRegex.test(firstName) === false:

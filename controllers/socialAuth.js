@@ -16,15 +16,19 @@ export default class User {
     return crypted;
   }
 
-  static returnValue(req, res) {
-    const { name, provider, emails, } = req.user;
+  static returnValue(req, res, id) {
+    const { name, provider, emails } = req.user;
     const email = emails[0].value;
     const { givenName, familyName } = name;
     const username = familyName + givenName + provider;
     const user = {
       message: 'user successful registered',
-      user: { firstName: givenName, lastName: familyName, email },
-      token: Auth.genToken(username, email)
+      user: {
+        firstName: givenName,
+        lastName: familyName,
+        email
+      },
+      token: Auth.genToken(username, email, id)
     };
     const data = User.enc(user);
     return res.redirect(`${FRONT_END_URL}/continue?token=${data}`);
@@ -34,18 +38,25 @@ export default class User {
     const { name, emails, provider } = req.user;
     const { givenName, familyName } = name;
     const email = emails[0].value;
-    const firstName = givenName; const lastName = familyName;
+    const firstName = givenName;
+    const lastName = familyName;
     const password = process.env.SOCIAL_LOGIN_PASSWORD;
     const username = familyName + givenName + provider;
     try {
       const facebookUserGoogle = await users.findOrCreate({
         where: { email },
         defaults: {
-          firstName, lastName, username, email, provider, password: Auth.hashPassword(password)
+          firstName,
+          lastName,
+          username,
+          email,
+          provider,
+          password: Auth.hashPassword(password)
         }
       });
       if (facebookUserGoogle) {
-        User.returnValue(req, res);
+        const { id } = facebookUserGoogle[0];
+        User.returnValue(req, res, id);
       }
     } catch (error) {
       return res.status(500).json({
@@ -63,14 +74,24 @@ export default class User {
       const twitterUser = await users.findOrCreate({
         where: { username, provider },
         defaults: {
-          firstName, lastName, username, email, provider: 'twitter', password: Auth.hashPassword(password)
+          firstName,
+          lastName,
+          username,
+          email,
+          provider: 'twitter',
+          password: Auth.hashPassword(password)
         }
       });
       if (twitterUser) {
+        const { id } = twitterUser[0];
         const user = {
           message: 'user successful registered',
-          user: { firstName, lastName, username },
-          token: Auth.genToken(username, email)
+          user: {
+            firstName,
+            lastName,
+            username
+          },
+          token: Auth.genToken(username, email, id)
         };
         const data = User.enc(user);
         return res.redirect(`${FRONT_END_URL}/continue?token=${data}`);

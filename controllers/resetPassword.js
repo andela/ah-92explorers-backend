@@ -8,9 +8,9 @@ dotenv.config();
 
 const { users } = models;
 
-const { SECRET } = process.env;
+const { SECRET, FRONT_END_URL } = process.env;
 const expirationTime = {
-  expiresIn: '1day',
+  expiresIn: '1day'
 };
 
 /**
@@ -27,27 +27,29 @@ class ResetPasswordController {
    */
   static async sendResetLinkEmail(req, res) {
     const user = {
-      email: req.body.email,
+      email: req.body.email
     };
     try {
       const checkUser = await users.findOne({
         where: {
-          email: user.email,
+          email: user.email
         }
       });
       if (checkUser) {
         const payload = {
-          email: checkUser.email,
+          email: checkUser.email
         };
         const token = jwt.sign(payload, SECRET, expirationTime);
         req.body.token = token;
         req.body.template = 'resetPassword';
         sendEmail(user.email, token, 'resetPassword');
-        return res.status(200).send({ message: 'We have e-mailed a password reset link, Check your email!' });
+        return res
+          .status(200)
+          .send({ message: 'We have sent a password reset link to your email' });
       }
       return res.status(404).json({ error: 'The email provided does not exist' });
     } catch (error) {
-      return res.status(500).json({ error: `${error}` });
+      return res.status(500).json({ error: 'Failed to reset password' });
     }
   }
 
@@ -58,7 +60,7 @@ class ResetPasswordController {
    * @returns {object} response.
    */
   static getToken(req, res) {
-    return res.send({ token: req.params.token });
+    return res.redirect(`${FRONT_END_URL}/resetting-password?${req.params.token}`);
   }
 
   /**
@@ -75,21 +77,21 @@ class ResetPasswordController {
       if (decoded) {
         const checkUpdate = await users.update(
           {
-            password,
+            password
           },
           {
             where: {
-              email: decoded.email,
+              email: decoded.email
             }
           }
         );
         if (checkUpdate.length >= 1) {
-          return res.status(200).json({ message: 'Your password was reset successfully' });
+          return res.status(200).json({ message: 'You have successfully reset your password' });
         }
       }
-      return res.status(401).json({ error: 'Invalid token' });
+      return res.status(403).json({ error: 'Permission to access this resource has been denied' });
     } catch (error) {
-      return res.status(500).send({ error: error.message });
+      return res.status(500).send({ error: 'Failed to reset password' });
     }
   }
 }

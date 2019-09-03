@@ -46,7 +46,7 @@ export const signup = async (req, res) => {
       return res.status(201).json({
         message: 'created successfully',
         user: {
-          token: Auth.genToken(username, email),
+          token: Auth.genToken(username, email, newUser.id),
           username: newUser.username,
           email: newUser.email,
         },
@@ -77,6 +77,7 @@ export const signin = async (req, res) => {
           token: Auth.genToken(username, email, user.id),
           username,
           email: user.email,
+          image: user.image,
         },
       });
     }
