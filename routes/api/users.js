@@ -288,6 +288,7 @@ router.patch('/profiles', checkToken, uploadImage, Validations.validateProfile, 
 router.post('/:username/follow', checkToken, Follower.follow);
 router.get('/followers', checkToken, Follower.followers);
 router.get('/following', checkToken, Follower.following);
+router.get('/:username/followed', checkToken, Follower.followed);
 
 router.get('/users/reading-stats', checkToken, articleStats.getUserReadingStats);
 
