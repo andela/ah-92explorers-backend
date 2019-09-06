@@ -26,19 +26,31 @@ class Article {
       // @pagination
       let page, limit;
       if (Object.keys(req.query).length === 0) {
-        page = 1; limit = 10;
+        page = 1;
+        limit = 10;
       } else if (req.query.limit === undefined) {
-        ({ page } = req.query); limit = 10;
+        ({ page } = req.query);
+        limit = 10;
       } else ({ page, limit } = req.query);
       // @retrieve articles
       const allArticles = await articles.findAll({
         order: [['createdAt', 'DESC']],
-        attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'authorId'],
+        attributes: [
+          'id',
+          'title',
+          'slug',
+          'description',
+          'body',
+          'tagList',
+          'image',
+          'createdAt',
+          'authorId'
+        ],
         include: [
           {
             as: 'author',
             model: users,
-            attributes: ['username', 'image'],
+            attributes: ['username', 'image']
           },
           {
             as: 'comments',
@@ -77,7 +89,7 @@ class Article {
             ]
           }
         ],
-        offset: ((parseInt(page, 10) - 1) * limit),
+        offset: (parseInt(page, 10) - 1) * limit,
         limit
       });
       allArticles.forEach((item) => {
@@ -116,9 +128,9 @@ class Article {
         title,
         description,
         body: he.encode(body),
-        tagList: (tagList ? tagList.split(',') : null),
+        tagList: tagList ? tagList.split(',') : null,
         authorId: findUser.id,
-        image: (req.file ? req.file.url : null)
+        image: req.file ? req.file.url : null
       });
       const { slug, image } = article;
       const user = await users.findOne({ where: { id: article.authorId } });
@@ -130,7 +142,7 @@ class Article {
         body: he.decode(article.body),
         tagList,
         image,
-        author: { username, bio, image: user.image },
+        author: { username, bio, image: user.image }
       };
       const message = `${username} published new article`;
       await notificationForFollower(article.authorId, message);
@@ -148,14 +160,12 @@ class Article {
    * @returns {Object} return article
    */
   static async getSingleArticle(req, res) {
-    const {
-      slug
-    } = req.params;
+    const { slug } = req.params;
     try {
       // @find an article which the slug
       const article = await articles.findOne({
         where: {
-          slug,
+          slug
         },
         include: [
           {
@@ -178,13 +188,38 @@ class Article {
           {
             as: 'ratings',
             model: ratings,
-            attributes: ['articleSlug', 'rating']
+            attributes: ['rating', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'reviewer',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
+          },
+          {
+            as: 'likes',
+            model: likes,
+            attributes: ['typeState', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'liker',
+                model: users,
+                attributes: ['username', 'image']
+              }
+            ]
           }
         ]
       });
+      const rating = await ratings.findAll({
+        where: {
+          articleSlug: article.slug
+        }
+      });
+
       if (article) {
         const {
-          title, description, tagList, image, author
+          title, description, tagList, image, author, comments
         } = article;
         const payload = {
           time: accReadTime(article.body),
@@ -195,7 +230,9 @@ class Article {
           tagList,
           image,
           author,
-          rating: article.ratings
+          comments: article.comments,
+          likes: article.likes,
+          ratings: rating
         };
         return res.status(200).json({ article: payload });
       }
@@ -217,18 +254,21 @@ class Article {
     } = req.body;
     try {
       // @update article
-      const updatedArticle = await articles.update({
-        title,
-        description,
-        body: he.encode(body),
-        tagList: (tagList ? tagList.split(',') : req.findArticle.tagList),
-        image: (req.file ? req.file.url : req.findArticle.image)
-      }, {
-        where: {
-          slug: req.params.slug
+      const updatedArticle = await articles.update(
+        {
+          title,
+          description,
+          body: he.encode(body),
+          tagList: tagList ? tagList.split(',') : req.findArticle.tagList,
+          image: req.file ? req.file.url : req.findArticle.image
         },
-        individualHooks: true
-      });
+        {
+          where: {
+            slug: req.params.slug
+          },
+          individualHooks: true
+        }
+      );
       const {
         slug, authorId, image, createdAt, updatedAt
       } = updatedArticle[1][0];
@@ -245,11 +285,11 @@ class Article {
         authorId,
         image,
         createdAt,
-        updatedAt,
+        updatedAt
       };
       return res.status(200).json({
         message: 'Article updated successfully',
-        article: payload,
+        article: payload
       });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to update the article, please try again' });
@@ -299,21 +339,23 @@ class Article {
         if (process.env.NODE_ENV !== 'test') open(`https:www.facebook.com/sharer/sharer.php?u=${url}`);
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`,
+          message: `Article shared to ${channel}`
         });
         break;
       case 'twitter':
-        if (process.env.NODE_ENV !== 'test') { open(`https://twitter.com/intent/tweet?url=${url}`); }
+        if (process.env.NODE_ENV !== 'test') {
+          open(`https://twitter.com/intent/tweet?url=${url}`);
+        }
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`,
+          message: `Article shared to ${channel}`
         });
         break;
       case 'mail':
         if (process.env.NODE_ENV !== 'test') open(`mailto:?subject=${slug}&body=${url}`);
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`,
+          message: `Article shared to ${channel}`
         });
         break;
       default:
