@@ -5,7 +5,6 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
-        unique: true,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
