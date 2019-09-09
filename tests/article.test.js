@@ -342,7 +342,7 @@ describe('Share articles across different channels', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .end((error, res) => {
         expect(res.body.status).to.be.equal(200);
-        expect(res.body.message).to.equals('Article shared to facebook');
+        expect(res.body.message).to.equals('Article is shared to facebook');
         done();
       });
   });
@@ -352,7 +352,7 @@ describe('Share articles across different channels', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .end((error, res) => {
         expect(res.body.status).to.be.equal(200);
-        expect(res.body.message).to.equals('Article shared to twitter');
+        expect(res.body.message).to.equals('Article is shared to twitter');
         done();
       });
   });
@@ -362,7 +362,7 @@ describe('Share articles across different channels', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .end((error, res) => {
         expect(res.body.status).to.be.equal(200);
-        expect(res.body.message).to.equals('Article shared to mail');
+        expect(res.body.message).to.equals('Article is shared to mail');
         done();
       });
   });

@@ -355,30 +355,24 @@ class Article {
     const tweet = `"${payload.title}" by ${payload.author.username}. ${'\n'} @ ${url}`;
     switch (channel) {
       case 'facebook':
-        if (process.env.NODE_ENV !== 'test') {
-          open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-        }
+        open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`
+          message: `Article is shared to ${channel}`
         });
         break;
       case 'twitter':
-        if (process.env.NODE_ENV !== 'test') {
-          open(`https://twitter.com/intent/tweet?text=${tweet}&hashtags=92-explorers`);
-        }
+        open(`https://twitter.com/intent/tweet?text=${tweet}&hashtags=92-explorers`);
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`
+          message: `Article is shared to ${channel}`
         });
         break;
       case 'mail':
-        if (process.env.NODE_ENV !== 'test') {
-          open(`mailto:?subject=${payload.title}&body=Checkout this article "${payload.title}" by ${payload.author.username} on Authors Haven. ${'\n\n'} @ ${url}`);
-        }
+        open(`mailto:?subject=${payload.title}&body=Checkout this article "${payload.title}" by ${payload.author.username} on Authors Haven. ${'\n\n'} @ ${url}`);
         res.status(200).json({
           status: 200,
-          message: `Article shared to ${channel}`
+          message: `Article is shared to ${channel}`
         });
         break;
       default:
