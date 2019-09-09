@@ -5,7 +5,6 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        unique: true,
         references: {
           model: 'users',
           key: 'id'
