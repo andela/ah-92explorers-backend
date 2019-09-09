@@ -211,15 +211,14 @@ class Article {
           }
         ]
       });
-      const rating = await ratings.findAll({
-        where: {
-          articleSlug: article.slug
-        }
-      });
-
       if (article) {
+        const rating = await ratings.findAll({
+          where: {
+            articleSlug: article.slug
+          }
+        });
         const {
-          title, description, tagList, image, author, comments
+          title, description, tagList, image, author,
         } = article;
         const payload = {
           time: accReadTime(article.body),
@@ -325,7 +324,14 @@ class Article {
   static async shareArticle(req, res) {
     const { slug, channel } = req.params;
     const articleSlug = await articles.findOne({
-      where: { slug: req.params.slug }
+      where: { slug: req.params.slug },
+      include: [
+        {
+          model: users,
+          as: 'author',
+          attributes: ['username', 'email', 'id']
+        },
+      ]
     });
     if (!articleSlug) {
       return res.status(404).json({
@@ -333,10 +339,25 @@ class Article {
         message: 'Article is not found.'
       });
     }
-    const url = `${process.env.APP_URL}/api/articles/${slug}/share/${channel}`;
+    const url = `${process.env.FRONT_END_URL}/article/${slug}`;
+    const {
+      title, description, tagList, image, author,
+    } = articleSlug;
+    const payload = {
+      slug,
+      title,
+      description,
+      body: he.decode(articleSlug.body),
+      tagList,
+      image,
+      author,
+    };
+    const tweet = `"${payload.title}" by ${payload.author.username}. ${'\n'} @ ${url}`;
     switch (channel) {
       case 'facebook':
-        if (process.env.NODE_ENV !== 'test') open(`https:www.facebook.com/sharer/sharer.php?u=${url}`);
+        if (process.env.NODE_ENV !== 'test') {
+          open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+        }
         res.status(200).json({
           status: 200,
           message: `Article shared to ${channel}`
@@ -344,7 +365,7 @@ class Article {
         break;
       case 'twitter':
         if (process.env.NODE_ENV !== 'test') {
-          open(`https://twitter.com/intent/tweet?url=${url}`);
+          open(`https://twitter.com/intent/tweet?text=${tweet}&hashtags=92-explorers`);
         }
         res.status(200).json({
           status: 200,
@@ -352,7 +373,9 @@ class Article {
         });
         break;
       case 'mail':
-        if (process.env.NODE_ENV !== 'test') open(`mailto:?subject=${slug}&body=${url}`);
+        if (process.env.NODE_ENV !== 'test') {
+          open(`mailto:?subject=${payload.title}&body=Checkout this article "${payload.title}" by ${payload.author.username} on Authors Haven. ${'\n\n'} @ ${url}`);
+        }
         res.status(200).json({
           status: 200,
           message: `Article shared to ${channel}`

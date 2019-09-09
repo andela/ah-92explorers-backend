@@ -39,7 +39,7 @@ describe('User Authentication Routes', () => {
       .then((res) => {
         expect(res.statusCode).to.be.equal(200);
         expect(typeof res.body.user.token).to.be.equal('string');
-        expect(Object.keys(res.body.user).length).to.be.equal(4);
+        expect(Object.keys(res.body.user).length).to.be.equal(5);
         expect(res.body.user.username).to.be.equal(user.userTrue.username);
         expect(typeof res.body.user.email).to.be.equal('string');
         expect(res.body.user.email).to.be.equal(user.userTrue.email);
