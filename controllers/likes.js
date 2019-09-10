@@ -61,7 +61,7 @@ class Like {
               typeState: 1
             },
             {
-              where: { articleSlug: article.slug }
+              where: { articleSlug: article.slug, userId: user.id }
             }
           );
           return res.status(201).json({
@@ -122,7 +122,7 @@ class Like {
               typeState: 0
             },
             {
-              where: { articleSlug: article.slug }
+              where: { articleSlug: article.slug, userId: user.id }
             }
           );
           return res.status(201).json({
