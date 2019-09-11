@@ -40,7 +40,9 @@ class Like {
           await notificationForFavorite(article.id, message, article.authorId, article.slug);
           await notifyFavoritees(article.id, message, article.authorId, article.slug);
           return res.status(201).json({
-            message: 'successfully liked article'
+            message: 'successfully liked article',
+            likes: article.likes,
+            username: user.username,
           });
 
         case like.typeState === 1:
@@ -52,8 +54,10 @@ class Like {
               }
             }
           );
-          return res.status(204).json({
-            message: 'successfully unliked article'
+          return res.status(200).json({
+            message: 'successfully unliked article',
+            likes: article.likes,
+            username: user.username,
           });
         case like.typeState === 0:
           await likes.update(
@@ -61,11 +65,13 @@ class Like {
               typeState: 1
             },
             {
-              where: { articleSlug: article.slug }
+              where: { articleSlug: article.slug, userId: user.id }
             }
           );
           return res.status(201).json({
-            message: 'successfully liked article'
+            message: 'successfully liked article',
+            likes: article.likes,
+            username: user.username,
           });
       }
     } catch (error) {
@@ -101,7 +107,9 @@ class Like {
             typeState: 0
           });
           return res.status(201).json({
-            message: 'successfully disliked article'
+            message: 'successfully disliked article',
+            likes: article.likes,
+            username: user.username,
           });
 
         case like.typeState === 0:
@@ -113,8 +121,10 @@ class Like {
               }
             }
           );
-          return res.status(204).json({
-            message: 'successfully unliked article'
+          return res.status(200).json({
+            message: 'successfully undisliked article',
+            likes: article.likes,
+            username: user.username,
           });
         case like.typeState === 1:
           await likes.update(
@@ -122,11 +132,13 @@ class Like {
               typeState: 0
             },
             {
-              where: { articleSlug: article.slug }
+              where: { articleSlug: article.slug, userId: user.id }
             }
           );
           return res.status(201).json({
-            message: 'successfully disliked article'
+            message: 'successfully disliked article',
+            likes: article.likes,
+            username: user.username,
           });
       }
     } catch (error) {

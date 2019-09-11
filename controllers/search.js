@@ -9,6 +9,7 @@ export const search = async (req, res) => {
   const arrayResults = [];
   const client = searchAlgolia(process.env.ALGO_APP_ID, process.env.ALGO_SEARCH_ONLY);
   const index = client.initIndex('authors_haven');
+  // index.clear();
   const {
     tag,
     author,
@@ -26,7 +27,6 @@ export const search = async (req, res) => {
         }
       ]
     });
-
     articlesResults.map((e) => {
       arrayResults.push({
         id: e.id,
@@ -37,12 +37,12 @@ export const search = async (req, res) => {
         tagList: e.tagList,
         image: e.image,
         author: e.author,
+        objectID: e.objectID,
         createdAt: e.createdAt,
         updatedAt: e.updatedAt
       });
       return arrayResults;
     });
-
     index.addObjects(arrayResults);
     index.search(`${tag || author || title || keyword}`, (err, results) => {
       const sanitizedResults = sanitize(results.hits);

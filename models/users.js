@@ -62,7 +62,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    notificationsOpt: { type: DataTypes.BOOLEAN },
+    notificationsOpt: { type: DataTypes.BOOLEAN, defaultValue: false },
     accessLevel: {
       type: DataTypes.INTEGER,
       defaultValue: '0'
