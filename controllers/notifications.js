@@ -173,6 +173,7 @@ export const subscribe = async (req, res) => {
   );
   res.status(200).json({
     user: updatedUser[1].notificationsOpt ? 'successfully subscribed to email notifications'
-      : 'successfully unsubscribed to email notifications'
+      : 'successfully unsubscribed to email notifications',
+    opted: allow,
   });
 };
