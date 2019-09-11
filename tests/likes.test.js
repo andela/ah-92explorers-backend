@@ -45,7 +45,7 @@ describe('Testing if user can like and dislike', () => {
       .set('Authorization', `Bearer ${data[0]}`)
       .end((err, res) => {
         const { status } = res;
-        expect(status).to.equal(204);
+        expect(status).to.equal(200);
         done();
       });
   });
@@ -69,7 +69,7 @@ describe('Testing if user can like and dislike', () => {
       .set('Authorization', `Bearer ${data[0]}`)
       .end((err, res) => {
         const { status } = res;
-        expect(status).to.equal(204);
+        expect(status).to.equal(200);
         done();
       });
   });
