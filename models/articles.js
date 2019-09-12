@@ -34,6 +34,10 @@ export default (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    objectID: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     image: {
       type: DataTypes.STRING,
       allowNull: true

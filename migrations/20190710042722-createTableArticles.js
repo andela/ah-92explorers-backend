@@ -38,6 +38,10 @@ const articleMigration = {
           key: 'id'
         }
       },
+      objectID: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+      },
       image: {
         type: Sequelize.STRING,
         allowNull: true
