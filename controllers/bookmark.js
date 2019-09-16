@@ -30,7 +30,7 @@ class Bookmark {
           articleId: articleId.dataValues.id
         },
       });
-      const { title } = articleId;
+      const { id, title } = articleId;
       if (!bookmarked) {
         await bookmark.create({
           userId,
@@ -39,13 +39,20 @@ class Bookmark {
         return res.status(201).json({
           message: 'Successfully bookmarked the article',
           article: {
-            title
+            id,
+            title,
+            slug
           }
         });
       }
       await bookmark.destroy({ where: { userId, articleId: articleId.dataValues.id } });
-      return res.status(204).json({
+      return res.status(200).json({
         message: 'Successfully unbookmarked the article',
+        article: {
+          id,
+          title,
+          slug
+        }
       });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to bookmark article, please try again' });
@@ -108,7 +115,7 @@ class Bookmark {
           userId,
         },
 
-        include: [{ model: articles, as: 'article', attributes: ['title', 'description', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'] }],
+        include: [{ model: articles, as: 'article', attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'] }],
       });
       return res.status(200).json({
         message: 'Article bookmarks retrieved!',
