@@ -6,7 +6,7 @@ import { accReadTime } from '../helpers/readTime';
 import { notificationForFollower, sendNotificationToFollower } from './notifications';
 
 const {
-  articles, users, ratings, likes, comments
+  articles, users, ratings, likes, comments, bookmark
 } = models;
 
 dotenv.config();
@@ -87,7 +87,12 @@ class Article {
                 attributes: ['username', 'image']
               }
             ]
-          }
+          },
+          {
+            as: 'bookmarks',
+            model: bookmark,
+            attributes: ['id', 'userId', 'articleId', 'createdAt', 'updatedAt'],
+          },
         ],
         offset: (parseInt(page, 10) - 1) * limit,
         limit
@@ -208,7 +213,12 @@ class Article {
                 attributes: ['username', 'image']
               }
             ]
-          }
+          },
+          {
+            as: 'bookmarks',
+            model: bookmark,
+            attributes: ['id', 'userId', 'articleId', 'createdAt', 'updatedAt'],
+          },
         ]
       });
       if (article) {
@@ -221,6 +231,7 @@ class Article {
           title, description, tagList, image, author,
         } = article;
         const payload = {
+          id: article.id,
           time: accReadTime(article.body),
           slug,
           title,
@@ -231,7 +242,8 @@ class Article {
           author,
           comments: article.comments,
           likes: article.likes,
-          ratings: rating
+          ratings: rating,
+          bookmarks: article.bookmarks
         };
         return res.status(200).json({ article: payload });
       }

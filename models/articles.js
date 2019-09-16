@@ -50,7 +50,7 @@ export default (sequelize, DataTypes) => {
   articles.associate = (models) => {
     articles.belongsTo(models.users, { as: 'author', foreignKey: 'authorId' });
     articles.hasMany(models.highlightArticleComments, { foreignKey: 'articleSlug', sourceKey: 'slug' });
-    articles.hasMany(models.bookmark, { foreignKey: 'articleId' });
+    articles.hasMany(models.bookmark, { as: 'bookmarks', foreignKey: 'articleId', sourceKey: 'id' });
     articles.hasMany(models.ratings, { as: 'ratings', foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.likes, { as: 'likes', foreignKey: 'articleSlug', sourceKey: 'slug' });
     articles.hasMany(models.comments, { as: 'comments', foreignKey: 'articleId', sourceKey: 'id' });
