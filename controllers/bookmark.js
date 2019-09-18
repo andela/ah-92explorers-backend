@@ -115,7 +115,18 @@ class Bookmark {
           userId,
         },
 
-        include: [{ model: articles, as: 'article', attributes: ['id', 'title', 'slug', 'description', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'] }],
+        include: [{
+          model: articles,
+          as: 'article',
+          attributes: ['id', 'title', 'description', 'slug', 'body', 'tagList', 'image', 'createdAt', 'updatedAt'],
+          include: [
+            {
+              as: 'author',
+              model: users,
+              attributes: ['username', 'image']
+            }
+          ]
+        }],
       });
       return res.status(200).json({
         message: 'Article bookmarks retrieved!',
