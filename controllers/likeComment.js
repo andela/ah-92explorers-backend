@@ -37,7 +37,6 @@ export default class CommentLikes {
           message: 'you liked this comment',
         });
       }
-
       await like.destroy({ userId: author.id, likes: 1 });
       return res.status(200).json({
         message: 'you unliked this comment',

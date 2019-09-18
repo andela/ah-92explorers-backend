@@ -93,7 +93,7 @@ class Comment {
           {
             as: 'likes',
             model: commentLikes,
-            attributes: ['id', 'commentId', 'likes', 'createdAt', 'updatedAt'],
+            attributes: ['id', 'likes', 'createdAt', 'updatedAt'],
             include: [
               {
                 as: 'user',
