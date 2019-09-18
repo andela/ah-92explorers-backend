@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import models from '../models';
 import {
   notificationForFavorite,
@@ -6,6 +7,7 @@ import {
   sendNotificationToFollower,
 } from './notifications';
 
+dotenv.config();
 const { articles, likes, users } = models;
 
 class Like {
@@ -27,7 +29,7 @@ class Like {
         include: [{ as: 'liker', model: likes }]
       });
       const like = await likes.findOne({ where: { articleSlug: article.slug, userId: user.id }, attributes: ['typeState'] });
-      const message = `${req.decoded.username} liked an article you follow`;
+      const message = `${req.decoded.username} liked an article <a href="${process.env.FRONT_END_URL}/articles/${articleSlug}">${article.title}</a>`;
       switch (true) {
         case !like:
           await likes.create({

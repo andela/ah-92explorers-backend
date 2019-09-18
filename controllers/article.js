@@ -149,7 +149,7 @@ class Article {
         image,
         author: { username, bio, image: user.image }
       };
-      const message = `${username} published new article`;
+      const message = `${username} published new article <a href="${process.env.FRONT_END_URL}/api/articles/${article.slug}">${article.title}</a>`;
       await notificationForFollower(article.authorId, message);
       await sendNotificationToFollower(article.authorId, message);
       return res.status(201).json({ message: 'Article created successfully', article: payload });
@@ -285,7 +285,7 @@ class Article {
       } = updatedArticle[1][0];
       const message = `
       ${req.decoded.username} 
-      updated article ${updatedArticle[1][0].title}`;
+      updated article <a href="${process.env.FRONT_END_URL}/api/articles/${updatedArticle[1][0].slug}">${updatedArticle[1][0].title}</a>`;
       await notificationForFollower(updatedArticle[1][0].authorId, message);
       await sendNotificationToFollower(updatedArticle[1][0].authorId, message);
       const payload = {
