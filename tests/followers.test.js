@@ -149,9 +149,10 @@ describe('Following a user', () => {
       });
   });
   it('should be able to sign in', (done) => {
-    chai.request(app)
+    chai
+      .request(app)
       .post('/api/users/login')
-      .send(user.userLogin)
+      .send(user.userTrue)
       .end((req, res) => {
         const { status, body } = res;
         expect(status).to.equal(200);
