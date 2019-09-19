@@ -5,7 +5,7 @@ import {
 } from './notifications';
 
 const {
-  comments, sequelize, articles, users, commentEdits,
+  comments, sequelize, articles, users, commentEdits, commentLikes,
   highlightArticleComments
 } = db;
 
@@ -89,6 +89,18 @@ class Comment {
             as: 'commentor',
             model: users,
             attributes: ['username', 'image']
+          },
+          {
+            as: 'likes',
+            model: commentLikes,
+            attributes: ['id', 'likes', 'createdAt', 'updatedAt'],
+            include: [
+              {
+                as: 'user',
+                model: users,
+                attributes: ['username', 'image']
+              },
+            ],
           }
           ]
         }]
