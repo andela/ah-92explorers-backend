@@ -23,10 +23,9 @@ class reportValidations {
           error: 'A valid message, title and type are required'
         });
 
-      case message.length < 50 || message.length > 150 || typeof message === 'number':
+      case message.length > 150 || typeof message === 'number':
         return res.status(400).json({
           error: [
-            'message should not have less than 100 characters',
             'message should not have more than 150 characters',
             'message should not be numeric',
           ]
