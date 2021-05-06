@@ -74,7 +74,7 @@
     "supertest": "^4.0.2",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "uuid": "^3.3.2",
     "uuidv4": "^4.0.0"
   },
